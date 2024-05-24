@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Variations Of Right Ribbons</h4>
+        <p class="f-m-light mt-1">Use the class of
+            <code>.ribbon-*</code>[ribbon-right/ribbon-clip-right/ribbon-vertical-right/ribbon-bookmark/ribbon-clip-bottom-right/ribbon-vertical-right]
+            through create ribbons and all ribbon colors are available.<code>[.ribbon-*]</code>
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            @for(rightribbonsitem of rightRibbonsData; track rightribbonsitem){
+            <div class="col-sm-6 col-xl-4">
+                <div class="{{rightribbonsitem.class}}">
+                    <div class="{{rightribbonsitem.color}}">
+                        @if(rightribbonsitem.icon){
+                        <i class="{{rightribbonsitem.icon}}"></i>
+                        }
+                        {{rightribbonsitem.info}}
+                    </div>
+                    <p [innerHTML]="rightribbonsitem.dis"></p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4>Font-style</h4>
+        <p class="f-m-light mt-1">
+            Use the font-style like: <code> .f-s-*[normal/italic/oblique/initial/inherit]</code>.</p>
+    </div>
+    <div class="card-body">
+        @for( fontItem of FontstyleData; track fontItem ){
+            <p class="{{fontItem.class}}">
+                This is a <strong>{{fontItem.strong}}</strong> font-style 
+            </p>
+         }
+    </div>
+</div>

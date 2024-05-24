@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Hoverable Rows With Horizontal Border</h4><span>Hoverable row use a class <code>table-hover</code> and for
+      Horizontal border use a class <code>.table-border-horizontal</code> , Solid border Use a
+      class<code>.border-solid .table</code>class.</span>
+  </div>
+  <div class="table-responsive signal-table custom-scrollbar">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Status</th>
+          <th scope="col">Signal Name </th>
+          <th scope="col">Security</th>
+          <th scope="col">Stage</th>
+          <th scope="col">Schedule</th>
+          <th scope="col">Team Lead</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for( table of hoverble; track table){
+        <tr>
+          <th scope="row">{{table.id}}</th>
+          <td class="d-flex align-items-center">
+            <app-feathericon [icon]="table.icon"
+              class="bg-light-{{table.class}} font-{{table.class}}"></app-feathericon>
+            <span class="font-{{table.class}}">{{table.status}}</span>
+          </td>
+          <td>{{table.signal}}</td>
+          <td>{{table.security}}</td>
+          <td>{{table.stage}}</td>
+          <td>{{table.schedule}} </td>
+          <td>{{table.teamLead}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

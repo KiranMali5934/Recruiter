@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div id="print-section">
+    <table style="width:1160px;margin:0 auto;">
+      <tbody>
+        <tr>
+          <td>
+            <app-invoice3-top></app-invoice3-top>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table style="width: 100%;">
+              <tbody>
+                <tr style="padding: 28px 0; display: flex; justify-content: space-between;">
+                  <td><span style=" font-size: 16px; font-weight: 500; opacity: 0.8;">CLIENT DETAILS</span>
+                    <h4 style="font-weight:600; margin: 12px 0 5px 0; font-size: 18px;">Brooklyn Simmons</h4><span
+                      style="width: 54%; display:block; line-height: 1.5;  font-size: 18px; font-weight: 400;opacity: 0.8;">2118
+                      Thornridge Cir. Syracuse, Connecticut 35624, United State</span><span
+                      style="line-height:2;  font-size: 18px; font-weight: 400;opacity: 0.8;">Phone : (239)
+                      555-0108</span>
+                  </td>
+                  <td><span style="font-size: 16px; font-weight: 500;opacity: 0.8;">SHIPPING ADDRESS</span>
+                    <h4 style="font-weight:600; margin: 12px 0 5px 0; font-size: 18px;">Brooklyn Simmons</h4><span
+                      style="display:block; line-height: 1.5;  font-size: 18px; font-weight: 400;opacity: 0.8;">2972
+                      Westheimer Rd. Santa Ana, Illinois 85486 </span><span
+                      style="line-height:2;  font-size: 18px; font-weight: 400;opacity: 0.8;">Phone : (219)
+                      555-0114</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td> <span
+              style="display:block;background: rgba(82, 82, 108, 0.3);height: 1px;width: 100%;margin-bottom:20px;">
+            </span></td>
+        </tr>
+        <tr>
+          <td>
+            <app-invoice3-table></app-invoice3-table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <app-invoice3-total></app-invoice3-total>
+          </td>
+        </tr>
+        <tr>
+          <td> <span
+              style="display:block;background: rgba(82, 82, 108, 0.3);height: 1px;width: 100%;margin-bottom:24px;"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span style="display: flex; justify-content: end; gap: 15px;">
+              <button type="button"
+                style="background: #006666 ; color:rgba(255, 255, 255, 1); border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;"
+                printSectionId="print-section" ngxPrint>Print Invoice
+                <i class="icon-arrow-right" style="font-size:13px;font-weight:bold; margin-left: 10px;"></i>
+              </button>
+              <a style="background: rgba(0, 102, 102, 0.2);color: #006666 ; border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;"
+                href="javascript:void(0);" download="">Download<i class="icon-arrow-right"
+                  style="font-size:13px;font-weight:bold; margin-left: 10px;"></i></a></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

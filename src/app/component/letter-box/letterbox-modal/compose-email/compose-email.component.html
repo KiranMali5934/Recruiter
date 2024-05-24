@@ -1,0 +1,57 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title fs-5">Compose Message</h3>
+    <button class="btn-close" type="button" (click)="activeModal.dismiss()"></button>
+  </div>
+  <div class="modal-body compose-modal">
+    <form>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="composeFrom">From :</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="composeFrom" type="email">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="composeTo">To :</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="composeTo" type="email">
+          <div class="add-bcc">
+            <div class="d-flex gap-2">
+              <a class="btn" data-bs-toggle="collapse" href="javascript:void(0)" role="button"
+                (click)="isShow =! isShow">Cc </a>
+              <a class="btn" data-bs-toggle="collapse" href="javascript:void(0)" role="button"
+                (click)="isShow1 =! isShow1">Bcc</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="collapse row mb-3" id="collapseCc" [class.show]="isShow">
+        <label class="col-sm-2 col-form-label" for="composeCc">Cc:</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="composeCc" type="email">
+        </div>
+      </div>
+      <div class="collapse row mb-3" id="collapseBcc" [class.show]="isShow1">
+        <label class="col-sm-2 col-form-label" for="composeBcc">Bcc:</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="composeBcc" type="email">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="composeSubject">Subject :</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="composeSubject" type="email">
+        </div>
+      </div>
+      <div class="toolbar-box">
+        <div id="editor1">
+          <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-light" type="button">Save as draft</button>
+    <button class="btn btn-primary" type="button" (click)="activeModal.dismiss()">Send</button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Margin</h4>
+        <p class="f-m-light mt-1">
+            Use the margin classes like: <code>.m-* [10/15/20/25/30/35/40/45/50]</code></p>
+    </div>
+    <div class="card-body">
+        <div class="gradient-border">
+            <div class="helper-common-box gap-0 mb-0">
+                @for(data of  marginData; track data){
+                    <div class="helper-box {{ data.marginClass}} border bg-light"></div>
+                    <span>.{{ data.marginClass}}</span>
+                 }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="card">
+    <div class="card-header pb-0">
+      <h3>Simple Typeahead</h3>
+      <p class="f-m-light mt-1">A typeahead example that gets values from a static <code>string[]</code></p>
+    </div>
+    <div class="card-body">
+      <input id="typeahead-basic" type="text" class="form-control" placeholder="Search for a state" [(ngModel)]="model"
+        [ngbTypeahead]="search" />
+    </div>
+  </div>

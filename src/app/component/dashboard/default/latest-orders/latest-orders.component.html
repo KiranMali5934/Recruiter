@@ -1,0 +1,71 @@
+<div class="card height-equal" (clickOutside)="clickOutside()">
+  <div class="card-header total-revenue card-no-border">
+    <h4>Latest Orders</h4>
+    <div class="d-flex align-items-center gap-2"><span class="update-data d-none d-md-block f-light">Data updates in
+        every 3 hours</span>
+      <div class="sales-chart-dropdown-select">
+        <div class="card-header-right-icon">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" id="dropdownMenuButton1" (click)="open()">Last Year </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+              <span class="dropdown-item">Last Month</span>
+              <span class="dropdown-item">Last Week </span>
+              <span class="dropdown-item">Today</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pt-0">
+    <div class="table-order table-responsive custom-scrollbar">
+      <table class=" latest-orders w-100">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Billing Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Invoice</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for( data of latesOdersData; track data){
+          <ng-container>
+            <tr>
+              <td>
+                <div class="product-name"><img class="order-table-images img-fluid" src="{{data.img}}" alt="product">
+                  <div class="product-sub"> <a class=" f-14 f-w-500"
+                      [routerLink]="['/ecommerce/products']">{{data.productName}}</a><span
+                      class="f-light f-14 f-w-500 d-block">ID : {{data.orderId}}</span></div>
+                </div>
+              </td>
+              <td>
+                <div class="product-sub"><a class="f-14 f-w-500"
+                    [routerLink]="['/ecommerce/products']">{{data.billingName}}</a><span
+                    class="f-light f-14 f-w-500 d-block">{{data.email}}</span></div>
+              </td>
+              <td>
+                <div class="product-sub"> <a class="f-14 f-w-500"
+                    [routerLink]="['/ecommerce/products']">{{data.payment}}</a><span
+                    class="f-light f-14 f-w-500 d-block">{{data.paymentType}}</span></div>
+              </td>
+              <td>
+                <div class="badge-light-{{data.class}} product-sub badge rounded-pill"><span>{{data.Status}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="product-sub">
+                  <svg class="invoice-icon">
+                    <use href="assets/svg/icon-sprite.svg#fream"></use>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="tab-content" id="v-pills-tabContent" [ngStyle]="{ 'display': editContact ? 'none' : ''}">
+    <div class="tab-pane contact-tab-0 tab-content-child fade show active" id="v-pills-user">
+        <div class="profile-mail">
+            <div class="media">
+                <img class="img-80 img-fluid m-r-20 rounded-circle update_img_0" [src]="lastData.profileImage" alt="">
+                <div class="media-body mt-0">
+                    <h5>
+                        <span class="first_name_0">{{lastData.fname}}</span>
+                        <span class="last_name_0 ms-1">{{lastData.lname}}</span>
+                    </h5>
+                    <p class="email_add_0"> {{lastData.email}}</p>
+                    @if(TaskData.title_id == 1){
+                    <ul>
+                        <li><a href="javascript:void(0)" (click)="editContact = true">Edit</a></li>
+                        <li><a href="javascript:void(0)" (click)="deleteContact()">Delete</a></li>
+                        <li><a href="javascript:void(0)" (click)="openHistory()">History</a></li>
+                        <li><a href="javascript:void(0)" (click)="PrintModal.openModal(lastData)">Print</a></li>
+                    </ul>
+                    }
+                    @else{
+                    <ul>
+                        <li><a href="javascript:void(0)" (click)="PrintModal.openModal(lastData)">Print</a></li>
+                    </ul>
+                    }
+                </div>
+            </div>
+            @if(TaskData.title_id == 1){
+            <div class="email-general">
+                <h6 class="mb-3">General</h6>
+                <ul>
+                    <li>Name <span class="font-primary first_name_0">{{ lastData.fname }}</span></li>
+                    <li>Gender <span class="font-primary">{{ lastData.gender }}</span></li>
+                    <li>Birthday<span class="font-primary"> <span class="birth_day_0">{{ lastData.dd }}</span>
+                            <span class="birth_month_0 ms-2">{{ lastData.mm }}</span>
+                            <span class="birth_year_0 ms-2">{{ lastData.yyyy }}</span></span></li>
+                    <li>Personality<span class="font-primary personality_0">{{lastData.personality}}</span></li>
+                    <li>City<span class="font-primary city_0">{{lastData.city}}</span></li>
+                    <li>Mobile No<span class="font-primary mobile_num_0">{{lastData.mobileno}}</span></li>
+                    <li>Email Address <span class="font-primary email_add_0">{{lastData.email}}</span></li>
+                    <li>Website<span class="font-primary url_add_0">{{lastData.website}}</span></li>
+                    <li>Interest<span class="font-primary interest_0">{{lastData.interest}}</span></li>
+                </ul>
+            </div>
+            }
+            @else{
+            <div class="email-general">
+                <h6>General</h6>
+                <p>Email Address: <span class="font-primary email_add_5">{{lastData.email}}</span></p>
+                <div class="gender">
+                    <h6>Personal</h6>
+                    <p>Gender: <span>{{lastData.gender}}</span></p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="contact-editform" [ngStyle]="{ 'display': !editContact ? 'none' : ''}">
+    <form>
+        <div class="row g-2">
+            <app-general [lastData]="lastData"></app-general>
+        </div>
+        <div class="row g-2 more-data">
+            <app-personal-contant [lastData]="lastData"></app-personal-contant>
+            <div class="mb-3 col-md-12">
+                <app-address-contant [lastData]="lastData"></app-address-contant>
+            </div>
+        </div>
+        <button class="btn btn-secondary update-contact" type="button">Save</button>
+        <button class="btn btn-primary ms-2" type="button" (click)="editContact = false">Cancel</button>
+    </form>
+</div>
+<div id="right-history" [class.show]="open">
+    <div class="modal-header p-20">
+        <h6 class="modal-title w-100">Contact History<span class="pull-right">
+                <a (click)="openHistory()" class="closehistory" href="javascript:void(0)">
+                    <i class="icofont icofont-close"></i>
+                </a>
+            </span>
+        </h6>
+    </div>
+    <div class="history-details">
+        <div class="text-center"><i class="icofont icofont-ui-edit"></i>
+            <p>Contact has not been modified yet.</p>
+        </div>
+        <div class="media"><i class="icofont icofont-star me-3"></i>
+            <div class="media-body mt-0">
+                <h6 class="mt-0">Contact Created</h6>
+                <p class="mb-0">Contact is created via mail</p>
+                <span class="f-12">Sep 10, 2022 4:00</span>
+            </div>
+        </div>
+    </div>
+</div>
+<app-print #printModal></app-print>

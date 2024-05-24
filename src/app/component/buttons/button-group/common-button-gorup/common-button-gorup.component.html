@@ -1,0 +1,24 @@
+<div class="row">
+    @for(Data of commonData; track Data){
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ Data.headtitle }}</h4>
+            </div>
+            <div class="card-body btn-group-showcase">
+                <div class="row">
+                    @for(items of Data.item; track items){
+                    <div class="col-xxl-4 col-md-6 col-sm-12">
+                        <div class="{{Data.class}}" role="group">
+                            <button class="btn {{items.class}}" type="button">Left</button>
+                            <button class="btn {{items.class}}" type="button">Middle</button>
+                            <button class="btn {{items.class}}" type="button">Right</button>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

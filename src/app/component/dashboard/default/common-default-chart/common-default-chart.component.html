@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-body">
+        <div class="total-revenue mb-2"> <span>{{data.title}} </span>
+            <a [routerLink]="['/dashboard/default']">View Report</a>
+        </div>
+        <h3 class="f-w-600">{{data. details}} </h3>
+        <div class="total-chart">
+            <div class="data-grow d-flex gap-2">
+                <div class="{{data.class}}">
+                    <app-feathericon [icon]="data.icon"></app-feathericon>
+                </div>
+                <span class="f-w-500">{{data.percentage}}</span> 
+            </div>
+            <div class="total-revenue-chart">
+                <div id="revenue">
+                    <div id="saleschart">
+                        <apx-chart [series]="data.series" [chart]="data.chart" [stroke]="data.stroke"
+                            [plotOptions]="data.plotOptions" [dataLabels]="data.dataLabels" [colors]="data.colors"
+                            [legend]="data.legend" [fill]="data.fill" [grid]="data.grid" [yaxis]="data.yaxis"
+                            [xaxis]="data.xaxis" [responsive]="data.responsive" [tooltip]="data.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

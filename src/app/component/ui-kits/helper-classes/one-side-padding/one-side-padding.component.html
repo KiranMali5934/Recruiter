@@ -1,0 +1,23 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4>Only one side padding</h4>
+        <p class="f-m-light mt-1">
+            Use the padding classes like: <code>.p-l-*/.p-r-*/.p-t-*/.p-b-*</code></p>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            @for( data of paddingCommon; track  data){
+            <div class="col-xxl-3 col-sm-6">
+                <div class="border-wrapper h-100 alert-light-light dark-helper">
+                    <h6 class="mb-3">{{ data.mainTitle }}</h6>
+                    <div class="common-p-box">
+                        @for(padding of data.item; track padding){
+                            <span>{{ padding.text }}</span>
+                          }
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</div>

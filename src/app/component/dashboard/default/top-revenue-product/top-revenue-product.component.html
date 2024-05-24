@@ -1,0 +1,32 @@
+<div class="card" (clickOutside)="clickOutside()">
+  <div class="card-header total-revenue card-no-border">
+    <h4>Top Revenue Product</h4>
+    <div class="sales-chart-dropdown-select">
+      <div class="card-header-right-icon">
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" id="dropdownMenuButton1" (click)="open()">Last Year </button>
+          <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+            <span class="dropdown-item">Last Month</span>
+            <span class="dropdown-item">Last Week </span>
+            <span class="dropdown-item">Today</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pt-0">
+    <div class="revenueproduct" id="revenueproduct">
+      <apx-chart [series]="RevenueChart.series" [chart]="RevenueChart.chart" [stroke]="RevenueChart.stroke"
+        [plotOptions]="RevenueChart.plotOptions" [dataLabels]="RevenueChart.dataLabels" [colors]="RevenueChart.colors"
+        [legend]="RevenueChart.legend" [responsive]="RevenueChart.responsive"></apx-chart>
+    </div>
+    <div class="sales-chart-dropdown">
+      <ul class="balance-data flex-wrap flex">
+        <li><span class="circle bg-primary"></span><span class="f-light ms-1">Men & Women Jeans</span></li>
+        <li><span class="circle bg-warning"></span><span class="f-light ms-1">Men & Women T-shirts</span></li>
+        <li><span class="circle bg-secondary"></span><span class="f-light ms-1">Men & Women Shoes</span></li>
+        <li><span class="circle bg-light"></span><span class="f-light ms-1">Kurtas & Kurti</span></li>
+      </ul>
+    </div>
+  </div>
+</div>

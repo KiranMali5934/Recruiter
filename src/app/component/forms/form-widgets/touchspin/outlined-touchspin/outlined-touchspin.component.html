@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Outlined touchspin</h4>
+      <p class="f-m-light mt-1">
+         Use the <code>.decrement-touchspin </code>and <code>.increment-touchspin </code>class.</p>
+    </div>
+    <div class="card-body common-flex">
+        @for(data of OutlinedData; track data){
+        <div class="touchspin-wrapper">
+            <button class="decrement-touchspin btn-touchspin spin-border-{{data.class}}" (click)="decrement(data.id)"
+                minlength="0"><i class="fa fa-minus">
+                </i>
+            </button>
+            <input class="input-touchspin spin-outline-{{data.class}}" type="number" value="{{data.value}}"
+                minlength="0">
+            <button class="increment-touchspin btn-touchspin spin-border-{{data.class}}" (click)="increment(data.id)"><i
+                    class="fa fa-plus">
+                </i>
+            </button>
+        </div>
+    }
+    </div>
+  </div>

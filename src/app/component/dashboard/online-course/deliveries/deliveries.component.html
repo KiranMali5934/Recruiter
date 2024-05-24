@@ -1,0 +1,47 @@
+<div class="card"> 
+    <div class="card-header card-no-border total-revenue pb-0">
+      <h4>Deliveries</h4>
+      <div class="icon-menu-header">
+        <svg>
+          <use href="assets/svg/icon-sprite.svg#more-horizontal"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="card-body pt-0">
+      <div class="table-responsive custom-scrollbar deliveries-percentage">
+        <table class="percentage-data w-100">
+          <thead> 
+            <tr> 
+              <th class="f-light f-12 f-w-500" scope="col">Particular</th>
+              <th class="f-light f-12 f-w-500" scope="col">Percentage</th>
+              <th class="f-light f-12 f-w-500 text-end" scope="col">Total Amount</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr>
+              <td class="f-w-400 f-10"> <a class="line-clamp" [routerLink]="['/ecommerce/cart']">On Time Delivery</a></td>
+              <td> 
+                <div class="progress-value d-flex gap-2 align-items-center">
+                  <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%  " aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div><span>80%</span>
+                </div>
+              </td>
+              <td class="f-w-500 f-10 text-end">$45,452.23</td>
+            </tr>
+            <tr>
+              <td class="f-w-400 f-10"> <a class="line-clamp" [routerLink]="['/ecommerce/cart']">Delayed Delivery</a></td>
+              <td>
+                <div class="progress-value d-flex gap-2 align-items-center">
+                  <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div><span>15% </span>
+                </div>
+              </td>
+              <td class="f-w-500 f-10 text-end">$15,256.23</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

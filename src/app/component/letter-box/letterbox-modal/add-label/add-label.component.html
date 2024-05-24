@@ -1,0 +1,28 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title fs-5">Add Label</h3>
+      <button class="btn-close" type="button" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="row g-sm-3 g-2 custom-input">
+          <label class="col-sm-2 col-form-label" for="Label_Modal">Label Name :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="Label_Modal" type="email">
+          </div>
+          <label class="col-sm-2 col-form-label" for="Email_Modal">Email :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="Email_Modal" type="email">
+          </div>
+          <label class="form-label col-sm-2" for="exampleColorInput">Label Color :</label>
+          <div class="col-sm-2 col-2">
+            <input class="form-control form-control-color" id="exampleColorInput" type="color" value="#006666" title="Choose your color">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-light" type="button"  (click)="activeModal.dismiss()">Cancel</button>
+      <button class="btn btn-primary" type="button">Add</button>
+    </div>
+  </div>

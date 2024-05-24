@@ -1,0 +1,57 @@
+<div class="tab-pane fade active show" id="pills-created" role="tabpanel" aria-labelledby="pills-created-tab">
+    <div class="card mb-0">
+        <div class="card-header d-flex">
+            @if(gettaskData.title !== 'Created By Me'){
+              <h6 class="mb-0 f-w-600">{{ gettaskData.title }}</h6>
+            }
+            @if(gettaskData.title == 'Created By Me'){
+            <h4 class="mb-0 f-w-600">{{ gettaskData.title }}</h4>
+            }
+            <a href="javascript:void(0)">
+                <app-feathericon [icon]="'printer'" class="me-2"></app-feathericon>
+                Print
+            </a>
+        </div>
+        <div class="card-body p-0">
+            <div class="taskadd">
+                <div class="table-responsive custom-scrollbar">
+                    <table class="table">
+                        <tbody>
+                            @if(gettaskData.data.length == 0){
+                            <tr>
+                                <div class="card-body">
+                                    <div class="details-bookmark text-center"><span>No tasks found.</span></div>
+                                </div>
+                            </tr>
+                            }
+                            @for(task of gettaskData.data; track task){
+                            <tr>
+                                <td>
+                                    <h6 class="task_title_0">{{ task.title }}</h6>
+                                    <p class="project_name_0">General</p>
+                                </td>
+                                <td>
+                                    <p class="task_desc_0">{{ task.text }}</p>
+                                </td>
+                                <td>
+                                    <a class="me-2" href="javascript:void(0)">
+                                        <app-feathericon [icon]="'link'"></app-feathericon>
+                                    </a>
+                                    <a href="javascript:void(0)">
+                                        <app-feathericon [icon]="'more-horizontal'"></app-feathericon>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)">
+                                        <app-feathericon [icon]="'trash-2'"></app-feathericon>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

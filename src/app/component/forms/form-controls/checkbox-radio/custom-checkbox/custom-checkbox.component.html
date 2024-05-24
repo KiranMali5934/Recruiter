@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Custom checkbox</h4>
+      <p class="f-m-light mt-1">
+         Use the <code>.form-check-input </code>and <code>.form-check-label </code>for checkbox. And filled checkbox used <code>.checkbox-solid-*</code> and bordered checkbox used <code>.checkbox-*</code>.</p>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-xl-4 col-sm-6">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">Bordered Checkbox</h6>
+                    @for( item of borders; track item){
+                    <div class="form-check checkbox checkbox-{{item.class}} mb-0">
+                        <input class="form-check-input" id="checkbox-{{item.class}}" type="checkbox"
+                            [(ngModel)]="item.value">
+                        <label class="form-check-label" for="checkbox-{{item.class}}">{{item.text}}</label>
+                    </div>
+                }
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-12 order-xl-0 order-sm-1">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">Icon Checkbox </h6>
+                    <div class="form-check checkbox checkbox-primary ps-0 main-icon-checkbox">
+                        <ul class="checkbox-wrapper">
+                            @for(item of icons; track item){
+                            <li>
+                                <input class="form-check-input checkbox-shadow" id="checkbox-icon" type="checkbox"
+                                    [(ngModel)]="item.value">
+                                <label class="form-check-label" for="checkbox-icon">
+                                    <i class="fa fa-{{item.icon}}"></i>
+                                    <span>{{item.text}}</span>
+                                </label>
+                            </li>
+                        }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">Filled Checkbox </h6>
+                        @for(item of filled; track item){
+                        <div class="form-check checkbox checkbox-{{item.class}}">
+                            <input class="form-check-input" id="{{item.id}}" type="checkbox" [(ngModel)]="item.value">
+                            <label class="form-check-label" for="{{item.id}}">{{item.text}}</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

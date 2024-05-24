@@ -1,0 +1,80 @@
+<div class="left-filter">
+    <div class="card-body filter-cards-view animate-chk">
+        <div class="product-filter">
+            <h6>Category</h6>
+            <div class="checkbox-animated mt-0">
+                @for( Data of CategoryCheckboxData; track Data){
+                    <label class="d-block" for="{{Data.id}}">
+                        <input class="checkbox_animated" id="{{Data.id}}" type="checkbox">
+                        {{Data.text}}
+                    </label>
+                 }
+            </div>
+        </div>
+        <div class="product-filter">
+            <h6>Brand</h6>
+            <div class="checkbox-animated mt-0">
+                @for( Data of BarndCheckboxData; track Data){
+                    <label class="d-block" for="{{Data.id}}">
+                        <input class="checkbox_animated" id="{{Data.id}}" type="checkbox">
+                        {{Data.text}}
+                    </label>
+                 }
+            </div>
+        </div>
+        <div class="product-filter slider-product">
+            <h6>Colors</h6>
+            <div class="color-selector">
+                <ul>
+                    <li class="white"></li>
+                    <li class="gray"></li>
+                    <li class="black"></li>
+                    <li class="orange"></li>
+                    <li class="green"></li>
+                    <li class="pink"></li>
+                    <li class="yellow"></li>
+                    <li class="blue"></li>
+                    <li class="red"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-filter pb-0">
+            <h6>Price</h6>
+            <ngx-slider [(value)]="value2" [(highValue)]="maxvalue" [options]="options"></ngx-slider>
+            <h6>New Products</h6> 
+        </div>
+        <div class="product-filter pb-0 new-products">
+            <div class="item">
+                <owl-carousel-o [options]="customOptions">
+                    @for( data of filter; track data){
+                    <ng-template carouselSlide>
+                        @for( item of data.item; track item){
+                        <div class="product-box row">
+                            <div class="product-img col-md-5"> 
+                                <img class="img-fluid img-100" src="{{item.img}}">
+                            </div>
+                            <div class="product-details col-md-7 text-start">
+                                <span>
+                                    <span>
+                                        <i class="fa fa-star font-warning me-1"></i>
+                                        <i class="fa fa-star font-warning me-1"></i>
+                                        <i class="fa fa-star font-warning me-1"></i>
+                                        <i class="fa fa-star font-warning me-1"></i>
+                                        <i class="fa fa-star font-warning"></i>
+                                    </span>
+                                </span>
+                                <p class="mb-0">{{item.name}}</p>
+                                <div class="product-price">{{item.price}}</div>
+                            </div>
+                        </div>
+                    }
+                    </ng-template>
+                }
+                </owl-carousel-o>
+            </div>
+        </div>
+        <div class="product-filter text-center">
+            <img class="img-fluid banner-product" src="assets/images/ecommerce/banner.jpg" alt="">
+        </div>
+    </div>
+</div>

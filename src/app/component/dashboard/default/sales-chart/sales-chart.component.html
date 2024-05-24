@@ -1,0 +1,45 @@
+<div class="card" (clickOutside)="clickOutside()">
+  <div class="card-header sales-chart card-no-border pb-0">
+    <h4>Sales Chart </h4>
+    <div class="sales-chart-dropdown">
+      <ul class="balance-data">
+        <li> <span class="circle bg-warning"></span><span class="f-light ms-1">Revenue</span></li>
+        <li><span class="circle bg-primary"> </span><span class="f-light ms-1">Orders</span></li>
+      </ul>
+      <div class="sales-chart-dropdown-select">
+        <div class="card-header-right-icon online-store">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle dropdown-toggle-store" id="dropdownMenuButtonToggle"
+              (click)="open()">Online Store</button>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButtonToggle" role="menu"
+              [class.show]="isopen">
+              <span class="dropdown-item">All </span>
+              <span class="dropdown-item">Employee</span>
+              <span class="dropdown-item">Client</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-header-right-icon">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" id="dropdownMenuButton1" (click)="open2()">Last Year </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen2">
+              <span class="dropdown-item">Last Month</span>
+              <span class="dropdown-item">Last Week </span>
+              <span class="dropdown-item">Today</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-2 pt-0">
+    <div class="sales-wrapper">
+      <div id="saleschart">
+        <apx-chart [series]="salesData.series" [chart]="salesData.chart" [stroke]="salesData.stroke"
+          [plotOptions]="salesData.plotOptions" [dataLabels]="salesData.dataLabels" [colors]="salesData.colors"
+          [legend]="salesData.legend" [fill]="salesData.fill" [grid]="salesData.grid" [yaxis]="salesData.yaxis"
+          [xaxis]="salesData.xaxis" [responsive]="salesData.responsive" [tooltip]="salesData.tooltip"></apx-chart>
+      </div>
+    </div>
+  </div>
+</div>

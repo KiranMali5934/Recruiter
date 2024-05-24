@@ -1,0 +1,76 @@
+<div class="container-fluid email-wrap bookmark-wrap todo-wrap">
+    <div class="row">
+        <div class="col-xxl-3 col-xl-4 box-col-12">
+            <app-todo-filter></app-todo-filter>
+        </div>
+        <div class="col-xxl-9 col-xl-8 box-col-12">
+            <div class="card">
+                <div class="card-header b-bottom">
+                    <div class="todo-list-header">
+                        <div class="new-task-wrapper input-group">
+                            <input class="form-control" id="new-task" placeholder="Enter new task here. . ."
+                                [(ngModel)]="text" autocomplete="off" >
+                             <span class="btn btn-primary add-new-task-btn" id="add-task"
+                                (click)="addTask({'text':text,'Date':myDate,'priority': 'Pending','badgeClass': 'badge-light-danger','completed': false})">
+                                Add Task
+                             </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="todo">
+                        @if(text){
+                         <div class="notification-popup"  [ngClass]="addAlert ? 'show' : 'hide'" style="z-index: 9;">
+                           <p><span class="task">{{ text }} </span><span class="notification-text">added to list</span></p>
+                         </div>
+                        }
+                        <div class="todo-list-wrapper custom-scrollbar">
+                            <div class="todo-list-container">
+                                <div class="todo-list-body">
+                                    <ul id="todo-list">
+                                        @for(task of taskData; track task ; let i = $index){
+                                        <li class="task" [ngClass]="{'completed':task.completed ? task.completed : completed}">
+                                            <div class="task-container">
+                                                <h4 class="task-label" (click)="taskCompleted(task)">{{ task.text }}
+                                                </h4>
+                                                <div class="notification-popup primary" [ngClass]="taskCompletedAlert ? 'show' : 'hide'" style="z-index: 9;">
+                                                    <p>
+                                                       <span class="task">{{ completedText }}</span>
+                                                       <span class="notification-text"> marked as complete.</span>
+                                                    </p>
+                                                </div>
+                                                <div class="notification-popup" [ngClass]="taskInCompletedAlert ? 'show' : 'hide'"style="z-index: 9;">
+                                                    <p>
+                                                       <span class="task">{{ completedText }}</span>
+                                                       <span class="notification-text">marked as Incomplete.</span>
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                   <span class="badge {{ task.badgeClass }} font-{{ task.textColor }}">{{task.priority}}</span>
+                                                      <h5 class="assign-name m-0">{{task.Date}}</h5>
+                                                         <span class="task-action-btn">
+                                                          <span class="action-box large delete-btn" title="Delete Task"
+                                                            (click)="taskDeleted(task,i)">
+                                                           <i class="icon"><i class="icon-trash"></i></i>
+                                                        </span>
+                                                        <div class="notification-popup primary"[ngClass]="taskDeleteAlert ? 'show' : 'hide'" style="z-index: 9;">
+                                                            <p>
+                                                             <span class="task">{{ deletedTask }}</span>
+                                                             <span class="notification-text"> Delete Successfully</span>
+                                                             </p>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                       }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

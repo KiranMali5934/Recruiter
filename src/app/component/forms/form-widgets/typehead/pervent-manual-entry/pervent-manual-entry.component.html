@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header pb-0">
+      <h3> Prevent manual entry</h3>
+      <p>Prevents manual text entry and updates the model only when an item from suggestions is selected</p>
+    </div>
+    <div class="card-body">
+      <div class="mb-3 row">
+        <div class="col">
+          <input id="typeahead-prevent-manual-entry" type="text" class="form-control" [(ngModel)]="model"
+            placeholder="Search for a stete" [ngbTypeahead]="search" [inputFormatter]="formatter"
+            [resultFormatter]="formatter" [editable]="false" />
+        </div>
+      </div>
+    </div>
+  </div>

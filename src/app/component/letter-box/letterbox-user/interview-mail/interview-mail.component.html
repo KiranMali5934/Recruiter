@@ -1,0 +1,41 @@
+<div id="print-section">
+    <div class="mail-header-wrapper header-wrapper1">
+      <div class="mail-header1">
+        <div class="light-square">
+          <svg class="btn-email" (click)="openFilter()">
+            <use href="assets/svg/icon-sprite.svg#back-arrow"></use>
+          </svg>
+        </div><span>Interview Mail</span>
+      </div>
+      <div class="mail-body1">
+        <div class="light-square"  placement="top" ngbTooltip="Achieve">
+            <svg> 
+                <use href="assets/svg/icon-sprite.svg#sms"></use>
+            </svg>
+        </div>
+        <div class="light-square"  placement="top" ngbTooltip="bookmark">
+            <svg class="bookmark-box">
+                <use href="assets/svg/icon-sprite.svg#stroke-bookmark"></use>
+              </svg>
+        </div>
+        <div class="light-square"  placement="top" ngbTooltip="Spam">
+            <svg> 
+                <use href="assets/svg/icon-sprite.svg#spam"></use>
+              </svg>
+        </div>
+        <div class="light-square"  placement="top" ngbTooltip="Trash">
+          <svg class="stroke-danger">
+            <use href="assets/svg/icon-sprite.svg#mail-trash"></use>
+          </svg>
+        </div>
+        <div class="light-square" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Settings">
+          <svg>
+            <use href="assets/svg/icon-sprite.svg#setting"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="mail-body-wrapper">
+      <app-user-details></app-user-details>
+    </div>
+  </div>

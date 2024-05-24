@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+      <div class="header-top">
+        <h4>Order Status</h4>
+        <div class="card-header-right-icon">
+          <div class="dropdown"> 
+            <button class="btn dropdown-toggle" id="dropdownMenuButtonStaus" type="button" data-bs-toggle="dropdown">Today</button>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButtonStaus"><a class="dropdown-item" href="javascript:void(0)">Today</a><a class="dropdown-item" href="javascript:void(0)">Tomorrow</a><a class="dropdown-item" href="javascript:void(0)">Yesterday</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+        <div class="chart-container progress-chart">
+          <div id="progress1">
+            <apx-chart [series]="orderstatus1.series" [chart]="orderstatus1.chart" [fill]="orderstatus1.fill"
+              [plotOptions]="orderstatus1.plotOptions" [title]="orderstatus1.title" [subtitle]="orderstatus1.subtitle"
+              [stroke]="orderstatus1.stroke" [xaxis]="orderstatus1.xaxis" [yaxis]="orderstatus1.yaxis"
+              [responsive]="orderstatus1.responsive" [tooltip]="orderstatus1.tooltip" [colors]="orderstatus1.colors">
+            </apx-chart>
+          </div>
+          <div id="progress2">
+            <apx-chart [series]="orderstatus5.series" [chart]="orderstatus2.chart" [fill]="orderstatus2.fill"
+              [plotOptions]="orderstatus2.plotOptions" [title]="orderstatus2.title" [subtitle]="orderstatus2.subtitle"
+              [stroke]="orderstatus2.stroke" [xaxis]="orderstatus2.xaxis" [yaxis]="orderstatus2.yaxis"
+              [responsive]="orderstatus2.responsive" [tooltip]="orderstatus2.tooltip" [colors]="orderstatus2.colors">
+            </apx-chart>
+          </div>
+          <div id="progress3">
+            <apx-chart [series]="orderstatus3.series" [chart]="orderstatus3.chart" [fill]="orderstatus3.fill"
+              [plotOptions]="orderstatus3.plotOptions" [title]="orderstatus3.title" [subtitle]="orderstatus3.subtitle"
+              [stroke]="orderstatus3.stroke" [xaxis]="orderstatus3.xaxis" [yaxis]="orderstatus3.yaxis"
+              [responsive]="orderstatus3.responsive" [tooltip]="orderstatus3.tooltip" [colors]="orderstatus3.colors">
+            </apx-chart>
+          </div>
+          <div id="progress4">
+            <apx-chart [series]=" orderstatus4.series" [chart]=" orderstatus4.chart" [fill]=" orderstatus4.fill"
+              [plotOptions]="orderstatus4.plotOptions" [title]=" orderstatus4.title" [subtitle]=" orderstatus4.subtitle"
+              [stroke]="orderstatus4.stroke" [xaxis]=" orderstatus4.xaxis" [yaxis]=" orderstatus4.yaxis"
+              [responsive]=" orderstatus4.responsive" [tooltip]=" orderstatus4.tooltip" [colors]=" orderstatus4.colors">
+            </apx-chart>
+          </div>
+          <div id="progress5">
+            <apx-chart [series]="orderstatus5.series" [chart]="orderstatus5.chart" [fill]="orderstatus5.fill"
+              [plotOptions]="orderstatus5.plotOptions" [title]="orderstatus5.title" [subtitle]="orderstatus5.subtitle"
+              [stroke]="orderstatus5.stroke" [xaxis]="orderstatus5.xaxis" [yaxis]="orderstatus5.yaxis"
+              [responsive]="orderstatus5.responsive" [tooltip]="orderstatus5.tooltip" [colors]="orderstatus5.colors">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,19 @@
+<div class="card height-equal">
+    <div class="card-header">
+      <h4>Borders with icons</h4>
+      <p class="f-m-light mt-1">
+         Use the <code>.switch-outline </code>and <code>.icon-state</code> class through created outline and icons. </p>
+    </div>
+    <div class="card-body common-flex flex-column switch-wrapper">
+        @for(item of borderData; track item){
+        <div class="media">
+            <div class="media-body text-end icon-state switch-outline">
+                <label class="switch mb-0">
+                    <input type="checkbox" [checked]="item.value"><span class="switch-state bg-{{item.class}}"></span>
+                </label>
+            </div>
+            <label class="col-form-label m-l-10">{{item.text}}</label>
+        </div>
+    }
+    </div>
+  </div>

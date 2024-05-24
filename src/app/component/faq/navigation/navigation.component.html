@@ -1,0 +1,30 @@
+<div class="card card-mb-faq">
+    <div class="card-header faq-header  pb-0">
+        <h5>Navigation</h5>
+        <app-feathericon [icon]="'settings'"></app-feathericon>
+    </div>
+    <div class="card-body faq-body">
+        <div class="navigation-btn">
+            <a class="btn btn-primary" href="javascript:void(0)">
+                <i data-feather="message-circle"></i>Ask Question
+            </a>
+        </div>
+        <div class="navigation-option">
+            @for( data of navigationData1; track data){
+            <ul>
+                <li>
+                    <a href="javascript:void(0)">
+                        <app-feathericon [icon]="data.icon"></app-feathericon>{{ data.title }}
+                        @if(data.count){
+                          <span class="badge badge-primary rounded-pill pull-right">{{ data.count }}</span>
+                        }
+                    </a>
+                </li>
+            </ul>
+            @if(data.line == true){
+               <hr>
+              }
+            }
+        </div>
+    </div>
+</div>

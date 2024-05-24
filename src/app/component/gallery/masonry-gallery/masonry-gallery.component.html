@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 box-col-12">
+            <div class="card">
+                <div class="card-body photoswipe-pb-responsive">
+                    <div  gallerize>
+                        <ngx-masonry class="my-gallery g-4 row grid gallery" [options]="masonryOptions" [ordered]="true">
+                            @for( image of masonryImages;  track image ){
+                            <div class="col-md-3 col-sm-6 grid-item p-2" style="width: 355px;" ngxMasonryItem>
+                                <img [src]="image[1]" width="100%" class="img-thumbnail">
+                            </div>
+                          }
+                        </ngx-masonry>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

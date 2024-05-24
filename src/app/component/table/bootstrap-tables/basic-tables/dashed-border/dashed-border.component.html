@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Dashed Border </h4><span>Dashed border use class <code>.table-dashed</code> , for Dotted border use
+      class<code>.table-dotted</code>, for Double border use class<code>.table-Double</code></span>
+  </div>
+  <div class="card-block row">
+    <div class="col-sm-12 col-lg-12 col-xl-12">
+      <div class="table-responsive">
+        <table class="table table-dashed">
+          <thead>
+            <tr>
+              <th scope="col">Id </th>
+              <th scope="col">Classname</th>
+              <th scope="col">Type</th>
+              <th scope="col">Hours</th>
+              <th scope="col">Trainer</th>
+              <th scope="col">Spots</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for( table of dashborderData; track table){
+            <tr>
+              <th scope="row">{{table.id}}</th>
+              <td>{{table.classname}}</td>
+              <td>{{table.type}}</td>
+              <td>{{table.hours}} </td>
+              <td>{{table.trainer}} </td>
+              <td>{{table.spots}}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

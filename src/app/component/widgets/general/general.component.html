@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row size-column">
+        <div class="col-xxl-9 box-col-12">
+            <div class="row">
+                <app-top-ecommerce-card></app-top-ecommerce-card>
+                <div class="col-xl-4 col-sm-6">
+                    <app-common-product-costing></app-common-product-costing>
+                </div>
+                <div class="col-xl-4 col-sm-6">
+                    <app-user-visits-day [uservisist]="false"></app-user-visits-day>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-6">
+                            <app-boost-sale-card></app-boost-sale-card>
+                        </div>
+                        <div class="col-md-12 col-sm-6">
+                            <app-deliveries></app-deliveries>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <app-calendar></app-calendar>
+                </div>
+                <div class="col-xl-6">
+                    <app-sales-general-chart></app-sales-general-chart>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 d-xxl-block d-none box-col-none">
+            <div class="col-xl-12 special-Offer-banner">
+                <app-special-offer></app-special-offer>
+            </div>
+            <div class="col-xl-12">
+                <app-ecommerce-details [banner]="false"></app-ecommerce-details>
+            </div>
+            <div class="col-xl-12">
+                <app-common-default-chart [data]="totalrevenuchart"></app-common-default-chart>
+            </div>
+            <div class="col-xl-12">
+                <app-common-default-chart [data]="totalorderchart"></app-common-default-chart>
+            </div>
+        </div>
+    </div>
+</div>

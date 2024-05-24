@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Pepole You May Know</h4>
+            </div>
+            <div class="card-body avatar-showcase">
+                <div class="pepole-knows">
+                    <ul>
+                        @for( data of addFriendsData; track data){
+                         <li>
+                            <app-common-add-friends [data]="data"></app-common-add-friends>
+                         </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        @for( data of hobbiesAndInterestData; track data){
+        <div class="card">
+            <div class="card-header social-header">
+                <h4>{{ data.heading }}
+                    <span class="pull-right">
+                        <app-feathericon [icon]="'more-vertical'"></app-feathericon>
+                    </span>
+                </h4>
+            </div>
+            <app-hobbies-eduction [data]="data"></app-hobbies-eduction>
+        </div>
+      }
+    </div>
+    <div class="col-sm-12">
+        @for(data of eductionData; track data){
+        <div class="card">
+            <div class="card-header social-header">
+                <h4>{{ data.heading }}<span class="pull-right">
+                        <app-feathericon [icon]="'more-vertical'"></app-feathericon>
+                    </span>
+                </h4>
+            </div>
+            <app-hobbies-eduction [data]="data"></app-hobbies-eduction>
+        </div>
+    }
+    </div>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Viewed Your Profile</h4>
+            </div>
+            <div class="card-body avatar-showcase">
+                <div class="pepole-knows">
+                    <ul>
+                        @for(data of addFriendsData; track data){
+                        <li>
+                            <app-common-add-friends [data]="data"></app-common-add-friends>
+                        </li>
+                    }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <app-activity-log></app-activity-log>
+    </div>
+</div>

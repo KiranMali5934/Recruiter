@@ -1,0 +1,63 @@
+<div class="list-product-header">
+    <div>
+        <div class="light-box" (click)="toggle()">
+            <a data-bs-toggle="collapse" href="javascript:void(0)" role="button">
+                <app-feathericon [icon]="'filter'" class="filter-icon show"
+                    [ngClass]="togglecollpese == false ? 'show' : 'hide'"></app-feathericon>
+                <i class="icon-close filter-close" [ngClass]="togglecollpese == true ? 'show' : 'hide'"></i>
+            </a>
+        </div>
+        <a class="btn btn-primary" [routerLink]="['/ecommerce/add-products']">
+            <i class="fa fa-plus"></i> Add Product
+        </a>
+    </div>
+    <div class="collapse" id="collapseProduct" [class.show]="togglecollpese">
+        <div class="card card-body list-product-body">
+            <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 g-3">
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected="">Choose Product</option>
+                        <option value="1">Apple iphone 13 Pro</option>
+                        <option value="2">Wood Chair</option>
+                        <option value="3">M185 Compact Wireless Mouse</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected="">Choose Category</option>
+                        <option value="1">Furniture</option>
+                        <option value="2">Smart Gadgets</option>
+                        <option value="3">Electrics</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected="">Choose Sub Category</option>
+                        <option value="1">Smart Phones</option>
+                        <option value="2">Smart Watches</option>
+                        <option value="3">Wireless headphone</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected="">Status</option>
+                        <option value="1">Sold Out </option>
+                        <option value="2">In Stock</option>
+                        <option value="3">Pre Order</option>
+                        <option value="4">Limited Stock </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected="">Price</option>
+                        <option value="1">56000.00</option>
+                        <option value="2">19000.00</option>
+                        <option value="3">10000.00</option>
+                        <option value="3">15000.00</option>
+                        <option value="3">99000.00</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

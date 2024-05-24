@@ -1,0 +1,92 @@
+
+<div class="card">
+    <div class="table-responsive custom-scrollbar">
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+          <div class="filters ">
+            <select class="form-select form-select-solid  form-control form-control-solid w-250px ps-14"
+                data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true"
+                data-kt-user-table-filter="role" data-hide-search="true" (change)="GetInterviewDetailsList($event)">
+                <option value="">Filter</option>
+                <option value="Pending">Pending</option>
+                <option value="New-Request">New Request</option>
+                <option value="Confirm">Confirmed</option>
+              </select>
+          </div>  
+              </div>
+            <form>
+                <table class="table table-striped data-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col"   sortable="name"> User <br/>  <input type="text"style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px" [(ngModel)]="usernameSearch" name="usernameSearch" (input)="onUserSearchChange()" placeholder="Search users.."> </th>
+                          <th scope="col" sortable="name"> Job <br/>  <input type="text" style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px" [(ngModel)]="jobnameSearch" name="jobnameSearch" (input)="onJobSearchChange()" placeholder="Search jobs.."> </th>
+                          <th scope="col" sortable="salary"> Project <br/>  <input type="text" style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px" [(ngModel)]="projectnameSearch" name="projectnameSearch" (input)="onProjectSearchChange()" placeholder="Search Projects.."> </th>
+                          <th scope="col"  class="tRow"  sortable="office" >Interview Date </th>
+                          <th scope="col"  class="tRow" sortable="extn" >Interview Time</th>
+                          <th scope="col"  class="tRow" sortable="extn" >Interview Round</th>
+                          <th scope="col"  class="tRow" sortable="extn" >Interviewer Name</th>
+                          <th scope="col"  class="tRow" sortable="extn" >Interviewer Contact  </th>
+                          <th scope="col"  class="tRow" sortable="extn" >Interviewer Email</th>
+                          <th scope="col"  class="tRow" sortable="extn" >Location</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <ng-container *ngIf="pagedData?.length; else noData">
+                            <tr *ngFor="let item of pagedData; let i = index">
+                              <td>{{ item.UserName }}</td>
+                              <td> <div class="d-flex justify-content-start flex-column cursor-pointer">
+                                <a  (click)="PassValue(item.JobsId,item.ProjectId)" class="text-dark fw-bolder text-hover-primary mb-1 fs-6" style="cursor: pointer;">{{ item.JobTitle}} </a>
+                              </div>
+                            </td>
+                            <td> <div class="d-flex justify-content-start flex-column cursor-pointer">
+                              <a   (click)="PassValueProject(item.ProjectId)"  class="text-dark fw-bolder text-hover-primary mb-1 fs-6 " style="cursor: pointer;">{{ item.ProjectName}} </a>
+                            </div>
+                          </td>
+                              <td>{{ item.Interview_Date | date: "dd MMM, yyyy" }}</td>
+                              <td>{{ item.Interview_Time | date:'h:mm a' }}</td>
+                              <td>{{ item.RoundName}}</td>
+                              <td>{{ item.Interviewer_Name}}</td>
+                              <td>{{ item.Interviewer_Contact_Number}}</td>
+                              <td>{{ item.Interviewer_Email}}</td>
+                              <td>{{ item.LocationName}}</td>
+                            </tr>
+                        </ng-container>
+                        <ng-template #noData>
+                            <tr>
+                                <td colspan="12" class="text-center">Oops! There are no results found.</td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </table>
+              
+                  <div class="d-flex justify-content-between p-2">
+                  <div>
+                    <select class="form-select" (change)="changePageSize($event.target)">
+                        <option value="5">5 items per page</option>
+                        <option value="10">10 items per page</option>
+                        <option value="20">20 items per page</option>
+                      </select>
+                  </div>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-primary pagin-border-primary">
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)" aria-label="Previous" (click)="pageChanged(currentPage - 1)"  [ngClass]="{'disabled-link': currentPage === 1}">
+                          <span aria-hidden="true">«</span><span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item" *ngFor="let page of getPageNumbers()">
+                        <a class="page-link" href="javascript:void(0)" (click)="pageChanged(page)" [class.active]="currentPage === page">{{ page }}</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)" aria-label="Next" (click)="pageChanged(currentPage + 1)" [ngClass]="{'disabled-link': currentPage === getTotalPages()}">
+                          <span aria-hidden="true">»</span><span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </form>
+        </div>
+    </div>
+  </div>
+  

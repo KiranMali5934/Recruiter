@@ -1,0 +1,175 @@
+<!-- NEHA CODE 29-01-24 START ---- -->
+<div style="padding:30px" id="kt_content">
+    <div class="" id="kt_content_container">
+        <div class="row g-7">
+            <div class="col-lg-6 col-xl-3">
+            </div>
+            <!--end::Close-->
+
+            <div class="col-xl-12">
+                <div class="card card-flush h-lg-100" id="kt_contacts_main">
+                    <div class="card-header" id="kt_chat_contacts_header">
+                        <div class="card-body">
+                            <div class="stepper stepper-links d-flex flex-column" id="kt_modal_create_project_stepper">
+                                <div class="container">
+                                    <div class="stepper-nav justify-content-center py-2">
+                                        <div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
+
+
+                                            <!-- <h2 *ngIf="this.responsibilitymodel.UserId == 0">Add User</h2>
+                      <h2 *ngIf="this.responsibilitymodel.UserId !== 0">Edit User</h2> -->
+                                        </div>
+
+                                    </div>
+                                    <!--end::Nav-->
+                                    <!--begin::Form-->
+                                    <form class="mx-auto w-100 mw-1100px pb-10" method="post" #subUSerForm="ngForm"
+                                        (ngSubmit)="subUSerForm.form.valid && submit(subUSerForm.form)">
+                                        <div data-kt-stepper-element="content"
+                                            [ngClass]="{ current: ProjectTabs === 1 }">
+                                            <div class="w-100">
+                                                <div class="row">
+                                                    <div class="fv-row mb-8 col-6">
+                                                        <label class="required fs-6 mb-2 mt-2">First Name</label>
+                                                        <input type="text" [(ngModel)]="recruiterModel.FirstName"
+                                                            placeholder="First Name"
+                                                            class="form-control form-control-solid" name="First Name"
+                                                            #firstname="ngModel" required />
+                                                        <div
+                                                            *ngIf="(firstname.touched || subUSerForm.submitted) && firstname.errors?.['required']">
+                                                            <div class="text-danger">First Name is required</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="fv-row mb-8 col-6">
+                                                        <label class="required fs-6  mt-2 mb-2">Last Name</label>
+                                                        <input type="text" class="form-control form-control-solid"
+                                                            id="LastName" name="LastName"
+                                                            [(ngModel)]="recruiterModel.LastName"
+                                                            placeholder="Last Name" #lastname="ngModel" required />
+                                                        <div
+                                                            *ngIf="(lastname.touched || subUSerForm.submitted) && lastname.errors?.['required']">
+                                                            <div class="text-danger">Last Name is required</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="fv-row mb-8 col-6">
+                                                        <label class="required fs-6  mt-2 mb-2">Phone Number</label>
+                                                        <div class="position-relative d-flex align-items-center">
+                                                            <input type="tel" pattern="[0-9]*" maxlength="10" required
+                                                                class="form-control form-control-solid" id="PhoneNumber"
+                                                                name="PhoneNumber"
+                                                                [(ngModel)]="recruiterModel.PhoneNumber"
+                                                                placeholder="Phone Number" required
+                                                                #contact="ngModel" />
+                                                        </div>
+                                                        <div
+                                                            *ngIf="(contact.touched || subUSerForm.submitted) && contact.errors?.['required']">
+                                                            <div class="text-danger">Phone Number is required</div>
+                                                            <div class="text-danger"
+                                                                *ngIf="(subUSerForm.submitted) && contact.errors?.['pattern']">
+                                                                Please enter a 10-digit phone number
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="fv-row mb-8 col-6">
+                                                        <label class="required fs-6  mt-2 mb-2">Email </label>
+                                                        <div class="position-relative d-flex align-items-center">
+                                                            <input type="email" class="form-control form-control-solid"
+                                                                id="Email" name="Email" #Email="ngModel"
+                                                                [(ngModel)]="recruiterModel.Email"
+                                                                placeholder="Email " required #email="ngModel" />
+                                                        </div>
+                                                        <div>
+                                                            <div *ngIf="(email.touched || subUSerForm.submitted) && email.errors?.['required']"
+                                                                class="text-danger">Email is required</div>
+                                                            <div *ngIf="(subUSerForm.submitted) && email.errors?.['pattern']"
+                                                                class="text-danger">
+                                                                Email format is invalid
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- ... other form fields ... -->
+
+                                                    <div class="fv-row mb-8 col-6">
+                                                        <label class="required fs-6  mt-2">Password</label>
+                                                        <div class="position-relative d-flex align-items-center">
+
+
+                                                            <input class="form-control" id="Password"
+                                                                placeholder=" Password"
+                                                                [(ngModel)]="recruiterModel.Password"
+                                                                name="Password" required #password="ngModel"
+                                                                [type]="show ? 'text' : 'password'">
+                                                            @if(!show){
+                                                            <div class="position-absolute translate-middle top-50 end-0 me-n2"
+                                                                (click)="togglePasswordVisibility()"><span
+                                                                    style="cursor: pointer;"> show</span>
+                                                            </div>
+                                                            }@else{
+                                                            <div class="position-absolute translate-middle top-50 end-0 me-n2"
+                                                                (click)="togglePasswordVisibility()"><span>hide</span>
+                                                            </div>
+                                                            }
+
+
+                                                        </div>
+
+                                                        <div class="text-error"
+                                                            *ngIf="(password.touched || subUSerForm.submitted) && password.errors?.['required']">
+                                                            Password is Required
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="fv-row mb-8 col-6">
+                                                        <label class="required fs-6  mt-2"> Confirm Password</label>
+                                                        <div class="position-relative d-flex align-items-center">
+                                                            <input class="form-control"
+                                                                type="{{ showConfirmPassword ? 'text' : 'password' }}"
+                                                                placeholder="Confirm Password" name="confirmPassword"
+                                                                id="confirmPassword" autocomplete="off"
+                                                                [(ngModel)]="recruiterModel.ConfirmPassword"
+                                                                required #confirmPasswordInput="ngModel" />
+                                                            @if(!showConfirmPassword){
+                                                            <div class="position-absolute translate-middle top-50 end-0 me-n2"
+                                                                (click)="toggleConfirmPasswordVisibility()"><span
+                                                                    class="show"> show</span></div>
+                                                            }@else{
+                                                            <div class="position-absolute translate-middle top-50 end-0 me-n2"
+                                                                (click)="toggleConfirmPasswordVisibility()"><span
+                                                                    class="Hide">hide</span></div>
+                                                            }
+                                                        </div>
+                                                        <!-- Error message for password mismatch -->
+                                                        <div *ngIf=" subUSerForm.controls['Password']?.value !== subUSerForm.controls['confirmPassword']?.value && subUSerForm.controls['confirmPassword']?.touched && !confirmPasswordInput.errors?.['required']"
+                                                            class="text-error">
+                                                            Confirm Password and Password do not match.
+                                                        </div>
+                                                        <div class="text-error"
+                                                            *ngIf="(confirmPasswordInput.touched || subUSerForm.submitted) && confirmPasswordInput.errors?.['required']">
+                                                            Confirm Password is Required
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <button type="button" class="btn btn-md btn-light me-3 mt-5" data-kt-element="settings-previous"
+                                    routerLink="/recruiter/all-talent-list" (click)="submit(subUSerForm.form)">
+                                    Cancel
+                                  </button>
+                                  <button *ngIf="this.recruiterModel.UserId == 0" [disabled]="subUSerForm.form.invalid"
+                                    type="button" class="btn btn-md btn-primary nextbtn me-3 mt-5" data-kt-element="settings-next"
+                                    (click)="submit(subUSerForm.form)" [disabled]="subUSerForm.form.invalid">
+                                    Save
+                                  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

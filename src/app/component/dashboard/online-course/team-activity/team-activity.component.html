@@ -1,0 +1,36 @@
+<div class="card height-equal">
+  <div class="card-header card-no-border total-revenue pb-0">
+    <h4>Team Activity </h4>
+    <a [routerLink]="['/ecommerce/products']">View All </a>
+  </div>
+  <div class="card-body pt-0">
+    <div class="activity-table table-responsive custom-scrollbar">
+      <table class="order-table overflow-hidden project-table w-100 activity-log">
+        <tbody>
+          @for(data of TeamActivityData; track data){
+          <tr>
+            <td>
+              <div class="team-activity">
+                <div class="activity-data d-flex align-items-center gap-3">
+                  <div class="common-space gap-2 ">
+                    <div class="user-activity me-3">
+                      <img class="rounded-circle p-1 img-fluid me-3 img-50" src="{{ data.img }}" alt="user">
+                      <a class="f-10 f-w-500 username" [routerLink]="['/user/profile-edit']">{{ data.name }}</a>
+                    </div>
+                    <div class="activity-time">
+                      <span class="f-light f-w-500 f-10">{{ data.time }}</span>
+                    </div>
+                  </div>
+                  <div class="subtitle">
+                    <p class="f-w-400 f-10">{{ data.subtitle }}</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="card height-equal">
+    <div class="card-header pb-0 total-revenue card-no-border">
+        <h4>Sale History </h4><a [routerLink]="['/dashboard/partner']">View All</a>
+    </div>
+    <div class="card-body">
+        <ul>
+        @for( data of saleHistoryData; track data){
+            <ng-container>
+                <li class="sale-history-card">
+                    <div class="history-price">
+                        <a class="f-w-500 f-14  mb-0" [routerLink]="['/ecommerce/order-history']">{{data.title}}</a>
+                        <span class="mb-0 txt-primary f-w-600 f-16">{{data.amount}}</span>
+                    </div>
+                    <div class="state-time">
+                        <span class="f-w-500 f-14 f-light mb-0">{{data. country}}</span> 
+                        <span class="f-w-400 f-14 f-light">{{data.time}}</span>
+                    </div>
+                </li>
+            </ng-container>
+            }
+        </ul>
+    </div>
+</div>

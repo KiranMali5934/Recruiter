@@ -1,0 +1,37 @@
+<button class="btn btn-outline-secondary-2x" type="button"
+    (click)="FullscreenbelowModal(FullscreenbelowContent)">Fullscreen
+    modal</button>
+<ng-template #FullscreenbelowContent let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="fullScreenModalLabel">Full screen modal</h1>
+            <button class="btn-close py-0" type="button" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body dark-modal">
+            <div class="large-modal-header">
+                <app-feathericon [icon]="'chevrons-right'"></app-feathericon>
+                <h6>Web design </h6>
+            </div>
+            <p class="modal-padding-space">We build specialised websites for companies, list them on digital
+                directories, and set up a sales funnel to boost ROI.
+            </p>
+            @for(data of FullscreenData; track data){
+              <h6>{{data.title}}</h6>
+            @for(scrollingItem of data.item; track scrollingItem){
+             <div class="d-flex {{scrollingItem.class}}">
+                <div class="flex-shrink-0">
+                    <app-feathericon [icon]="'arrow-right-circle'" class="svg-modal"></app-feathericon>
+                </div>
+                <div class="flex-grow-1 ms-2">
+                    <p>{{scrollingItem.des}}</p>
+                </div>
+            </div>
+            }
+         }
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" (click)="modal.dismiss('Cross click')">Close</button>
+        <button class="btn btn-primary" type="button">Save </button>
+    </div>
+</ng-template>

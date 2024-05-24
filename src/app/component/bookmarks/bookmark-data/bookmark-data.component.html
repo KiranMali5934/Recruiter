@@ -1,0 +1,97 @@
+<div class="card email-body radius-left">
+    <div class="ps-0">
+        <div class="tab-content">
+            <div class="tab-pane fade active show" id="pills-created">
+                <div class="card mb-0">
+                    <div class="card-header d-flex">
+                        @if(getBookmarkData.title !== 'Created By Me'){
+                        <h6 class="mb-0">{{ getBookmarkData.title }} </h6>
+                        }
+                        @else{
+                        <h4 class="mb-0">{{ getBookmarkData.title }}</h4>
+                        }
+                        <ul>
+                            <li>
+                                <a class="grid-bookmark-view" href="javascript:void(0)" (click)="changegrid()">
+                                    <app-feathericon [icon]="'grid'"></app-feathericon>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-layout-view" href="javascript:void(0)" (click)="changelist()">
+                                    <app-feathericon [icon]="'list'"></app-feathericon>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="details-bookmark text-center" [class.list-bookmark]="listBookmark">
+                            <div class="row" id="bookmarkData">
+                            @for(data of getBookmarkData.data; track data){
+                                <div class="col-xxl-3 col-md-4 col-ed-4">
+                                    <div class="card card-with-border bookmark-card o-hidden">
+                                        <div class="details-website">
+                                            <img class="img-fluid" src="{{ data.image }}" alt="">
+                                            <div class="favourite-icon favourite_0"
+                                                [ngClass]="data.favourite ? 'favourite' : ''">
+                                                <a (click)="favourite(data.id)">
+                                                    <i class="fa fa-star"></i>
+                                                </a>
+                                            </div>
+                                            <div class="desciption-data">
+                                                <div class="title-bookmark">
+                                                    <h6 class="title_0 f-w-500">{{ data.title }}</h6>
+                                                    <p class="weburl_0">{{ data.url }}</p>
+                                                    <div class="hover-block">
+                                                        <ul>
+                                                            <li>
+                                                                <a (click)="modal(data.id)">
+                                                                    <app-feathericon [icon]="'edit-2'"></app-feathericon>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)">
+                                                                    <app-feathericon [icon]="'link'"></app-feathericon>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)">
+                                                                    <app-feathericon [icon]="'share-2'"></app-feathericon>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)">
+                                                                    <app-feathericon [icon]="'trash-2'"></app-feathericon>
+                                                                </a>
+                                                            </li>
+                                                            <li class="pull-right text-end">
+                                                                <a href="javascript:void(0)">
+                                                                    <app-feathericon [icon]="'tag'"></app-feathericon>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="content-general">
+                                                        <p class="desc_4">{{ data.desc }}</p>
+                                                        <span class="collection_4">{{ data.collection }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                @empty{
+                                <div class="no-favourite">
+                                    <span>No BookmarksFound.</span>
+                                </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-edit-bookmark #editBookmarkModal></app-edit-bookmark>

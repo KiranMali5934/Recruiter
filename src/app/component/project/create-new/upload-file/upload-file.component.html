@@ -1,0 +1,21 @@
+<div class="mb-3">
+    <label>Upload project file</label>
+    <div class="dropzone dz-clickable">
+        <ngx-dropzone (change)="onSelect($event)" [multiple]="true">
+            <ngx-dropzone-label>
+                <div>
+                    <div class="dz-message needsclick">
+                        <i class="icon-cloud-up"></i>
+                        <h6>Drop files here or click to upload.</h6><span class="dz-message needsclick">(This is just a
+                            demo dropzone.Selected files are <strong>not</strong> actually uploaded.)</span>
+                    </div>
+                </div>
+            </ngx-dropzone-label>
+            @for( f of files; track f){
+            <ngx-dropzone-preview [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+           }
+        </ngx-dropzone>
+    </div>
+</div>

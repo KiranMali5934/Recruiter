@@ -1,0 +1,14 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4>Images sizes</h4>
+        <p class="f-m-light mt-1">
+            Use the width and height of images class like: <code>.img-* </code>and <code>.img-h-*</code>.</p>
+    </div>
+    <div class="card-body">
+        <div class="gradient-border gap-3">
+            @for(imageItem of ImagSizeData; track imageItem){
+                <img class="{{imageItem.class}}" src="{{imageItem.image}}" alt="img-size-30">
+           }
+        </div>
+    </div>
+</div>

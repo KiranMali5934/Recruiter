@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Helper card</h4>
+        <p class="f-m-light mt-1">When the<code>.show </code>class starts, dropdown appears.</p>
+    </div>
+    <div class="card-body rtl-dropdown">
+        <div class="common-flex">
+            @for(helperItem of  helpercardData; track helperItem){
+            <div class="btn-group" ngbDropdown>
+                <button class="btn {{helperItem.class}} dropdown-toggle" type="button" style="color:white;"
+                    ngbDropdownToggle>{{helperItem.title}}</button>
+                <ul class="dropdown-menu dropdown-block p-3 dark-form" ngbDropdownMenu>
+                    @for(helperCardData of helperItem.item; track helperCardData){
+                    <li>
+                        <h6 class="fs-6 fw-bold pb-2">{{helperCardData.text}}</h6>
+                        <p class="dropdown-item p-0 helper-truncate" href="javascript:void(0)" ngbDropdownItem>
+                            {{helperCardData.list}}
+                        </p>
+                    </li>
+                }
+                </ul>
+            </div>
+        }
+        </div>
+    </div>
+</div>

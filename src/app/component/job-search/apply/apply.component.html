@@ -1,0 +1,101 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xxl-12 col-xl-12 box-col-12" *ngIf="projectsJobsList.length == 0">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="fw-bolder m-5">No Jobs Found...</h3>
+              </div>
+            </div>
+          </div>
+        <div class="col-xxl-12 col-xl-12 box-col-12">
+            <div class="row" >
+                <div class="card" *ngFor="let jobs of projectsJobsList">
+                    <!-- @if(jobs.ribbion === true){
+                    <div class="ribbon ribbon-bookmark ribbon-vertical-left ribbon-secondary">
+                        <i class="icofont icofont-love"></i>
+                    </div>
+                    } -->
+                    <div>
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <img class="img-40 img-fluid m-r-20" src="assets/images/logo/faviconcc.png" alt="">
+                                <div>
+                                     <h6>
+                                        <p>{{ jobs.JobTitle }}</p>
+                                         Project : {{ jobs.ProjectName }}
+                                     </h6>
+                                     </div>
+                                     <div class="position-absolute" style="right:0; margin-right: 10px;">
+                                      <h6>
+
+                                        <div class="d-flex mb-2">
+                                            <div>
+                                              <div >
+                                               
+                                              </div>
+                                              <!-- <div class="d-flex align-items-center">
+                                                <span class="fs-2 fw-bolder badge badge-light-info me-2 mb-2 rounded">
+                                                  ✔️Approved</span>
+                                              </div> -->
+                                            </div>
+                                          </div>
+                                        <span class="fs-6 fw-bolder counted badge badge-light-success" *ngIf="jobs.IsApproved == true"  style="margin-right: 7px;">
+                                            ✔️Approved
+                                        </span>
+                                        <span class="btn btn-info cursor-pointer"  (click)="GetProjectsJobsById(jobs.JobsId)" > View Details 
+                                        </span>
+                                    </h6>
+                                </div>
+                            </div>
+                          <br>
+                        
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table table-flush align-middle table-row-bordered table-row-solid">
+                                  <!--begin::Thead-->
+                                  <thead class="border-gray-200 fs-7 fw-bold bg-lighten">
+                                    <tr>
+                                      <th class="min-w-50px"> Role</th>
+                                      <th class="min-w-50px">Skill Set</th>
+                                      <th class="min-w-50px">Experience</th>
+                                      <th class="min-w-50px">Team Size</th>
+                                      <th class="min-w-50px">Rate </th>
+                                      <th class="min-w-50px">Total Rate</th>
+                                    </tr>
+                                  </thead>
+                                  <!--end::Thead-->
+                                  <!--begin::Tbody-->
+                                  <tbody class="fw-6 fw-bold text-gray-600">
+                                    <tr *ngFor="let clone of jobs.cloanings">
+                                      <td class="min-w-50px">{{ clone.PrimaryRoleTitle }}</td>
+                                      <td class="min-w-50px"> {{ clone.PrimarySkillName}}</td>
+                                      <td class="min-w-50px">{{ clone.ExperienceName }}</td>
+                                      <td class="min-w-50px">{{ clone.TeamSizeType }}</td>
+                                      <td class="min-w-50px"> {{ clone.Permanent_BaseSalary}}/Annual</td>
+                                      <td class="min-w-50px">{{ clone.Total_Rate }}/Annual</td>
+                                    </tr>
+                                  </tbody>
+                                  <!--end::Tbody-->
+                                </table>
+                                <!--end::Table-->
+                              </div>
+                              <br>
+    
+                                    <div class="d-flex">
+                                    <p style="padding-right: 7px;"> Job Type : {{ jobs.JobType }}  , </p>
+    
+                              <p >Posted On : {{jobs.CreatedDate | date : "dd MMM, yyyy" }} </p>
+    
+                                  </div>
+    
+                        </div>
+                    </div>
+    
+                   
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@if(banner == true){
+<div class="card">
+    <div class="div ecommerce-banner"></div>
+</div>
+}
+@for( data of ecommerceData; track data){
+<div class="col-xl-12">
+    <div class="card product-widget">
+        <div class="card-body new-product">
+            <div class="product-cost">
+                <div class="add-product">
+                    <div class="product-icon bg-light-primary">
+                        <svg >
+                            <use attr.xlink:href="assets/svg/icon-sprite.svg#{{data.icon}}"></use>
+                        </svg>
+                    </div>
+                    <div>
+                        <h6 class="mb-1">{{data.title}}</h6><span class="f-light">{{data.des}}</span>
+                    </div>
+                </div>
+                <div class="product-icon">
+                    <svg> 
+                        <use href="assets/svg/icon-sprite.svg#arrow-down"></use>
+                      </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

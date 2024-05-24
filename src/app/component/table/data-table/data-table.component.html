@@ -1,0 +1,81 @@
+<div class="card">
+    <div class="table-responsive custom-scrollbar">
+        <div class="card-body">
+            <form>
+                <div class="mb-3 row">
+                    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+                    <div class="col-xs-3 col-sm-auto">
+                        <input id="table-complete-search" type="text" class="form-control" name="searchTerm"
+                            [(ngModel)]="service.searchTerm" autocomplete="off" />
+                    </div>
+                    @if(service.loading$ | async){
+                        <span class="col col-form-label">Loading...</span>
+                    }
+                </div>
+                <table class="table table-striped data-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+                            <th scope="col" sortable="position" (sort)="onSort($event)">Position</th>
+                            <th scope="col" sortable="salary" (sort)="onSort($event)">Salary</th>
+                            <th scope="col" sortable="office" (sort)="onSort($event)">Office</th>
+                            <th scope="col" sortable="extn" (sort)="onSort($event)">Extn</th>
+                            <th scope="col" sortable="email" (sort)="onSort($event)">Email</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         @for(data of tableData$ | async; track data){
+                        <tr>
+                            <th scope="row">{{data.id}}</th>
+                            <td>
+                                <ngb-highlight [result]="data.name" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="data.position" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="data.salary|number" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="data.office" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="data.extn|number" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+    
+                            <td>
+                                <ngb-highlight [result]="data.email" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ul class="action">
+                                    <i class="fa fa-eye font-primary pe-2"></i>
+                                    <i class="icofont icofont-close-circled font-danger ps-2"
+                                        (click)=" removeItem(data.id)"></i>
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                    @if(!Data.length){
+                        <tr class="odd">
+                            <td colspan="8" class="dataTables_empty" style="text-align: center;">Opps! There are no result found.</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-between p-2">
+                    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+                        <option [ngValue]="2">2 items per page</option>
+                        <option [ngValue]="4">4 items per page</option>
+                        <option [ngValue]="6">6 items per page</option>
+                        <option [ngValue]="10">10 items per page</option>
+                    </select>
+                    <ngb-pagination class="ms-3" [collectionSize]="( total$ | async)!" [(page)]="service.page"
+                        [pageSize]="service.pageSize">
+                    </ngb-pagination>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

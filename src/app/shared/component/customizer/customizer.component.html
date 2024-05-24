@@ -1,0 +1,69 @@
+<div class="customizer-links" [ngClass]="{'open': layoutService.customizer != '' }">
+    <div class="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
+        <a href="javascript:void(0)" class="nav-link" [ngClass]="{'active': layoutService.customizer == 'layout' }"
+            id="c-pills-home-tab" (click)="Customizer('layout')">
+            <div class="settings"> <img class="img-fluid" src="assets/images/customizer/1.png" alt="nft"></div>
+            <span>SideBar Layout</span>
+        </a>
+        <a href="javascript:void(0)" class="nav-link" [ngClass]="{'active': layoutService.customizer == 'colorPicker' }"
+            id="c-pills-home-tab" (click)="Customizer('colorPicker')">
+            <div class="settings">
+                <img class="img-fluid" src="assets/images/customizer/4.png" alt="nft">
+            </div><span>Color Picker</span>
+        </a>
+    </div>
+</div>
+<div class="customizer-contain" [ngClass]="{'open' : layoutService.customizer != '' }">
+    <div class="tab-content" id="c-pills-tabContent">
+        <div class="customizer-header">
+            <i class="icofont-close icon-close" (click)="Customizer('')"></i>
+            <h5>Unlocking Creativity</h5>
+            <p class="mb-0">Try It Real Time <i class="fa fa-thumbs-o-up txt-primary"></i></p>
+            <button class="btn btn-primary plus-popup mt-2" (click)="openModal(popup)">Configuration</button>
+            <ng-template #popup let-modal>
+                <div class="modal-header modal-copy-header">
+                    <h3 class="headerTitle mb-0">Customizer configuration</h3>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body config-popup">
+                        <div class="row">
+
+                            <p>To replace our design with your desired theme. Please do configuration as mention </p>
+                            <p> <b> Path : src > app > shared > services > layout.services.ts </b> </p>
+                            <div>
+                                <pre>
+  <code>
+     public config = &#123;  
+        settings&#58; &#123;
+           sidebar&#58; '{{layoutService.config.settings.layout}}',
+           layout_type&#58; '{{layoutService.config.settings.layout_type}}',
+           layout_version&#58; '{{layoutService.config.settings.layout_version}}',
+           sidebar_type&#58; '{{layoutService.config.settings.sidebar_type}}',
+        &#125;,
+        color&#58; &#123;
+           primary_color&#58; '{{layoutService.config.color.primary_color}}',
+           secondary_color&#58; '{{layoutService.config.color.secondary_color}}'
+        &#125;
+     &#125;
+  </code>
+                       </pre>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-2" (click)="copyText(this.layoutService.config)">Copy
+                        Json</button>
+                </div>
+            </ng-template>
+        </div>
+        <div class="customizer-body custom-scrollbar">
+            <div class="tab-pane fade" [ngClass]="{'active show': layoutService.customizer == 'layout' }">
+                <app-quick-option></app-quick-option>
+            </div>
+            <div class="tab-pane fade" [ngClass]="{'active show': layoutService.customizer == 'colorPicker' }">
+                <app-color-picker></app-color-picker>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container-fluid search-page">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <form class="theme-form">
+                        <div class="input-group m-0 flex-nowrap">
+                            <input class="form-control-plaintext" type="search" placeholder="Pixelstrap .."><span
+                                class="btn btn-primary input-group-text">Search</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <ul class="nav nav-tabs search-list" id="top-tab" role="tablist" style="cursor: pointer;">
+                            <li class="nav-item"><a class="nav-link active" [ngClass]="{'active show': openTab == 'All'}" (click)="tabbed('All')">
+                               <i class="icon-target"></i>All</a>
+                                <div class="material-border"></div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" [ngClass]="{'active show': openTab == 'Images'}"
+                                    (click)="tabbed('Images')"><i class="icon-image"></i>Images</a>
+                                <div class="material-border"></div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" [ngClass]="{'active show': openTab == 'Videos'}"
+                                    (click)="tabbed('Videos')"><i class="icon-video-clapper"></i>Videos</a>
+                                <div class="material-border"></div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" [ngClass]="{'active show': openTab == 'Audios'}"
+                                    (click)="tabbed('Audios')"><i class="icon-video-clapper"></i>AUDIOS</a>
+                                <div class="material-border"></div>
+                            </li>
+                            <li class="nav-item bg-light-success"><a class="nav-link txt-success"
+                                    [ngClass]="{'active show': openTab == 'Settings'}" (click)="tabbed('Settings')"><i
+                                        class="icon-map-alt"></i>Settings</a>
+                                <div class="material-border"></div>
+                            </li>
+                            <li class="nav-item bg-light-secondary"><a class="nav-link txt-secondary"
+                                    [ngClass]="{'active show': openTab == 'Tools'}" (click)="tabbed('Tools')"><i
+                                        class="icon-settings"></i>TOOLS</a>
+                                <div class="material-border"></div>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="top-tabContent">
+                            <div class="search-links tab-pane fade show active" [ngClass]="{'show active': openTab == 'All'}">
+                                <app-all></app-all>
+                            </div>
+                            <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'Images'}">
+                                <app-images></app-images>
+                            </div>
+                            <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'Videos'}">
+                                <app-videos></app-videos>
+                            </div>
+                            <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'Audios'}">
+                                <!-- <app-audios></app-audios> -->
+                            </div>
+                            <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'Settings'}">
+                                <!-- <app-settings></app-settings> -->
+                            </div>
+                            <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'Tools'}">
+                                <!-- <app-tools></app-tools>  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

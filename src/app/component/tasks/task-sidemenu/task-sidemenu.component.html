@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-xl-3 box-col-6">
+        <div class="md-sidebar" (clickOutside)="clickOutside()"> 
+            <a class="btn btn-primary md-sidebar-toggle" (click)="openMenu()">task filter</a>
+            <div class="md-sidebar-aside job-left-aside custom-scrollbar"  [class.open]="open">
+                <div class="email-left-aside">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="email-app-sidebar left-bookmark task-sidebar">
+                                <div class="media">
+                                    <div class="media-size-email"><img class="me-3 rounded-circle"
+                                            src="assets/images/user/user.png" alt=""></div>
+                                    <div class="media-body">
+                                        <h6 class="f-w-600">MARK JENCO</h6>
+                                        <p>Markjecno&#64;gmail.com</p>
+                                    </div>
+                                </div>
+                                <ul class="nav main-menu" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="badge-primary btn-block btn-mail w-100" type="button" (click)="openAddTask()">
+                                        <app-feathericon [icon]="'check-circle'" class="me-2"></app-feathericon>
+                                        New Task
+                                     </button>   
+                                    </li>
+                                    <li class="nav-item">
+                                        <span class="main-title">Views</span>
+                                    </li>
+                                    @for(views of taskSidemenu; track views){
+                                    <li>
+                                        <a class="active" id="pills-created-tab" (click)="getData(views.title_id)">
+                                            <span class="title">{{views.title}} </span>
+                                        </a>
+                                    </li>
+                                  }
+                                    <li>
+                                        <hr>
+                                    </li>
+                                    <li>
+                                        <span class="main-title"> Tags <span class="pull-right">
+                                            <a href="javascript:void(0)" (click)="openAddTag()">
+                                                <app-feathericon [icon]="'plus-circle'" class="me-2">
+                                                </app-feathericon>
+                                            </a>
+                                       </span>
+                                     </span>
+                                    </li>
+                                    @for(Tags of taskTagSidemenu; track Tags){
+                                    <li>
+                                        <a class="show" id="pills-notification-tab" (click)="getTagData(Tags.title_id)">
+                                            <span class="title"> {{ Tags.title }}</span>
+                                        </a>
+                                    </li>
+                                   }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9 col-md-12 box-col-80">
+        <div class="email-right-aside bookmark-tabcontent">
+            <div class="card email-body radius-left">
+                <div class="ps-0">
+                    <div class="tab-content">
+                        <app-all-tasks [selectedheading_id]="selectedheading_id" [selectedTagId]="selectedTagId"></app-all-tasks>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

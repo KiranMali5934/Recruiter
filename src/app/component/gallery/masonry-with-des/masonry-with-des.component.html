@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="my-gallery row grid gallery-with-description" gallerize>
+                        <ngx-masonry [options]="masonryOptions" [ordered]="true">
+                            @for(image of masonryImages; track image){
+                            <figure class="grid-item col-xl-3 col-sm-6 m-0" ngxMasonryItem>
+                                <a href="javascript:void(0)">
+                                    <img [src]="image[1]" width="100%" class="img-thumbnail">
+                                    <div itemprop="caption description">
+                                        <h4>Portfolio Title</h4>
+                                        <p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                            has been the industry's standard dummy.</p>
+                                    </div>
+                                </a>
+                            </figure>
+                            }
+                        </ngx-masonry>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

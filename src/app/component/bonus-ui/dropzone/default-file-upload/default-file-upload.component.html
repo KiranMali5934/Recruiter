@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header  pb-0">
+        <h4>Default File Upload</h4>
+    </div>
+    <div class="card-body">
+        <ngx-dropzone (change)="onSelect($event)" class="no-preview">
+            <ngx-dropzone-label>Drag & Drop your files or Browse</ngx-dropzone-label>
+            @for(f of files; track f){
+            <ngx-dropzone-preview [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        }
+        </ngx-dropzone>
+    </div>
+</div>

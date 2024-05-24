@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header">
+        <h3>Datatable order history</h3>
+    </div>
+    <div class="card-body">
+        <div class="order-history table-responsive custom-scrollbar">
+            <div class="d-flex justify-content-between mt-2">
+                <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="10">100</option>
+                </select>
+                <div class="mb-3 row">
+                    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Search:</label>
+                    <div class="col-xs-3 col-sm-auto">
+                        <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordernone display" id="basic-1">
+                <thead>
+                    <tr>
+                        <th scope="col" sortableOrder="productimg" (sort)="onSort($event)">Prdouct</th>
+                        <th scope="col" sortableOrder="product" (sort)="onSort($event)">Prdouct name</th>
+                        <th scope="col" sortableOrder="size" (sort)="onSort($event)">Size</th>
+                        <th scope="col" sortableOrder="color" (sort)="onSort($event)">Color</th>
+                        <th scope="col" sortableOrder="articleNumber" (sort)="onSort($event)">Article number</th>
+                        <th scope="col" sortableOrder="units" (sort)="onSort($event)">Units</th>
+                        <th scope="col" sortableOrder="price" (sort)="onSort($event)">Price</th>
+                        <th scope="col"><i class="fa fa-angle-down"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(item of (products$ | async) ? (products$ | async) : []; track item){
+                    <tr>
+                        <td><img class="img-fluid img-30" src="{{item.productimg}}" alt="product"></td>
+                        <td>
+                            <div class="product-name">
+                                <a [routerLink]="['/ecommerce/product-page']">{{item.product}}</a>
+                                <div class="order-process"><span class="order-{{item.class}}"></span>{{item.status}}</div>
+                            </div>
+                        </td>
+                        <td>{{item.size}}</td>
+                        <td>{{item.color}}</td>
+                        <td>{{item.articleNumber}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.price}}</td>
+                        <td>
+                            <app-feathericon [icon]="'more-vertical'"></app-feathericon>
+                        </td>
+                    </tr>
+                }
+                @if(!Data.length){
+                    <tr class="odd">
+                        <td colspan="8" class="dataTables_empty" style="text-align: center;">Opps! There are no result found.</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <ngb-pagination class="ms-3" [collectionSize]="(total$ | async)!" [(page)]="service.page"
+                [pageSize]="service.pageSize">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>

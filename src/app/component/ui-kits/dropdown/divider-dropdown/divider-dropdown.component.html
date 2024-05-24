@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Divider dropdown</h4>
+        <p class="f-m-light mt-1">When the<code>.show </code>class starts, dropdown appears. And
+            <code>.dropdown-divider</code> to change dropdown section.</p>
+    </div>
+    <div class="card-body rtl-dropdown">
+        <div class="common-flex">
+            @for(dividerItem of dividerdropdownData; track dividerItem){
+            <div class="btn-group" ngbDropdown>
+                <button class="btn {{dividerItem.class}} rounded-pill dropdown-toggle" type="button"
+                    style="color:white;" ngbDropdownToggle>{{dividerItem.title}}</button>
+                <ul class="dropdown-menu dropdown-block" ngbDropdownMenu>
+                    @for(dividerData of dividerItem.item; track dividerData){
+                        <li><a class="dropdown-item" href="javascript:void(0)" ngbDropdownItem>{{dividerData.list}}</a></li>
+                    }
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" ngbDropdownItem>Separated link</a></li>
+                </ul>
+            </div>
+        }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="email-right-aside">
+    <div class="card email-body email-list show" [class.hide]="isShow">
+        <app-letterbox-top-section></app-letterbox-top-section>
+        <div class="tab-content" id="email-pills-tabContent">
+            <div class="tab-pane fade show active" id="inbox-pill" role="tabpanel" aria-labelledby="inbox-pill-tab">
+                <div class="mail-body-wrapper">
+                    <ul id="paginated-list">
+                        @for(item of emailDatas.data | slice: (page-1) * pageSize : page * pageSize; track item ; let i = $index ){
+                        <li class="inbox-data">
+                            <div class="inbox-user">
+                                <div class="form-check form-check-inline m-0">
+                                    <input class="form-check-input checkbox-primary" id="emailCheckboxB" type="checkbox"
+                                        value="option1" (click)="openMenu('check',item.id)">
+                                    <label class="form-check-label" for="emailCheckboxB"></label>
+                                </div>
+                                <svg class="important-mail" [class.active]="item.isStar">
+                                    <use href="assets/svg/icon-sprite.svg#fill-star" (click)="openMenu('star',item.id)">
+                                    </use>
+                                </svg>
+                                <div class="rounded-border">
+                                    @if(item.imgName){
+                                     <div>
+                                         <p class="txt-{{item.class}}">{{item.imgName}}</p>
+                                     </div>
+                                    }
+                                    @if(item.image){
+                                       <img class="img-fluid" src="{{item.image}}" alt="user">
+                                    }
+                                </div>
+                                <p>{{item.name}}</p>
+                            </div>
+                            <div class="inbox-message">
+                                <div class="email-item" (click)="isShow =! isShow">
+                                    <span>{{item.title}}<span>{{item.subTitle}}</span></span>
+                                    <div class="badge badge-light-{{item.color}}">{{item.status}}
+                                    </div>
+                                </div>
+                                <div class="email-timing"><span>{{item.time}}</span></div>
+                                <div class="email-options">
+                                    <i class="fa fa-envelope-o envelope-1 show"[ngClass]="!item.active ? 'show' : 'hide'"></i>
+                                    <i class="fa fa-envelope-open-o envelope-2"[ngClass]="item.active ? 'show' : 'hide'"></i>
+                                    <i class="fa fa-trash-o trash-3" (click)="deleteEmail(i, item.name)"></i>
+                                    <i class="fa fa-print" (click)="openMenu('print',item.id)"></i>
+                                </div>
+                            </div>
+                          </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mail-pagination">
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="emailDatas.data.length"
+                (pageChange)="getPaginationData();"></ngb-pagination>
+        </div>
+    </div>
+    <div class="card email-body email-read" [class.show]="isShow">
+        <app-interview-mail (filterValue)="receiverFilterValue($event)"></app-interview-mail>
+    </div>
+</div>

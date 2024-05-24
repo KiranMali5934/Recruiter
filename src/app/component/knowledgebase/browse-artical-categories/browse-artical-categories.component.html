@@ -1,0 +1,48 @@
+<div class="header-faq">
+  <h5 class="mb-0">Browse articles by category</h5>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="f-w-700">Browse Articles</h5>
+      </div>
+      <div class="card-body">
+        <div class="row browse g-sm-4 g-3">
+          @for(allData of browseArticlesData; track allData){
+          <div class="{{ allData.colClass }}">
+            <div class="browse-articles">
+              <h6><span>
+                  <app-feathericon [icon]="allData.titleIcon"></app-feathericon>
+                </span>{{ allData.title }}</h6>
+              <ul>
+                @for(points of allData.data; track points){
+                <li>
+                  <a href="javascript:void(0)">
+                    <span>
+                      <app-feathericon [icon]="'file-text'"></app-feathericon>
+                    </span>
+                    <span>{{ points.listData }}</span>
+                    @if(points.tag === true){
+                    <span class="badge badge-primary pull-right">{{ points.tagTitle }}</span>
+                    }
+                  </a>
+                </li>
+                }
+                <li>
+                  <a class="f-w-600 font-primary" href="javascript:void(0)">
+                    <span>
+                      <app-feathericon [icon]="'arrow-right'"></app-feathericon>
+                    </span>
+                    <span> See More ({{ allData.seeMore }})</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

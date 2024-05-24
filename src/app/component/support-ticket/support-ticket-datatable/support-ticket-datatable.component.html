@@ -1,0 +1,83 @@
+<div class="table-responsive custom-scrollbar">
+    <div id="basic-6_wrapper" class="dataTables_wrapper">
+      <form>
+        <div class="d-flex justify-content-between mt-3 mb-3">
+          <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="25">25</option>
+            <option [ngValue]="50">50</option>
+            <option [ngValue]="100">100</option>
+          </select>
+          <div class="mb-3 row justify-content-end">
+            @if(service.loading$ | async){
+            <span class="col col-form-label text-end">Loading...</span>
+            }
+            <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Search:</label>
+            <div class="col-xs-3 col-sm-auto">
+              <input id="table-complete-search" type="text" class="form-control" name="searchTerm"
+                [(ngModel)]="service.searchTerm" autocomplete="off" >
+            </div>
+          </div>
+        </div>
+      </form>
+      <table class="display dataTable" id="basic-6">
+        <thead>
+          <tr>
+            <th rowspan="2" class="sorting sorting_asc" sortable="name" (sort)="onSort($event)" style="cursor: pointer;"
+              style="width: 256px;">Name</th>
+            <th colspan="2" rowspan="1">HR Information</th>
+            <th colspan="4" rowspan="1">Contact</th>
+            <th rowspan="2" style="cursor: pointer;"
+            style="width: 256px; text-align:center;">Action</th>
+          </tr>
+          <tr>
+            <th sortable="position" (sort)="onSort($event)" style="cursor: pointer;">Position</th>
+            <th sortable="salary" (sort)="onSort($event)" style="cursor: pointer;">Salary</th>
+            <th sortable="office" (sort)="onSort($event)" style="cursor: pointer;">Office</th>
+            <th sortable="skill" (sort)="onSort($event)" style="cursor: pointer;">Skill</th>
+            <th sortable="extn" (sort)="onSort($event)" style="cursor: pointer;">Extn.</th>
+            <th sortable="email" (sort)="onSort($event)" style="cursor: pointer;">E-mail</th>
+          </tr>
+        </thead>
+        <tbody>
+            @for(data of countries$ | async; track data){
+          <tr>
+            <td>
+              <div class="d-flex">
+                <img class="rounded-circle img-30 me-3" [src]="data.img" alt="Generic placeholder image">
+                <div class="flex-grow-1 align-self-center">
+                  <div>{{ data.name }}</div>
+                </div>
+              </div>
+            </td>
+            <td>{{ data.position }}</td>
+            <td>${{ data.salary | number }}</td>
+            <td>{{ data.office }}</td>
+            <td>
+              <div class="progress-showcase">
+                <div class="progress sm-progress-bar">
+                  <div [ngClass]='data.skill' role="progressbar" [style.width]="data.progress" aria-valuenow="50"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </td>
+            <td>{{ data.extn }}</td>
+            <td>{{ data.email }}</td>
+            <td>
+              <i class="fa fa-eye font-primary pe-2"></i>
+              <i class="icofont icofont-close-circled font-danger ps-2"(click)=" removeItem(data.id)"></i>
+            </td>
+          </tr>
+        }
+        @if(!Data.length){
+            <tr class="odd">
+                <td colspan="8" class="dataTables_empty" style="text-align: center;">Opps! There are no result found.</td>
+            </tr>
+        }
+        </tbody>
+      </table>
+      <ngb-pagination class="ms-3" [collectionSize]="(total$ | async)!" [(page)]="service.page"
+        [pageSize]="service.pageSize">
+      </ngb-pagination>
+    </div>
+  </div>

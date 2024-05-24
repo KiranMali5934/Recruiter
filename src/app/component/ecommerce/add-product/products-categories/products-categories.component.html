@@ -1,0 +1,100 @@
+<form novalidate [formGroup]="myForm">
+    <div class="row g-lg-4 g-3">
+        <div class="col-12">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <label class="form-label m-0" for="validationDefault04">Add Category</label>
+                        </div>
+                        <div class="col-12">
+                            <select class="form-select" id="validationDefault04" formControlName="product" required="" [ngClass]="{ 'is-invalid' : (product?.touched || validate) && product?.errors, 'is-valid' : !product?.errors}">
+                                <option>Toys & games</option>
+                                <option>Sportswear </option>
+                                <option>Jewellery </option>
+                                <option>Furniture and Decor</option>
+                                <option>Health, Personal Care, and Beauty</option>
+                                <option>Auto and Parts </option>
+                                <option>Baby Care Products</option>
+                            </select>
+                            @if(!product?.errors){
+                            <div class="valid-feedback">Looks good!</div>
+                             }
+                            @else{
+                              <div class="invalid-feedback">A product name is required and recommended to be unique.</div>
+                            }
+                            <p class="f-light">A product can be added to a category</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row g-2 product-tag">
+                        <div class="col-12">
+                            <label class="form-label d-block m-0">Add Tag</label>
+                        </div>
+                        <div class="col-12">
+                            <tag-input [(ngModel)]='items' [editable]="true" formControlName="addTag" name="add_Tag"class="form-control"[ngClass]="{ 'is-invalid' : (addTag?.touched || validate) && addTag?.errors, 'is-valid' : !addTag?.errors}"></tag-input>
+                            @if(!addTag?.errors){
+                                <div class="valid-feedback">Looks good!</div>
+                              }
+                            @else{
+                                <div class="invalid-feedback">A Add Tag is required and recommended to be unique.</div>
+                            }
+                            <p class="f-light">Products can be tagged</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="category-buton">
+                        <a class="btn button-primary" (click)="newCategories()"><i class="me-2 fa fa-plus"> </i>Create New Category </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="form-label" for="publishStatus">Publish Status</label>
+                            <select class="form-select" id="publishStatus" formControlName="productStatus" required="" [ngClass]="{ 'is-invalid' : (productStatus?.touched || validate) && productStatus?.errors, 'is-valid' : !productStatus?.errors}">
+                                <option>Publish</option><option>Drafts</option><option>Unpublish</option>
+                            </select>
+                            @if(!productStatus?.errors){
+                                <div class="valid-feedback">Looks good!</div>
+                               }
+                             @else{
+                                <div class="invalid-feedback">A Publish Status is required and recommended to be unique.</div>
+                             }
+                            <p class="f-light">Choose the status</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="form-label" for="datetime-local1">Publish Date & Time</label>
+                            <div class="input-group flatpicker-calender product-date">
+                                <input class="form-control" id="datetime-local1" type="date" formControlName="date"[ngClass]="{ 'is-invalid' : (date?.touched || validate) && date?.errors, 'is-valid' : !date?.errors}">
+                            </div>
+                            @if(!date?.errors){
+                               <div class="valid-feedback">Looks good!</div>
+                              }
+                            @else{
+                               <div class="invalid-feedback">A Publish Date is required and recommended to be unique.</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-buttons">
+        <div class="btn" (click)="previous()">
+            <div class="d-flex align-items-center gap-sm-2 gap-1"><svg><use href="assets/svg/icon-sprite.svg#back-arrow"></use></svg>Previous</div>
+        </div>
+        <div class="btn" (click)="next(myForm)">
+            <div class="d-flex align-items-center gap-sm-2 gap-1">Next<svg><use href="assets/svg/icon-sprite.svg#front-arrow"></use></svg></div>
+        </div>
+    </div>
+</form>

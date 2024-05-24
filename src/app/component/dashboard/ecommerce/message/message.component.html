@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header card-no-border total-revenue card-title-underline">
+        <h4>Message</h4><a [routerLink]="['/ecommerce/products']">+ New Message </a>
+    </div>
+    <div class="card-body pt-0">
+        <div class="user-message">
+            <ul>
+                @for(data of MessageData; track data){
+                <li>
+                    <div class="activity-log">
+                        <img class="activity-log-img rounded-circle img-fluid me-2" src="{{ data.img }}" alt="user" />
+                        <div class="status bg-{{ data.class}}"></div>
+                        <div class="activity-name">
+                            <div>
+                                <h6> <a class="f-w-500 f-14" [routerLink]="['/user/users-profile']">{{ data.name }}</a>
+                                </h6><span class="f-light f-w-500 f-12 ">{{ data.chat }}</span>
+                            </div>
+                            <div class="product-sub">
+                                <div class="dropdown">
+                                    <div id="dropdownMenuButtonicon6" data-bs-toggle="dropdown" aria-expanded="false"
+                                        role="menu">
+                                        <svg class="invoice-icon" (click)="openMenu(data.id)">
+                                            <use href="assets/svg/icon-sprite.svg#more-horizontal"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-end" [class.show]="openid == data.id">
+                                        <span class="dropdown-item">Last Month</span>
+                                        <span class="dropdown-item">Last Week</span>
+                                        <span class="dropdown-item">Last Day </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

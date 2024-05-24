@@ -1,0 +1,77 @@
+<div class="card-body">
+    <div class="list-product list-category">
+        <div class="d-flex justify-content-between mt-2">
+            <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+                <option [ngValue]="10">10</option>
+                <option [ngValue]="25">25</option>
+                <option [ngValue]="50">50</option>
+                <option [ngValue]="10">100</option>
+            </select>
+            <div class="mb-3 row">
+                <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Search:</label>
+                <div class="col-xs-3 col-sm-auto">
+                    <input id="table-complete-search" type="text" class="form-control" name="searchTerm"
+                        [(ngModel)]="service.searchTerm" autocomplete="off">
+                </div>
+            </div>
+        </div>
+        <table class="table" id="project-status">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-primary" type="checkbox">
+                        </div>
+                    </th>
+                    <th sortableCategory="productName" (sort)="onSort($event)"> <span
+                            class="f-light f-w-600">Category</span></th>
+                    <th sortableCategory="des" (sort)="onSort($event)"> <span class="f-light f-w-600">Description</span>
+                    </th>
+                    <th sortableCategory="type" (sort)="onSort($event)"> <span class="f-light f-w-600">Category
+                            Type</span></th>
+                    <th> <span class="f-light f-w-600">Action</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of (Category$ | async) ? (Category$ | async) : []; track item){
+                <tr class="product-removes">
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-primary" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-names">
+                            <div class="light-product-box"><img class="img-fluid" src="{{ item.img }}" alt="t-shirt">
+                            </div>
+                            <p>{{ item.productName }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="f-light">{{ item.des }}</p>
+                    </td>
+                    <td> <span class="badge badge-light-{{ item.class }}">{{ item.type }}</span></td>
+                    <td>
+                        <div class="product-action">
+                            <svg>
+                                <use href="assets/svg/icon-sprite.svg#edit-content"></use>
+                            </svg>
+                            <svg>
+                                <use href="assets/svg/icon-sprite.svg#trash1" (click)=" removeItem(item.id)"> </use>
+                            </svg>
+                        </div>
+                    </td>
+                </tr>
+            }
+            @if(!Data.length){
+                <tr class="odd">
+                    <td colspan="8" class="dataTables_empty" style="text-align: center;">Opps! There are no result found.</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <ngb-pagination class="ms-3" [collectionSize]="(total$ | async)!" [(page)]="service.page"
+            [pageSize]="service.pageSize">
+        </ngb-pagination>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <h3>Slides Only </h3>
+        <p class="f-m-light mt-1">The <code>.active</code> class needs to be added to one of the slides otherwise the
+            carousel will not be visible.<code>.d-block</code> and <code>.w-100 </code> on carousel images to prevent
+            browser
+            default image alignment.</p>
+    </div>
+    <div class="card-body">
+        <owl-carousel-o [options]="slidesopdtionData" class="carousel slide" id="carouselExampleSlidesOnly">
+            @for(sildesItem of sildesData; track sildesItem){
+            <ng-template carouselSlide class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ sildesItem.img }}">
+                </div>
+            </ng-template>
+        }
+        </owl-carousel-o>
+    </div>
+</div>

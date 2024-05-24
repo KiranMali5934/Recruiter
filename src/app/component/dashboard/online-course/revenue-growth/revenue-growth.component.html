@@ -1,0 +1,70 @@
+<div class="card" (clickOutside)="clickOutside()">
+    <div class="card-header sales-chart card-no-border">
+        <h4>Revenue Growth </h4>
+        <div class="sales-chart-dropdown">
+            <ul class="balance-data">
+                <li> <span class="circle bg-warning"></span><span class="ms-1 f-w-400">Marketing Sale</span></li>
+                <li> <span class="circle bg-primary"> </span><span class="ms-1 f-w-400">Online Sale</span></li>
+            </ul>
+            <div class="sales-chart-dropdown-select">
+                <div class="card-header-right-icon online-store">
+                    <div class="dropdown">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" id="dropdownMenuButton1" (click)="open()">This Year</button>
+                            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                                <span class="dropdown-item">Last Month</span>
+                                <span class="dropdown-item">Last Week </span>
+                                <span class="dropdown-item">Today</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-0">
+        <div class="row">
+            <div class="col-xxl-8 col-xl-12">
+                <div class="revenuegrowth">
+                    <div class="revenuegrowth-chart" id="revenuegrowth">
+                        <apx-chart [series]="revenugrowth.series" [chart]="revenugrowth.chart" [stroke]="revenugrowth.stroke" [markers]="revenugrowth.markers"
+                        [plotOptions]="revenugrowth.plotOptions"[dataLabels]="revenugrowth.dataLabels" [colors]="revenugrowth.colors"
+                        [legend]="revenugrowth.legend"[fill]="revenugrowth.fill" [grid]="revenugrowth.grid" [yaxis]="revenugrowth.yaxis" 
+                        [xaxis]="revenugrowth.xaxis"[responsive]="revenugrowth.responsive"  [tooltip]="revenugrowth.tooltip"></apx-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 d-xxl-block d-none ">
+                <div class="revenuegrowth-details">
+                    <div class="growth-details">
+                        <span class="f-light f-12  text-uppercase">Total Sales</span>
+                        <h4 class="f-w-500 mb-2">$56.265.08 </h4>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+                            <p class="mb-0 f-w-500 f-12">Compared to </p>
+                            <span class="f-light f-12 f-w-500 ">(+40.15%than)</span>
+                            <p class="mb-0 f-w-500 f-12">last year </p>
+                        </div>
+                    </div>
+                    <div class="growth-details"><span class="f-light f-12  text-uppercase">Total Purchase
+                        </span>
+                        <h4 class="f-w-500 mb-2">$42,256.26 </h4>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+                            <p class="mb-0 f-w-500 f-12">Compared to </p>
+                            <span class="txt-secondary f-12 f-w-500">(-20.25% than) </span>
+                            <p class="mb-0 f-w-500 f-12">last year </p>
+                        </div>
+                    </div>
+                    <div class="growth-details"> <span class="f-light f-12  text-uppercase">Total
+                            Returns</span>
+                        <h4 class="f-w-500 mb-2">$5,215.62 </h4>
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+                            <p class="mb-0 f-w-500 f-12">Compared to </p>
+                            <span class=" f-w-500 f-light f-12">(+18.15% than) </span>
+                            <p class="mb-0 f-w-500 f-12">last year </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

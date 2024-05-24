@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <h4>Variation radio</h4>
+        <p class="f-m-light mt-1">
+            Use the <code>radio </code>attribute through create variation of radio designs.</p>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-xl-4 col-md-6">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">Select your payment method</h6>
+                    @for(payment of paymentData; track payment){
+                    <div class="payment-wrapper">
+                        <div class="payment-first">
+                            <div class="form-check radio radio-primary">
+                                <input class="form-check-input" id="{{payment.id}}" type="radio" name="radio1"
+                                    [checked]="payment.check">
+                                <label class="form-check-label mb-0" for="{{payment.id}}">{{payment.lable}}</label>
+                            </div>
+                        </div>
+                        <div class="payment-second"><img class="img-fluid" src="{{payment.img}}" alt="card">
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">What are the most important things to learn about web design?</h6>
+                    @for(webdesign of webdesignData; track webdesign){
+                    <div class="payment-wrapper">
+                        <div class="payment-first">
+                            <div class="form-check radio radio-primary">
+                                <input class="form-check-input" id="{{webdesign.id}}" type="radio" name="radio3"
+                                    value="option1" [checked]="webdesign.check">
+                                <label class="form-check-label mb-0" for="{{webdesign.id}}">{{webdesign.lable}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">Radios With Creative Options & SVG Icons</h6>
+                    @for(icons of iconsData; track icons){
+                    <div class="payment-wrapper">
+                        <div class="payment-first">
+                            <div class="form-check radio radio-primary">
+                                <input class="form-check-input" id="{{icons.id}}" type="radio" name="radio2"
+                                    value="option1" [checked]="icons.check">
+                                <label class="form-check-label mb-0" for="{{icons.id}}">{{icons.lable}}</label>
+                            </div>
+                        </div>
+                        <div class="payment-second">
+                            <svg class="mega-icons stroke-{{ icons.class}}">
+                                <use attr.xlink:href="assets/svg/icon-sprite.svg#{{icons.icon}}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

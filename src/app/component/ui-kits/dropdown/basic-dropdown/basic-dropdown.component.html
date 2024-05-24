@@ -1,0 +1,22 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4>Basic dropdown</h4>
+        <p class="f-m-light mt-1">
+           When the<code>.show </code>class starts, dropdown appears. And <code>.btn-*</code> to change button dark background colors.</p>
+    </div>
+    <div class="card-body rtl-dropdown">
+        <div class="common-flex">
+            @for(basicdropdownitem of basicDropdownData; track basicdropdownitem){
+            <div class="btn-group" ngbDropdown>
+                <button class="btn {{basicdropdownitem.class}} dropdown-toggle" type="button"
+                    ngbDropdownToggle>{{basicdropdownitem.title}}</button>
+                <ul class="dropdown-menu dropdown-block" ngbDropdownMenu>
+                    @for( basicData of basicdropdownitem.item; track basicData ){
+                        <li><a class="dropdown-item" href="javascript:void(0)" ngbDropdownItem>{{basicData.list}}</a></li>
+                }
+                </ul>
+            </div>
+        }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        <h4> Dropdown sizing</h4>
+        <p class="f-m-light mt-1">When the<code>.show </code>class starts, dropdown appears. And
+            <code>[.btn-lg/.btn-sm]</code>class through button size changed.</p>
+    </div>
+    <div class="card-body rtl-dropdown">
+        <div class="common-flex">
+            @for(sizingdropdownitem of sizingdropdownData; track sizingdropdownitem){
+            <div class="btn-group" ngbDropdown>
+                <button class="btn {{sizingdropdownitem.class}}" type="button"
+                    style="color:white;" ngbDropdownToggle>{{sizingdropdownitem.title}}
+                </button>
+                <ul class="dropdown-menu dropdown-block" ngbDropdownMenu>
+                    @for(sizingData of sizingdropdownitem.item; track sizingData){
+                        <li>
+                            <a class="dropdown-item" href="javascript:void(0)" ngbDropdownItem>{{sizingData.list}}</a>
+                        </li>
+                     }
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" ngbDropdownItem>Separated link</a></li>
+                </ul>
+            </div>
+        }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="card height-equal">
+    <div class="card-body">
+        @for( data of productCostingData; track data){
+        <ul class="product-costing">
+            <li class="product-cost">
+                <div class="product-icon bg-{{data.class}}">
+                    <svg>
+                        <use attr.xlink:href="assets/svg/icon-sprite.svg#{{data.icon}}"></use>
+                    </svg>
+                </div>
+                <div><span class="f-w-500 f-14 mb-0">{{data.title}}</span>
+                    <h2 class="f-w-600">{{data.data}}</h2>
+                </div>
+            </li>
+            <li> <span class="f-light f-14 f-w-500">{{data.des}}</span></li>
+        </ul>
+        }
+    </div>
+</div>

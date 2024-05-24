@@ -1,0 +1,57 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Add Contact</h3>
+        <button class="btn-close" type="button" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form class="form-bookmark needs-validation" id="bookmark-form" novalidate=""
+            [ngClass]="{'was-validated': validate}" [formGroup]="myForm"  (submit)="add()">
+            <div class="row g-2">
+                <div class="mb-3 col-md-12 mt-0">
+                    <label for="con-name">Name</label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input class="form-control" id="con-name" type="text" required="" placeholder="First Name"
+                                required="" formControlName="firstName">
+                                @if(firstName?.invalid && firstName?.touched ){
+                                  <div class="text-danger">Please Enter First Name</div>
+                              }
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="con-last" type="text" required="" placeholder="Last Name"
+                                required="" formControlName="lastName">
+                                @if(lastName?.invalid && lastName?.touched){
+                                  <div class="text-danger"> Please Enter Last Name</div>
+                               }
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 col-md-12 mt-0">
+                    <label for="con-mail">Email Address</label>
+                    <input class="form-control" id="con-mail" type="text" required="" autocomplete="off" formControlName="email">
+                    @if(email?.invalid && email?.touched ){
+                       <div class="text-danger"> Please Enter Valid Email</div>
+                    }
+                </div>
+                <div class="mb-3 col-md-12 my-0">
+                    <label for="con-phone">Phone</label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input class="form-control" id="con-phone" type="number" required="" autocomplete="off" formControlName="mobile">
+                        </div>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="con-select">
+                                <option>Mobile</option>
+                                <option>Work</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input id="index_var" type="hidden" value="5">
+            <button class="btn btn-secondary" type="submit" [disabled]="myForm.invalid">Save</button>
+            <button class="btn btn-primary" type="button" (click)="activeModal.dismiss()">Cancel</button>
+        </form>
+    </div>
+</div>

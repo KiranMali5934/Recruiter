@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Switch with Icons</h4>
+        <p class="f-m-light mt-1">
+            Use the <code>.icon-state</code> class through visible icons in switches.</p>
+    </div>
+    <div class="card-body common-flex switch-wrapper">
+        @for(item of iconsizeingData; track item){
+        <div class="media">
+            <label class="col-form-label m-r-10">{{item.text}}</label>
+            <div class="media-body {{item.class}}">
+                <label class="switch">
+                    <input type="checkbox" [checked]="item.value" [disabled]="item.disable"><span
+                        class="switch-state"></span>
+                </label>
+            </div>
+        </div>
+      }
+    </div>
+</div>

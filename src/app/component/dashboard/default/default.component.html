@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- <div class="col-xl-6 box-col-7">
+            <app-sales-chart></app-sales-chart>
+        </div>
+        <div class="col-xl-3 col-md-6 box-col-5 total-revenue-total-order">
+            <div class="row">
+                <div class="col-xl-12">
+                    <app-common-default-chart [data]="totalrevenuchart"></app-common-default-chart>
+                </div>
+                <div class="col-xl-12">
+                    <app-common-default-chart [data]="totalorderchart"></app-common-default-chart>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="col-xl-3 col-md-6 special-Offer-banner box-col-none">
+            <app-special-offer></app-special-offer>
+        </div> -->
+        <div class="col-xxl-6 col-md-12 box-col-12">
+          <div class="card height-equal" (clickOutside)="clickOutside()">
+              <div class="card-header pb-2 total-revenue card-no-border">
+                  <h4>Latest Jobs </h4><a [routerLink]="['/job/list-view']">View All</a>
+              </div>
+              <div class="card-body pt-0">
+                <div class="table-order table-responsive custom-scrollbar">
+                  <table class=" latest-orders w-100">
+                    <thead>
+                      <tr>
+                        <th>Job Name</th>
+                        <th>Role</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for( data of latestjoblist; track data){
+                      <ng-container>
+                        <tr>
+                          <td>
+                            <div class="product-name">
+                              <div class="product-sub"> <a class=" f-14 f-w-500"
+                                >{{data.JobTitle}}</a>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="product-sub"><a class="f-14 f-w-500"
+                             >{{data.PrimaryRoleTitle}}</a><span
+                                class="f-light f-14 f-w-500 d-block">{{data.PrimarySkill}}</span></div>
+                          </td>
+                          <td>
+                            <div class="product-sub"> <a class="f-14 f-w-500"
+                              >{{data.CreatedDate | date:'dd/MM/yyyy'}}</a></div>
+                          </td>
+                          <td>
+                            <div class="product-sub"><span>{{data.LocationName !== null ? data.LocationName :'Remote'}}</span>
+                            </div>
+                          </td>
+                          <!-- <td>
+                            <div class="product-sub">
+                              <svg class="invoice-icon">
+                                <use href="assets/svg/icon-sprite.svg#fream"></use>
+                              </svg>
+                            </div>
+                          </td> -->
+                        </tr>
+                      </ng-container>
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          <!-- <app-latest-orders></app-latest-orders> -->
+      </div>
+        <div class="col-xxl-6 box-col-12">
+            <!-- <app-live-product></app-live-product> -->
+            <div class="card">
+                <div class="card-header total-revenue card-no-border">
+                  <h4>Interview Details</h4><a [routerLink]="['/interview/interview-list']">View All</a>
+                </div>
+                <div class="card-body pt-0">
+                  <div class="table-order table-responsive custom-scrollbar">
+                    <table class="order-table w-100">
+                      <thead>
+                        <tr>
+                          <th>Interview Round</th>
+                          <th>Job</th>
+                          <th>Project</th>
+                          <th>Interview Time</th>
+                          <th>Interview Date</th>
+                       
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for( data of interviewlist; track data){
+                          <ng-container>
+                            <tr>
+                              <td>
+                                <div class="product-name">
+                                  <div class="product-sub"> <a class=" f-14 f-w-500"
+                                    >{{data.Interview_Dropdown_Name}}</a>
+                                  </div>
+                                </div>
+                              </td>
+                              <!-- <td>
+                                <div class="product-sub"><a class="f-14 f-w-500"
+                                 ></a><span
+                                    class="f-light f-14 f-w-500 d-block">{{data.Interview_Date | date:'dd/MM/yyyy'}}</span></div>
+                              </td> -->
+                              <td>
+                                <div class="product-sub"> <a class="f-14 f-w-500">{{data.JobTitle}}</a></div>
+                              </td>
+                              <td>
+                                <div class="product-sub"><a class="f-14 f-w-500">{{data.ProjectName}}</a>
+                                  <!-- <span></span> -->
+                                </div>
+                              </td>
+                             
+                              <td>
+                                <div class="product-sub"> <a class="f-14 f-w-500">{{data.Interview_Time}}</a></div>
+                              </td>
+                              <td>
+                                <div class="product-sub"> <a class="f-14 f-w-500">{{data.Interview_Date | date:'dd/MM/yyyy'}}</a></div>
+                              </td>
+                              <!-- <td>
+                                <div class="product-sub">
+                                  <svg class="invoice-icon">
+                                    <use href="assets/svg/icon-sprite.svg#fream"></use>
+                                  </svg>
+                                </div>
+                              </td> -->
+                            </tr>
+                          </ng-container>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>          
+        </div>
+    
+       
+        <!-- <div class="col-xxl-3 col-md-6 box-col-6">
+            <app-top-revenue-product></app-top-revenue-product>
+        </div>
+        <div class="col-xxl-3 col-md-6 box-col-6">
+            <app-ecommerce-details [banner]="true"></app-ecommerce-details>
+        </div> -->
+    </div>
+</div>

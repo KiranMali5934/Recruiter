@@ -1,0 +1,30 @@
+<div class="card height-equal" (clickOutside)="clickOutside()">
+    <div class="card-header total-revenue">
+        <h3>Sales Chart </h3>
+        <div class="sales-chart-dropdown-select">
+            <div class="card-header-right-icon">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" id="dropdownMenuButton1" (click)="open()">Last Year </button>
+                    <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                        <span class="dropdown-item">Last Month</span>
+                        <span class="dropdown-item">Last Week </span>
+                        <span class="dropdown-item">Today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="sales-wrapper">
+            <div id="saleschart">
+                <apx-chart [series]="GenralSalesChartData.series" [chart]="GenralSalesChartData.chart"
+                    [stroke]="GenralSalesChartData.stroke" [plotOptions]="GenralSalesChartData.plotOptions"
+                    [dataLabels]="GenralSalesChartData.dataLabels" [colors]="GenralSalesChartData.colors"
+                    [legend]="GenralSalesChartData.legend" [fill]="GenralSalesChartData.fill"
+                    [grid]="GenralSalesChartData.grid" [yaxis]="GenralSalesChartData.yaxis"
+                    [xaxis]="GenralSalesChartData.xaxis" [responsive]="GenralSalesChartData.responsive"
+                    [tooltip]="GenralSalesChartData.tooltip"></apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

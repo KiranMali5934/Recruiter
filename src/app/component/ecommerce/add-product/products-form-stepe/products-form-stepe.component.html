@@ -1,0 +1,19 @@
+<ul class="sidebar-left-icons nav nav-pills" id="add-product-pills-tab" role="tablist">
+    @for(item of stepsData; track item){
+    <li class="nav-item">
+         <a class="nav-link active" id="detail-product-tab" [class.active]="activeSteps == item.stepNumber">
+            <div class="nav-rounded">
+                <div class="product-icons">
+                    <svg class="stroke-icon">
+                        <use attr.xlink:href="assets/svg/icon-sprite.svg#{{item.icon}}"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="product-tab-content">
+                <h6>{{item.mainTitle}}</h6>
+                <p>{{item.subTitle}}</p>
+            </div>
+        </a>
+     </li>
+   } 
+</ul>

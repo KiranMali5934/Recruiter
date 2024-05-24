@@ -1,0 +1,16 @@
+
+@for(borders of data; track borders){
+  <div class="border-wrapper h-100 alert-light-light dark-helper">
+    <h6 class="mb-3">Custom border-radius class</h6>
+    @for(item of borders.item; track item){
+    <div class="helper-common-box">
+      <div class="{{item.class}}">
+        @if(item.text){
+              {{item.text}}
+        }
+      </div>
+      <span>{{item.title}}</span>
+    </div>
+  }
+  </div>
+}

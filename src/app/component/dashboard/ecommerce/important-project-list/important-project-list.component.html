@@ -1,0 +1,72 @@
+<div class="card">
+    <div class="card-header card-no-border total-revenue">
+        <h4>Important Project List</h4>
+        <a class="d-none d-sm-block" [routerLink]="['/ecommerce/products']">View All</a>
+    </div>
+    <div class="card-body pt-0 row important-project">
+        @for(data of projectListData; track data){
+        <div class="{{data.class}}">
+            <div class="projectlist-card">
+                <div class="projectlist">
+                    <div class="project-data">
+                        <img class="nft-img img-fluid" src="{{ data.img }}" alt="nft">
+                        <div> <a class="f-14 f-w-500 d-block" [routerLink]="['/ecommerce/products']">{{ data.title }}</a>
+                            <span class="f-light f-12 f-w-500">Client: {{data.name}}</span>
+                        </div>
+                    </div>
+                    <span class="badge rounded-pill badge-primary bg-light-primary">{{ data.time }}</span>
+                </div>
+                <div class="project-date">
+                    <span class="f-light f-12 f-w-500">{{ data.projectDate }} </span>
+                    <span class="f-light f-12 f-w-500">{{ data.endDate }}</span></div>
+                <div class="range_4">
+                    <div class="slider-container">
+                        <ngx-slider [(value)]="data.value" [options]="options"></ngx-slider>
+                    </div>
+                </div>
+                <div class="project-comment">
+                    <div class="avatar-showcase">
+                        <div class="avatars">
+                            <div class="customers d-inline-block avatar-group">
+                                <ul>
+                                    @for(imgdata of data.item; track imgdata){
+                                        <li class="d-inline-block"><img class="img-25 rounded-circle"src="{{imgdata.img1}}" alt=""></li>
+                                     }
+                                    <li class="d-inline-block">
+                                        <p class="rounded-circle bg-light">{{ data.data }}</p>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-comment-icon">
+                        <div class="project-link">
+                            <svg>
+                                <use href="assets/svg/icon-sprite.svg#messages-2"></use>
+                            </svg>
+                            <span>{{ data.chat }}</span>
+                        </div>
+                        <div class="project-link">
+                            <svg>
+                                <use href="assets/svg/icon-sprite.svg#paperclip"></use>
+                            </svg>
+                            <span>{{ data.link }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-meeting-details">
+                    <div class="project-meeting">
+                        <span class="f-light f-12 f-w-500">Last Meeting</span>
+                        <span class="f-light f-12 f-w-500">Next Meeting </span>
+                    </div>
+                    <div class="project-meeting-time">
+                        <a class="f-14 f-w-500" [routerLink]="['/calender']">{{ data.lastMeeting }}</a>
+                        <a class="f-14 f-w-500" [routerLink]="['/calender']">{{ data.nextMeeting }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+</div>

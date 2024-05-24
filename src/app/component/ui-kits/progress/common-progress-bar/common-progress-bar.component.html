@@ -1,0 +1,25 @@
+@for(basicitem of data; track basicitem){
+<div class="card">
+    <div class="card-header">
+        <h4>{{basicitem.mainTitle}}</h4>
+        <p class="f-m-light mt-1" [innerHTML]="basicitem.title">
+        </p>
+    </div>
+    <div class="card-body progress-showcase">
+        <div class="row">
+            <div class="col">
+                @for( progessbaritem of basicitem.item; track progessbaritem){
+                <div class="progress">
+                    <div class="{{progessbaritem.class}}" role="progressbar" [ngStyle]="{'width':progessbaritem.value}"
+                        aria-valuenow=" 0" aria-valuemin="0" aria-valuemax="100">
+                        @if(progessbaritem.percentage){
+                            {{progessbaritem.percentage}}
+                         }
+                    </div>
+                </div>
+               }
+            </div>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Cart</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="order-history table-responsive wishlist custom-scrollbar">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Prdouct</th>
+                                        <th>Prdouct Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Action</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for(item of cartData; track item){
+                                        <tr>
+                                            <td><img class="img-fluid img-40" src="{{item.productImg}}" alt="#"></td>
+                                            <td>
+                                                <div class="product-name">
+                                                   <a  href="javascript:void(0)">
+                                                       {{item.productName}}
+                                                   </a>
+                                               </div>
+                                            </td>
+                                            <td>${{item.price}}</td>
+                                            <td>
+                                                <fieldset class="qty-box">
+                                                    <div class="input-group">
+                                                        <button class="btn btn-primary btn-square bootstrap-touchspin-down" (click)="decrement(item.id)">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                        <input class="touchspin text-center form-control" type="text" [value]="item.counter">
+                                                        <button class="btn btn-primary btn-square bootstrap-touchspin-up" (click)="increment(item.id)">
+                                                            <i class="fa fa-plus"></i>
+                                                       </button>
+                                                    </div>
+                                                </fieldset>
+                                            </td>
+                                            <td>
+                                                <app-feathericon [icon]="'x-circle'"></app-feathericon>
+                                            </td>
+                                            <td>${{item.total}}</td>
+                                        </tr>
+                                }
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="input-group">
+                                                <input class="form-control me-2" type="text"placeholder="Enter coupan code">
+                                                <a class="btn btn-primary" href="javascript:void(0);">Apply</a>
+                                            </div>
+                                        </td>
+                                        <td class="total-amount">
+                                            <h3 class="m-0 text-end"><span class="f-w-600">Total Price :</span></h3>
+                                        </td>
+                                        <td><span>$6935.00 </span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-end" colspan="5">
+                                           <a class="btn btn-secondary cart-btn-transform"
+                                                [routerLink]="['/ecommerce/products']">Continue Shopping
+                                            </a>
+                                         </td>
+                                        <td>
+                                           <a class="btn btn-success cart-btn-transform"   [routerLink]="['/ecommerce/checkout']">
+                                               Check out
+                                           </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

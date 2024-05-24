@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Custom progress bars</h4>
+        <p class="f-m-light mt-1">Use the <code>.progress-bar-animated </code>and <code>.progress-bar-striped </code>to
+            animate the stripes right to left.</p>
+    </div>
+    <div class="card-body progress-showcase">
+        <div class="row">
+            <div class="col">
+                @for(customitem of customprogressData; track customitem){
+                  <h6 class="mb-2">{{customitem.text}}</h6>
+                <div class="progress mb-4">
+                    <div class="{{customitem.class}}" role="progressbar" [ngStyle]="{'width':customitem.value}"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> </div>
+                </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

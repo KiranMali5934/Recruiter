@@ -1,0 +1,418 @@
+<div class="d-flex" style="justify-content: end;margin-right:40px">
+    <div>
+        @for(iconTitle of allIcongrid; track iconTitle){
+        <a (click)="ListView()" class="d-flex"
+            style="justify-content: end;margin-right:30px; margin-bottom:10px ;cursor: pointer;">
+            <div>
+                @for( p of iconTitle.icons; track p){
+                <div>
+                    <div class="media">
+                        <app-feathericon [icon]="p"></app-feathericon>
+
+                    </div>
+                </div>
+                }
+            </div>
+        </a>
+        }
+    </div>
+    <div style="margin-right:4px">
+        @for(iconTitle of allIconData; track iconTitle){
+        <a (click)="CardViewList()" class="d-flex"
+            style="justify-content: end;margin-right:20px; margin-bottom:10px;cursor: pointer; ">
+            <div>
+                @for( p of iconTitle.icons; track p){
+                <div>
+                    <div class="media">
+                        <app-feathericon [icon]="p"></app-feathericon>
+
+                    </div>
+                </div>
+                }
+            </div>
+        </a>
+        }
+    </div>
+
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xxl-3 col-xl-4 box-col-12">
+            <div class="md-sidebar" (clickOutside)="closeFilter()">
+                <!-- <a class="btn btn-primary email-aside-toggle md-sidebar-toggle" (click)="openFilter()">Job filter</a> -->
+                <div class="md-sidebar-aside job-sidebar" [class.open]="Open">
+                    <div class="default-according style-1 faq-accordion job-accordion">
+
+                        <div class="accordion" id="accordionExample">
+                            <!-- <div class="job-filter mb-2">
+                                <div class="faq-form">
+                                    <button class="btn btn-primary text-center" type="button" (click)="getSearchedValue()">Find
+                                        Jobs</button>
+                                </div>
+                            </div> -->
+
+                                <div class="job-filter mb-2">
+                                    <div class="faq-form">
+                                        <input class="form-control" type="text" placeholder="Search.."
+                                            [(ngModel)]="SearchModel.searchChar" value="" #searchValue
+                                            (ngModelChange)="onInputChange(searchValue.value)"
+                                            (input)="onInputChange(searchValue.value)">
+                                        <app-feathericon [icon]="'search'" class="search-icon"></app-feathericon>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="collapse show" id="collapseOne" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                                    <div class="card-body filter-cards-view animate-chk">
+                                       
+                                    </div>
+                                </div> -->
+                          
+
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse1.toggle()" [attr.aria-expanded]="!isCollapsedLocation">
+                                            Location
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show " id="collapseTwo" #collapse1="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedLocation">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of this.Location; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.LocationId"
+                                                    type="checkbox" [id]="'location'+i"
+                                                    [(ngModel)]="selectedLocations[data.LocationId]"
+                                                    (change)="updateSelectedLocations()">
+                                                <label [for]="'location'+ i">{{ data.LocationName }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Primary Roll -->
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse2.toggle()" [attr.aria-expanded]="!isCollapsedRoll">Primary
+                                            Role</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseThree" #collapse2="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedRoll">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of PrimaryRoles; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.PrimaryRoleId"
+                                                    type="checkbox" [id]="'primaryRoll'+i"
+                                                    [(ngModel)]="selectedPrimaryRoles[data.PrimaryRoleId]"
+                                                    (change)="updateSelectedPrimaryRoles()">
+                                                <label [for]="'primaryRoll'+ i">{{ data.PrimaryRoleTitle }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse3.toggle()"
+                                            [attr.aria-expanded]="!isCollapsedSkill">Skills</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseFour" #collapse3="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedSkill">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of skillList; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.SkillId" type="checkbox"
+                                                    [id]="'skill'+i" [(ngModel)]="selectedSkills[data.SkillId]"
+                                                    (change)="updateSelectedSkills()">
+                                                <label [for]="'skill'+ i">{{ data.SkillName }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Seniority -->
+                            <div class="card">
+                                <div class="card-header" id="headingFive">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse4.toggle()"
+                                            [attr.aria-expanded]="!isCollapsedseniority">Seniority</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseFive" #collapse4="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedseniority">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of Experiences; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.ExperienceId"
+                                                    type="checkbox" [id]="'seniority'+i"
+                                                    [(ngModel)]="selectedSeniority[data.ExperienceId]"
+                                                    (change)="updateSelectedSeniority()">
+                                                <label [for]="'seniority'+ i">{{ data.ExperienceName }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Job Type -->
+                            <div class="card">
+                                <div class="card-header" id="headingSix">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse5.toggle()" [attr.aria-expanded]="!isCollapsedJob">Job
+                                            Type</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseSix" #collapse5="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedJob">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk" *ngFor="let data of JobType; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.JobTypeId"
+                                                    type="checkbox" [id]="'jobType'+i"
+                                                    [(ngModel)]="selectedJobTypes[data.JobTypeId]"
+                                                    (change)="updateSelectedJobTypes()">
+                                                <label [for]="'jobType'+ i">{{ data.JobType }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contract Type -->
+                            <div class="card">
+                                <div class="card-header" id="headingSeven">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse6.toggle()"
+                                            [attr.aria-expanded]="!isCollapsedContract">Contract Type</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseSeven" #collapse6="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedContract">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of ContractTypes; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.ContractTypeId"
+                                                    type="checkbox" [id]="'contractType'+i"
+                                                    [(ngModel)]="selectedContractTypes[data.ContractTypeId]"
+                                                    (change)="updateSelectedContractTypes()">
+                                                <label [for]="'contractType'+ i">{{ data.ContractTypeTitle }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Company Size -->
+                            <div class="card">
+                                <div class="card-header" id="headingEight">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse7.toggle()"
+                                            [attr.aria-expanded]="!isCollapsedCompany">Company Size</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseEight" #collapse7="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedCompany">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of CompanySize; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.CompanySizeId"
+                                                    type="checkbox" [id]="'companySize'+i"
+                                                    [(ngModel)]="selectedCompanySizes[data.CompanySizeId]"
+                                                    (change)="updateSelectedCompanySizes()">
+                                                <label [for]="'companySize'+ i">{{ data.CompanySizeType }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Duration -->
+                            <div class="card">
+                                <div class="card-header" id="headingNine">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse8.toggle()"
+                                            [attr.aria-expanded]="!isCollapsedDuration">Project Duration</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseNine" #collapse8="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedDuration">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of ProjectDurations; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.ProjectDurationId"
+                                                    type="checkbox" [id]="'projectDuration'+i"
+                                                    [(ngModel)]="selectedProjectDurations[data.ProjectDurationId]"
+                                                    (change)="updateSelectedProjectDurations()">
+                                                <label [for]="'projectDuration'+ i">{{ data.ProjectDurationType
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Posting Date -->
+                            <div class="card">
+                                <div class="card-header" id="headingTen">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-start collapsed" type="button"
+                                            (click)="collapse9.toggle()" [attr.aria-expanded]="!isCollapsedDate">Posting
+                                            Date</button>
+                                    </h2>
+                                </div>
+                                <div class="collapse show" id="collapseTen" #collapse9="ngbCollapse"
+                                    [(ngbCollapse)]="isCollapsedDate">
+                                    <div class="listoverflow4">
+                                        <div class="card-body animate-chk"
+                                            *ngFor="let data of PostingDateList; let i = index">
+                                            <div class="location-checkbox">
+                                                <input class="checkbox_animated" [value]="data.item_id" type="checkbox"
+                                                    [id]="'postingDate'+i"
+                                                    [(ngModel)]="selectedPostingDates[data.item_id]"
+                                                    (change)="updateSelectedPostingDates()">
+                                                <label [for]="'postingDate'+ i">{{ data.item_text }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <a [routerLink]="'/job/default'">
+            <svg class="stroke-icon">
+                <use href="assets/svg/icon-sprite.svg#stroke-widget"></use>
+            </svg>
+        </a> -->
+        <div class="col-xxl-9 col-xl-8 box-col-12" *ngIf="projectsJobsList.length == 0">
+
+            <div class="card jobsCard">
+                <div class="card-body">
+                    <h3 class="fw-bolder m-5">Job List Not Found...</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-9 col-xl-8 box-col-12 listoverflow" *ngIf="projectsJobsList.length > 0">
+            <!-- <a [routerLink]="'/dashboard/default'">
+                <svg class="stroke-icon">
+                    <use href="assets/svg/icon-sprite.svg#stroke-widget"></use>
+                </svg>
+            </a> -->
+            <div class="card" *ngFor="let jobs of projectsJobsList">
+                @if(jobs.ribbion === true){
+                <div class="ribbon ribbon-bookmark ribbon-vertical-left ribbon-secondary">
+                    <i class="icofont icofont-love"></i>
+                </div>
+                }
+                <div>
+                    <div class="card-body" (click)="GetProjectsJobsById(jobs.JobsId)" title="View Details" style="cursor: pointer;">
+                        <div class="d-flex">
+                            <img class="img-40 img-fluid m-r-20" src="assets/images/logo/faviconcc.png" alt="">
+                            <div>
+                                <h6>
+                                    <p>{{ jobs.JobTitle }}</p>
+                                    Project : {{ jobs.ProjectName }}
+                                </h6>
+                            </div>
+                            <!-- <div class="position-absolute" style="right:0; margin-right: 10px;">
+                                <h6>
+                                    <span class="btn btn-primary" style="margin-right:7px;cursor: pointer;"
+                                        (click)="ApplyJob(jobs.ProjectId,jobs.JobsId,jobs.UserId)">Apply
+                                    </span>
+                                    <span class="btn btn-info cursor-pointer"
+                                        (click)="GetProjectsJobsById(jobs.JobsId)"> View Details
+                                    </span>
+                                </h6>
+                            </div> -->
+                        </div>
+                        <br>
+
+                        <div class="table-responsive">
+                            <!--begin::Table-->
+                            <table class="table table-flush align-middle table-row-bordered table-row-solid">
+                                <!--begin::Thead-->
+                                <thead class="border-gray-200 fs-7 fw-bold bg-lighten">
+                                    <tr>
+                                        <th class="min-w-50px"> Role</th>
+                                        <th class="min-w-50px">Skill Set</th>
+                                        <th class="min-w-50px">Experience</th>
+                                        <th class="min-w-50px">Team Size</th>
+                                        <th class="min-w-50px">Rate </th>
+                                        <th class="min-w-50px">Total Rate</th>
+                                    </tr>
+                                </thead>
+                                <!--end::Thead-->
+                                <!--begin::Tbody-->
+                                <tbody class="fw-6 fw-bold text-gray-600">
+                                    <tr *ngFor="let clone of jobs.cloanings">
+                                        <td class="min-w-50px">{{ clone.PrimaryRoleTitle }}</td>
+                                        <td class="min-w-50px"> {{ clone.PrimarySkillName}}</td>
+                                        <td class="min-w-50px">{{ clone.ExperienceName }}</td>
+                                        <td class="min-w-50px">{{ clone.TeamSizeName }}</td>
+                                        <td class="min-w-50px"> {{ clone.Permanent_BaseSalary}}/Annual</td>
+                                        <td class="min-w-50px">{{ clone.Total_Rate }}/Annual</td>
+                                    </tr>
+                                </tbody>
+                                <!--end::Tbody-->
+                            </table>
+                            <!--end::Table-->
+                        </div>
+                        <br>
+
+                        <div class="d-flex">
+                            <p style="padding-right: 7px;"> Job Type : {{ jobs.JobType }} , </p>
+
+                            <p>Posted On : {{jobs.CreatedDate | date : "dd MMM, yyyy" }} </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- <div class="job-pagination">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-primary">
+                        <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+                    </ul>
+                </nav>
+            </div> -->
+        </div>
+    </div>
+</div>

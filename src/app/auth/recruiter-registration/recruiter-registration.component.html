@@ -1,0 +1,89 @@
+<div class="container-fluid p-0">
+  <div class="row m-0">
+    <div class="col-12 p-0">
+      <div class="login-card login-dark">
+        <div>
+          <div>
+            <a class="logo">
+              <img class="img-fluid for-dark" src="assets/images/logo/logo_Icon.png" alt="looginpage"
+                style="width: 200px;">
+              <img class="img-fluid for-light" src="assets/images/logo/logo_Icon.png" alt="looginpage"
+                style="width: 200px;">
+            </a>
+          </div>
+
+          <div class="login-main">
+            <form class="row g-3 needs-validation custom-input" #RegisterForm="ngForm"
+              (ngSubmit)="RegisterForm.form.valid && submit()" novalidate="" [ngClass]="{'was-validated': validate}">
+              <div class="col-12">
+                <label class="form-label" for="validationCustom01">First Name</label>
+                <input class="form-control" id="validationCustom01" type="text" [(ngModel)]="recruiterModel.FirstName"
+                  name="FirstName" placeholder="First Name" required="" #FirstName="ngModel" maxlength="30">
+                <div *ngIf="(FirstName.touched || RegisterForm.submitted) && FirstName.errors?.['required'] ">
+                  <div class="text-danger">First Name is required .</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="validationCustom01">Last Name</label>
+                <input class="form-control" id="validationCustom01" type="text" placeholder="Last Name" name="LastName"
+                  [(ngModel)]="recruiterModel.LastName" required="" #LastName="ngModel" maxlength="30">
+                <div *ngIf="(LastName.touched || RegisterForm.submitted) && LastName.errors?.['required'] ">
+                  <div class="text-danger">Last Name is required .</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="validationCustom01">Contact Number</label>
+                <input class="form-control" id="validationCustom01" type="tel" [(ngModel)]="recruiterModel.PhoneNumber"
+                  name="PhoneNumber" placeholder="Contact Number" maxlength="15" required="" #PhoneNumber="ngModel">
+                <div *ngIf="(PhoneNumber.touched || RegisterForm.submitted) && PhoneNumber.errors?.['required'] ">
+                  <div class="text-danger">Contact Number is required .</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="validationCustom01">Email Address</label>
+                <input class="form-control" id="validationCustom01" type="email" [(ngModel)]="recruiterModel.Email"
+                  name="Email" placeholder="Email Address" required="" #Email="ngModel"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <div *ngIf="(Email.touched || RegisterForm.submitted) && Email.errors?.['required'] ">
+                  <div class="text-danger">Email Address is required .</div>
+                </div>
+                <div *ngIf="(Email.touched || RegisterForm.submitted) && Email.errors?.['pattern'] ">
+                  <div class="text-danger">Email Address is invalid .</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="col-sm-12 col-form-label" for="inputPassword1">Password</label>
+                <input class="form-control" id="inputPassword1" placeholder=" Password"
+                  [(ngModel)]="recruiterModel.Password" name="Password" type="password" required="" #Password="ngModel"
+                  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" maxlength="20"
+                  [type]="show ? 'text' : 'password'">
+                @if(!show){
+                <div class="show-hide" style="cursor:pointer" (click)="showPassword()">Show</div>
+                }@else{
+                <div class="show-hide" style="cursor:pointer" (click)="showPassword()">Hide</div>
+                }
+                <div *ngIf="(Password.touched || RegisterForm.submitted) && Password.errors?.['required'] ">
+                  <div class="text-danger">Password is required .</div>
+                </div>
+                <div *ngIf="(Password.touched || RegisterForm.submitted) && Password.errors?.['pattern'] ">
+                  <div class="text-danger">Password must contain at least one lowercase letter, one uppercase letter,
+                    one digit, one special character, and be 8-20 characters long.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="col-sm-12  btn btn-primary" type="submit"
+                  [disabled]="RegisterForm.form.invalid">Submit</button>
+              </div>
+              <div class="col-12">
+                <p class="mt-4 mb-0 text-center">Already have account?
+                  <a class="ms-2" routerLink="/auth/login">Sign in here </a>
+                </p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

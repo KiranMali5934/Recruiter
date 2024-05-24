@@ -1,0 +1,67 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Add Task</h4>
+        <button class="btn-close" type="button" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form class="form-bookmark needs-validation" id="bookmark-form" novalidate="">
+            <div class="row">
+                <div class="mb-3 mt-0 col-md-12">
+                    <label for="task-title">Task Title</label>
+                    <input class="form-control" id="task-title" type="text" required="" autocomplete="off">
+                </div>
+                <div class="mb-3 mt-0 col-md-12">
+                    <label for="sub-task">Sub task</label>
+                    <input class="form-control" id="sub-task" type="text" required="" autocomplete="off">
+                </div>
+                <div class="mb-3 mt-0 col-md-12">
+                    <div class="d-flex date-details">
+                        <div class="d-inline-block">
+                            <label class="d-block mb-0" for="chk-ani">
+                                <input class="checkbox_animated" id="chk-ani" type="checkbox">Remind on
+                            </label>
+                        </div>
+                        <div class="d-inline-block">
+                            <input class="datepicker-here form-control" type="text" data-language="en"
+                                placeholder="Date">
+                        </div>
+                        <div class="d-inline-block">
+                            <select class="form-control">
+                                @for(time of time; track  time ){
+                                <option>{{ time }}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="d-inline-block">
+                            <label class="d-block mb-0" for="chk-ani1">
+                                <input class="checkbox_animated" id="chk-ani1" type="checkbox">Notification
+                            </label>
+                        </div>
+                        <div class="d-inline-block">
+                            <label class="d-block mb-0" for="chk-ani2">
+                                <input class="checkbox_animated" id="chk-ani2" type="checkbox">Mail
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 mt-0 col-md-6">
+                    <select class="form-control">
+                        <option value="task">My Task</option>
+                    </select>
+                </div>
+                <div class="mb-3 mt-0 col-md-6">
+                    <select class="form-control" id="bm-collection">
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-md-12 my-0">
+                    <textarea class="form-control" required="" autocomplete="off">  </textarea>
+                </div>
+            </div>
+            <input id="index_var" type="hidden" value="6">
+            <button class="btn btn-secondary" id="Bookmark" type="submit"
+                style="margin-right: 4px;">Save</button>
+            <button class="btn btn-primary" type="button"  (click)="activeModal.dismiss()">Cancel</button>
+        </form>
+    </div>
+</div>

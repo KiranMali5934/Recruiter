@@ -1,0 +1,543 @@
+<div class="container-fluid">
+  <div class="edit-profile">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">My Profile</h4>
+            <div class="card-options">
+              <a class="card-options-collapse" href="javascript:void(0)">
+                <i class="fe fe-chevron-up"></i>
+              </a>
+              <a class="card-options-remove" href="javascript:void(0)">
+                <i class="fe fe-x"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+
+            <div class="row mb-2">
+              <div class="profile-title">
+                <div class="media">
+                  <img *ngIf=" recruiterModel?.ProfilePicPath !== null && recruiterModel?.ProfilePicPath !== undefined "
+                    [src]="DisplayImage_ProfilePicPath" class="image-input-wrapper w-100px h-100px">
+                  <img *ngIf="recruiterModel?.ProfilePicPath == null || recruiterModel?.ProfilePicPath == undefined "
+                    src="assets/images/dashboard-3/bg-3.png" class="image-input-wrapper w-100px h-100px" alt="">
+                  <!-- <img *ngIf="this.recruiterModel?._TalentProfilePicPath" [src]="DisplayImage_ProfilePicPath"
+                                alt="Profile Picture" />
+
+                            <img *ngIf="!this.recruiterModel?._TalentProfilePicPath"
+                                src="assets/media/svg/avatars/blank.svg" alt="Default Profile Picture" /> -->
+
+                  <!-- <img class="img-70 rounded-circle" alt="" src="assets/images/user/7.jpg"> -->
+                  <div class="media-body">
+                    <h5 class="mb-1">{{this.recruiterModel.FirstName+"
+                      " + this.recruiterModel.LastName }}</h5>
+                    <p>{{this._credentials?.UserTypeCode}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <label class="col-lg-6 col-form-label required fw-bold fs-6">Personal Details</label>
+            <!-- <a class="nav-link text-active-primary ms-0 me-10 py-5 cursor-pointer"
+                        href="javascript:void(0)"
+                        (click)="TabName = 'Settings'">BankDetails</a> -->
+            <div class="mb-3">
+              <label class="form-label">Contact : </label>
+              {{this.recruiterModel.PhoneNumber}}
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email-Address : </label>
+              {{this.recruiterModel.Email }}
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Gender : </label>
+              {{ this.recruiterModel.Gender ? 'Female' : 'Male' }}
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Date of Birth : </label>
+              {{this.recruiterModel.DateOfBirth |date: 'dd/MM/yyyy' }}
+            </div>
+            <!-- <div class="mb-3">
+                            <label class="form-label">Years Of Experience  :  </label>
+                            {{this.recruiterModel.ExperienceName}} Years
+                        </div> -->
+            <!-- <div class="mb-3">
+                            <label class="form-label">Number of Project Completed  :  </label>
+                            {{this.recruiterModel.ProjectCompleted}}
+                        </div> -->
+            <div class="mb-3">
+              <label class="form-label">Address : </label>
+              {{
+              this.recruiterModel.Address1 + ", "+
+              this.recruiterModel.Address2 + ", "+
+              this.recruiterModel.CityName + ", "+
+              this.recruiterModel.StateName + ", "+
+              this.recruiterModel.CountryName + ", "+
+              this.recruiterModel.PostalCode
+              }}
+            </div>
+            <!-- <div class="mb-3">
+                          <label class="form-label">Github</label>
+                          {{recruiterModel.GithubURL ?recruiterModel.GithubURL  :'' }}     
+                         </div>
+                        <div class="mb-3">
+                          <label class="form-label">LinkedIn</label>
+                          {{recruiterModel.LinkedInURL}}</div> -->
+            <div *ngIf="this.recruiterModel.IFSCCode !== null">
+              <label class="col-lg-4 col-form-label required fw-bold fs-6">Bank Details</label>
+
+              <div class="mb-3">
+                <label class="form-label">Account Number</label>
+                {{recruiterModel.AccountNumber}}
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">IFSC Code </label>
+                {{recruiterModel.IFSCCode}}
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Account Type</label>
+                {{recruiterModel.AccountType === 0 ? ' ' : recruiterModel.AccountType }}
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Payment Option </label>
+                {{ recruiterModel.PaymentOption === 0 ? ' ' : recruiterModel.PaymentOption }}
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Beneficiary Name </label>
+                {{recruiterModel.BeneficiaryName}}
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Branch Name </label>
+                {{recruiterModel.BranchName}}
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Swift Code</label>
+                {{recruiterModel.Swiftcode}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-8">
+        <form class="card" #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && submit(registerForm.form)"
+          novalidate="novalidate">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Edit Profile</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="d-flex">
+                <label class="d-flex" style="margin-left: 66px;margin-bottom:0px !important"
+                  data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change image">
+                  <i class="fas fa-edit"></i>
+                  <!--begin::Inputs-->
+                  <input type="file" name="partner" accept=".png, .jpg, .jpeg" (change)="onSelectProfilePicFile($event)"
+                    hidden />
+                </label>
+                <label class="d-flex" style="margin-left: 0px;margin-bottom:0px !important"
+                  data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change image">
+                  <span class=" w-15px h-25px" data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                    title="Remove image" (click)="onRemoveProfilePic()">
+                    <i class="fas fa-times fs-6 mx-1"></i>
+                  </span>
+                </label>
+              </div>
+              <div data-kt-image-input="true">
+                <img *ngIf=" recruiterModel?.ProfilePicPath !== null && recruiterModel?.ProfilePicPath !== undefined "
+                  [src]="DisplayImage_ProfilePicPath" class="image-input-wrapper w-100px h-100px">
+                <img *ngIf="recruiterModel?.ProfilePicPath == null || recruiterModel?.ProfilePicPath == undefined "
+                  src="assets/images/dashboard-3/bg-3.png" class="image-input-wrapper w-100px h-100px" alt="">
+              </div>
+
+              <div class="mt-4 row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control form-control-solid" name="FirstName" value=""
+                      [(ngModel)]="recruiterModel.FirstName" placeholder="First Name" #FirstName="ngModel" required
+                      maxlength="15" pattern="^[a-zA-Z]+$" />
+                    <div class=""
+                      *ngIf="(FirstName.touched || registerForm.submitted) && FirstName.errors?.['required'] ">
+                      <small class="text-error">First Name is required .</small>
+                    </div>
+                    <div *ngIf="(FirstName.touched || registerForm.submitted) && (FirstName.errors?.['maxlength']) ">
+                      <small class="text-error" *ngIf="FirstName.errors?.['maxlength']">Maximum 15 characters allowed
+                        for
+                        First Name.</small>
+                    </div>
+                    <div *ngIf="(FirstName.touched || registerForm.submitted) &&  (FirstName.errors?.['pattern'])">
+                      <small class="text-error" *ngIf="FirstName.errors?.['pattern']">Only letters are allowed for First
+                        Name.</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control form-control-solid" name="LastName" value=""
+                      [(ngModel)]="recruiterModel.LastName" placeholder="Last Name" #LastName="ngModel" required
+                      maxlength="15" pattern="^[a-zA-Z]+$" />
+                    <div
+                      *ngIf="(LastName.touched || registerForm.submitted) && (LastName.errors?.['required'] || LastName.errors?.['maxlength'] || LastName.errors?.['pattern'])">
+                      <small class="text-error">Last Name is required .</small>
+                    </div>
+                    <div
+                      *ngIf="(LastName.touched || registerForm.submitted) && (LastName.errors?.['required'] || LastName.errors?.['maxlength'] || LastName.errors?.['pattern'])">
+                      <small class="text-error" *ngIf="LastName.errors?.['maxlength']">Maximum 15 characters allowed for
+                        Last Name</small>
+                    </div>
+                    <div
+                      *ngIf="(LastName.touched || registerForm.submitted) && (LastName.errors?.['required'] || LastName.errors?.['maxlength'] || LastName.errors?.['pattern'])">
+                      <small class="text-error" *ngIf="LastName.errors?.['pattern']">Only letters are allowed for Last
+                        Name</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Phone Number </label>
+                    <input type="text" class="form-control form-control-solid" name="phone" placeholder="Phone Number"
+                      value="" [(ngModel)]="recruiterModel.PhoneNumber" #PhoneNumber="ngModel" pattern="^[0-9]{10}$"
+                      maxlength="10" required />
+                    <div class=""
+                      *ngIf="(PhoneNumber.touched || registerForm.submitted) && PhoneNumber.errors?.['required']">
+                      <small class="text-error">Phone Number is required .</small>
+                    </div>
+                    <div class=""
+                      *ngIf="(PhoneNumber.touched || registerForm.submitted) && PhoneNumber.errors?.['pattern']">
+                      <small class="text-error">Please enter a 10-digit phone number .</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Email </label>
+                    <input type="email" class="form-control form-control-solid" name="Email" value=""
+                      [(ngModel)]="recruiterModel.Email" #Contact="ngModel" disabled />
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" [max]="maxDate" class="form-control form-control-solid" id="DateOfBirth"
+                      name="DateOfBirth" [ngModel]="recruiterModel.DateOfBirth | date:'yyyy-MM-dd'"
+                      (ngModelChange)="recruiterModel.DateOfBirth = $event"
+                      [value]="recruiterModel.DateOfBirth | date:'yyyy-MM-dd'" #DateOfBirth="ngModel" required>
+                    <div class=""
+                      *ngIf="(DateOfBirth.touched || registerForm.submitted) && DateOfBirth.errors?.['required']">
+                      <small class="text-error">Birthdate is required .</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <div class="custom-control custom-radio">
+                      <input id="Gender" type="radio" class="custom-control-input" #Gender="ngModel" checked
+                        [value]="false" name="gender" ngModel required [(ngModel)]="recruiterModel.Gender"
+                        style="padding-right: 5px;">
+                      <label class="col col-form-label fw-normal fs-7" style="padding-right: 7px;"
+                        for="Gender">Male</label>
+                      <input id="Gender" type="radio" class="custom-control-input" #Gender="ngModel" [value]="true"
+                        name="gender" ngModel required [(ngModel)]="recruiterModel.Gender">
+                      <label class="col col-form-label fw-normal fs-7" for="Gender">Female</label>
+                      <div class="invalid-feedback" *ngIf=" Gender.touched && registerForm.invalid">
+                        <p>Please select either value .</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Country</label>
+                    <select data-control="select2" data-hide-search="true" data-placeholder="Select..."
+                      name="CountryName" [(ngModel)]=" this.recruiterModel.CountryId" required
+                      (ngModelChange)="onChanageCountry($event)" class="form-select form-select-solid">
+                      <option value="0" disabled>Select Country</option>
+                      <option [value]="item.CountryId" *ngFor="let item of countryList">
+                        {{ item.CountryName }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">State</label>
+                    <select data-control="select2" data-hide-search="true" data-placeholder="Select..." name="StateName"
+                      [(ngModel)]=" this.recruiterModel.StateId" required (ngModelChange)="onChnageState($event)"
+                      class="form-select form-select-solid">
+                      <option value="0" disabled>Select State</option>
+                      <option [value]="year.StateId" *ngFor="let year of stateList">
+                        {{ year.StateName }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">City</label>
+                    <select data-control="select2" data-hide-search="true" data-placeholder="Select..." name="CityName"
+                      [(ngModel)]="this.recruiterModel.CityId" required class="form-select form-select-solid">
+                      <option value="0" disabled>Select City</option>
+                      <option [value]="year.CityId" *ngFor="let year of cityList">
+                        {{ year.CityName }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">Address 1 </label>
+                    <input type="text" class="form-control form-control-solid" name="Address1"
+                      [(ngModel)]="this.recruiterModel.Address1" #Address1="ngModel" required />
+                    <div class="" *ngIf="(Address1.touched || registerForm.submitted) && Address1.errors?.['required']">
+                      <small class="text-error">Address 1 is required .</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">Address 2</label>
+                    <input type="text" name="Address2" class="form-control form-control-solid"
+                      placeholder="Enter your address line 2" value="" [(ngModel)]="this.recruiterModel.Address2"
+                      #Address2="ngModel">
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-6">
+                            <div class="mb-3">
+                              <label class="form-label"> Years Of Experience
+                            </label>
+                                <select data-control="select2" data-hide-search="true"
+                                            data-placeholder="Select..." name="TotalExperienceYear"
+                                            [(ngModel)]="this.recruiterModel.ExperienceId"
+                                            #TotalExperienceYear="ngModel" required
+                                            class="form-select form-select-solid" required>
+                                            <option value="0" disabled>Select Year</option>
+                                            <option [value]="year.ExperienceId" *ngFor="let year of totalExperienceYearList">
+                                                {{ year.ExperienceName }}
+                                            </option>
+                                        </select>
+
+                                        <div class=""
+                                            *ngIf="(TotalExperienceYear.touched || registerForm.submitted) && TotalExperienceYear.errors?.['required']">
+                                            <small class="text-error">Year is required .</small>
+                           </div>
+                            </div>
+                          </div> -->
+              <!-- <div class="col-6">
+                            <div class="mb-3">
+                              <label class="form-label"> Month </label>
+                          <select data-control="select2" data-hide-search="true"
+                          data-placeholder="Select..." name="TotalExperienceMonth"
+                          [(ngModel)]="this.recruiterModel.TotalExperienceMonth"
+                          #TotalExperienceMonth="ngModel" 
+                          class="form-select form-select-solid" >
+                          <option value="0" disabled>Select Year</option>
+                          <option [value]="year.item_id" *ngFor="let year of totalExperienceYearList">
+                              {{ year.item_text }}
+                          </option>
+                      </select>
+                      </div>
+                      </div> -->
+
+            </div>
+          </div>
+
+          <div class="card-footer text-end">
+            <button class="btn btn-light" style="margin-right: 10px;">Cancel</button>
+
+            <button class="btn btn-primary" type="submit" (click)="submit(registerForm.form)"
+              [disabled]="registerForm.form.invalid">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12">
+        <form #bankForm="ngForm" (ngSubmit)="bankForm.form.valid && Banksubmit(bankForm.form)" novalidate class="card">
+          <!--begin::Card body-->
+          <div class="card-body border-top p-9">
+
+            <div class="card-header">
+              <div>
+                <h4 class="card-title mb-0">Bank Details</h4>
+              </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
+
+              <div class="col-lg-4">
+                <label class="form-label  mt-3">
+                  <span class="required">Bank Name</span>
+                </label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input type="text" class="form-control form-control-solid" name="BankName" placeholder="Bank Name"
+                  value="" [(ngModel)]="recruiterModel.BankName" #BankName="ngModel" required maxlength="25" />
+                <div class=""
+                  *ngIf="(BankName.touched || bankForm.submitted) && BankName.errors?.['required']  || (BankName.errors?.['maxlength'])">
+                  <small class="text-error">Bank Name is required</small>
+                  <small class="text-error" *ngIf="BankName.errors?.['maxlength']">Maximum
+                    25 characters allowed for Bank Name</small>
+                </div>
+
+              </div>
+
+              <div class="col-lg-4">
+                <div class="mb-10">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span class="required">Branch Name</span>
+                  </label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input type="text" class="form-control form-control-solid" name="BranchName" placeholder="Branch Name"
+                    value="" [(ngModel)]="recruiterModel.BranchName" #BranchName="ngModel" required maxlength="25" />
+                  <div class=""
+                    *ngIf="(BranchName.touched || bankForm.submitted) && BranchName.errors?.['required']  || (BranchName.errors?.['maxlength']) ">
+                    <small class="text-error">Branch Name is required</small>
+                    <small class="text-error" *ngIf="BranchName.errors?.['maxlength']">Maximum
+                      25 characters allowed for Branch Name</small>
+                    <small class="text-error" *ngIf="BranchName.errors?.['pattern']">Only
+                      letters are allowed for Branch Name</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="mb-10">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span>Beneficiary Name</span>
+                  </label>
+                  <input type="text" class="form-control form-control-solid" name="BeneficiaryName"
+                    placeholder="Beneficiary Name" value="" [(ngModel)]="recruiterModel.BeneficiaryName"
+                    #BeneficiaryName="ngModel" required />
+                  <!--end::Input-->
+                  <div class=""
+                    *ngIf="(BeneficiaryName.touched || bankForm.submitted) && BeneficiaryName.errors?.['required']">
+                    <small class="text-error">Beneficiary Name is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="fv-row mb-7 fv-plugins-icon-container">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span class="required">Account Number</span>
+                  </label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input type="number" class="form-control form-control-solid" name="A/C_No"
+                    placeholder="Account Number" value="" [(ngModel)]="recruiterModel.AccountNumber"
+                    #AccountNumber="ngModel" required maxlength="25" pattern="^[0-9]*$" />
+                  <!--end::Input-->
+                  <div class=""
+                    *ngIf="(AccountNumber.touched || bankForm.submitted) && AccountNumber.errors?.['required']  || (AccountNumber.errors?.['maxlength']) || (AccountNumber.errors?.['pattern'])">
+                    <small class="text-error">Account Number is required</small>
+                    <small class="text-error" *ngIf="AccountNumber.errors?.['maxlength']">Maximum
+                      25 characters allowed for Account Number</small>
+                    <small class="text-error" *ngIf="AccountNumber.errors?.['pattern']">Only
+                      numbers are allowed for Account Number </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="fv-row mb-7 fv-plugins-icon-container">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span class="required">IFSC Code</span>
+                  </label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <input type="text" class="form-control form-control-solid" name="IFSCCode" placeholder="IFSC Code"
+                    value="" [(ngModel)]="recruiterModel.IFSCCode" #IFSCCode="ngModel" required />
+                  <!--end::Input-->
+                  <div class="" *ngIf="(IFSCCode.touched || bankForm.submitted) && IFSCCode.errors?.['required']">
+                    <small class="text-error">IFSC Code is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="mb-10">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span>SWIFT Code</span>
+                  </label>
+                  <input type="text" class="form-control form-control-solid" name="SWIFTCode" placeholder="SWIFT Code"
+                    value="" [(ngModel)]="recruiterModel.Swiftcode" #SWIFTCode="ngModel" />
+                  <!--end::Input-->
+                  <div class="" *ngIf="(SWIFTCode.touched || bankForm.submitted) && SWIFTCode.errors?.['required']">
+                    <small class="text-error">SWIFT Code is required</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="mb-10">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span>Account Type</span>
+                  </label>
+                  <select data-control="select2" data-hide-search="true" data-placeholder="Select..." name="AccountType"
+                    [(ngModel)]="this.recruiterModel.AccountType" #AccountType="ngModel" required
+                    class="form-select form-select-solid">
+                    <option value="0" disabled selected>Select Account Type</option>
+                    <option [value]="account.item_text" *ngFor="let account of accountTypeList">
+                      {{ account.item_text }}
+                    </option>
+                  </select>
+                  <div *ngIf="(AccountType.touched || bankForm.submitted) && AccountType.errors?.['required']">
+                    <small class="text-error">Account Type is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="mb-10">
+                  <!--begin::Label-->
+                  <label class="form-label  mt-3">
+                    <span>Payment Option</span>
+                  </label>
+                  <select data-control="select2" data-hide-search="true" data-placeholder="Select..."
+                    name="PaymentOption" [(ngModel)]="this.recruiterModel.PaymentOption" #PaymentOption="ngModel"
+                    required class="form-select form-select-solid">
+                    <option value="0" disabled [selected]>Select Payment Option</option>
+                    <option [value]="payment.item_text" *ngFor="let payment of paymentOptionList">
+                      {{ payment.item_text }}
+                    </option>
+                  </select>
+                  <div *ngIf="(PaymentOption.touched || bankForm.submitted) && PaymentOption.errors?.['required']">
+                    <small class="text-error">Payment Option is required</small>
+                  </div>
+                  <!--end::Select-->
+                </div>
+              </div>
+            </div>
+            <!--end::Card header-->
+          </div>
+
+          <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <button class="btn btn-light" style="margin-right: 10px;" type="cancel"
+              routerLink="/dashboard/partner">Calcel</button>
+            <button type="button" class="btn btn-primary" id="kt_account_profile_details_submit"
+              (click)="Banksubmit(bankForm.form)" [disabled]="bankForm.invalid">
+              Update Bank Details
+            </button>
+          </div>
+          <!--end::Actions-->
+        </form>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+<div>
+
+</div>

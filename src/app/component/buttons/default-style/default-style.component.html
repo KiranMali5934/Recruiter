@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @for(defaultitem of defaultstyleData; track defaultitem){
+            <div class="card" id="default">
+                <div class="card-header">
+                    <h4>{{defaultitem.headtitle}}</h4>
+                    <span [innerHtml]="defaultitem.title"></span>
+                </div>
+                <div class="card-body common-flex">
+                    @for( defaultstyleitem of defaultitem.items; track defaultstyleitem){
+                    <button class="{{defaultstyleitem.class}}" type="button" placement="top"
+                        ngbTooltip="{{defaultstyleitem.class}}">{{defaultstyleitem.text}}</button>
+                    }
+                 </div>
+             </div>
+            }
+            <div class="card" id="custom-state-button">
+                <div class="card-header">
+                    <h4>Custom state buttons</h4>
+                    <span>The <code>.btn</code> class used with <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and
+                        <code>&lt;input&gt;</code> elements.</span>
+                </div>
+                <div class="card-body common-flex">
+                    <a class="btn btn-primary" href="javascript:void(0)" ngbTooltip=" btn btn-primary" role="button" placement="top">Link</a>
+                    <input class=" btn btn-secondary" type="button" value="Input" ngbTooltip="btn btn-secondary" placement="top">
+                    <input class="btn btn-success" type="submit" value="Submit" ngbTooltip="btn btn-success" placement="top">
+                    <button class="btn btn-info" type="submit" data-toggle="tooltip" ngbTooltip="btn btn-info" placement="top">Button</button>
+                </div>
+            </div>
+            @for(Styleitem of StylebuttonData; track Styleitem){
+                <div class="card" id="default">
+                    <div class="card-header">
+                        <h4>{{Styleitem.headtitle}}</h4>
+                        <span [innerHtml]="Styleitem.title"></span>
+                    </div>
+                    <div class="card-body common-flex">
+                        @for(buttonstyleitem of Styleitem.items; track buttonstyleitem ){
+                            <button class="{{buttonstyleitem.class}}" type="button" placement="top"
+                                ngbTooltip="{{buttonstyleitem.class}}">{{buttonstyleitem.text}}
+                            </button>
+                          }
+                    </div>
+                </div>
+              }
+        </div>
+    </div>
+</div>

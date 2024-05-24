@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Variation checkbox </h4>
+        <p class="f-m-light mt-1">
+            We can create any creative design by using <code>(type='checkbox')</code>attribute.</p>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-xl-4 col-md-5">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <h6 class="sub-title">Which of the following activities do you enjoy doing in your free time?
+                    </h6>
+                    @for(checkitem of checkboxData; track checkitem){
+                    <div class="payment-wrapper">
+                        <div class="payment-first">
+                            <div class="form-check checkbox checkbox-{{checkitem.class}}">
+                                <input class="form-check-input" id="{{checkitem.id}}" type="checkbox"
+                                    [(ngModel)]="checkitem.check">
+                                <label class="form-check-label mb-0" for="{{checkitem.id}}">{{checkitem.lable}}</label>
+                            </div>
+                        </div>
+                    </div>
+                 }
+                </div>
+            </div>
+            <div class="col-xl-8 col-md-7">
+                <div class="card-wrapper border rounded-3 h-100 checkbox-checked">
+                    <section class="main-upgrade">
+                        <div> <i class="fa fa-rocket"></i>
+                            <h5 class="mb-2">It&apos;s time to <span class="txt-primary">upgrade</span></h5>
+                            <p class="text-muted mb-2">Select the theme that best suits your requirements, and
+                                you're ready to go!
+                            </p>
+                        </div>
+                        <div class="variation-box">
+                            @for(themesales of themeData; track themesales){
+                            <div class="selection-box">
+                                <input id="feature1" type="checkbox" [(ngModel)]="themesales.check">
+                                <div class="custom--mega-checkbox">
+                                    <ul class="d-flex flex-column">
+                                        <li>{{themesales.list}}</li>
+                                        <li class="txt-primary">{{themesales.sales}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

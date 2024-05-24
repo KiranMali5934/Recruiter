@@ -1,0 +1,88 @@
+<div class="card recent-order">
+  <div class="card-header card-no-border total-revenue">
+    <h4 class="m-0">All Project Table</h4>
+    <div class="header-top"></div><a [routerLink]="['/ecommerce/products']">View All </a>
+  </div>
+  <div class="card-body pt-0">
+    <div class="project-table table-responsive custom-scrollbar">
+      <table class="order-table project-table w-100">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Client Name</th>
+            <th>End Date</th>
+            <th>Assigned to</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(data of projecData; track data){
+          <tr>
+            <td>
+              <div class="project-comment  d-flex gap-2">
+                <div class="radial-chart-wrap">
+                  <div class="widgetsChart" id="widgetsChart1">
+                    <app-common-widget-chart [data]="data.option"></app-common-widget-chart>
+                  </div>
+                </div>
+                <div> <a class="f-w-500 f-14 " [routerLink]="['/ecommerce/products']">{{ data.name}}</a>
+                  <div class="project-comment-icon">
+                    <div class="project-link">
+                      <svg>
+                        <use href="assets/svg/icon-sprite.svg#messages-2"></use>
+                      </svg><span class="f-w-500 f-light f-12">20</span>
+                    </div>
+                    <div class="project-link">
+                      <svg>
+                        <use href="assets/svg/icon-sprite.svg#paperclip"></use>
+                      </svg><span class="f-w-500 f-light f-12">7</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="product-sub">
+                <a class="f-w-500 f-14 " [routerLink]="['/ecommerce/products']">{{ data.clientName}}</a><span class="f-w-500 f-light f-12 d-block">{{ data.clientId}}</span>
+              </div>
+            </td>
+            <td>
+              <div class="product-sub">
+                <a class="f-w-500 f-14 " [routerLink]="['/ecommerce/products']">{{ data.endDate }}</a><span class="f-w-500 f-light f-12 d-block">{{ data.time}}</span>
+              </div>
+            </td>
+            <td>
+              <div class="product-sub">
+                <a class="f-w-500 f-14 " [routerLink]="['/ecommerce/products']">{{ data.assignedto }}</a><span class="f-w-500 f-light f-12 d-block">{{ data.member}}</span>
+               </div>
+            </td>
+            <td>
+              <div class="txt-{{data.class}} d-flex gap-2 align-items-center justify-content-center">
+                <span class="pending bg-{{data.class}}"></span>
+                <span class="f-w-500 f-13 txt-{{data.class}}">{{ data.status }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="product-sub">
+                <div class="dropdown">
+                  <div id="dropdownMenuButtonicon6" data-bs-toggle="dropdown" aria-expanded="false" role="menu">
+                    <svg class="invoice-icon" (click)="openMenu(data.id)">
+                      <use href="assets/svg/icon-sprite.svg#more-horizontal"></use>
+                    </svg>
+                  </div>
+                  <div class="dropdown-menu dropdown-menu-end" [class.show]="openid == data.id">
+                    <span class="dropdown-item">Last Month</span>
+                    <span class="dropdown-item">Last Week</span>
+                    <span class="dropdown-item">Last Day </span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

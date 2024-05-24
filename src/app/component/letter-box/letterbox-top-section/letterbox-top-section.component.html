@@ -1,0 +1,50 @@
+<div class="mail-header-wrapper" (clickOutside)="clickOutside()">
+  <div class="mail-header">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input checkbox-primary" id="emailCheckboxA" type="checkbox" value="option1">
+      <label class="form-check-label" for="emailCheckboxA"></label>
+      <ul class="email-tabs nav" role="tablist" [(activeId)]="active" ngbNav>
+        <li class="nav-item" [ngbNavItem]="1">
+          <a class="nav-link" ngbNavLink>
+            <svg class="stroke-icon">
+              <use href="assets/svg/icon-sprite.svg#mail"></use>
+            </svg><span>Important </span>
+          </a>
+        </li>
+        <li class="nav-item" [ngbNavItem]="2">
+          <a class="nav-link" ngbNavLink>
+            <svg class="stroke-icon">
+              <use href="assets/svg/icon-sprite.svg#goal"></use>
+            </svg><span>Social</span>
+          </a>
+        </li>
+        <li class="nav-item" [ngbNavItem]="3">
+          <a class="nav-link" ngbNavLink>
+            <svg class="stroke-icon">
+              <use href="assets/svg/icon-sprite.svg#tread"></use>
+            </svg>
+            <span>Promotion</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mail-body">
+    <div class="mail-search d-flex-align-items-center">
+      <input class="form-control" type="text" placeholder="Search..."><i class="fa fa-search"></i>
+    </div>
+    <div class="light-square"><i class="fa fa-refresh"></i></div>
+    <div class="light-square"> <i class="fa fa-trash"></i></div>
+    <div class="light-square dropdown-toggle" (click)="openMenu()">
+      <i class="fa fa-ellipsis-v"></i>
+      <ul class="dropdown-menu dropdown-block dropdown-menu-end" [class.show]="isOpen">
+        <li> <a class="dropdown-item" href="javascript:void(0);">All</a></li>
+        <li> <a class="dropdown-item" href="javascript:void(0);">None</a></li>
+        <li> <a class="dropdown-item" href="javascript:void(0);">Read</a></li>
+        <li> <a class="dropdown-item" href="javascript:void(0);">Unread</a></li>
+        <li> <a class="dropdown-item" href="javascript:void(0);">Starred</a></li>
+        <li> <a class="dropdown-item" href="javascript:void(0);">Unstarred</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

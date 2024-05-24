@@ -1,0 +1,82 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Justify Tabs</h4>
+        <p class="mt-1 f-m-light">Use the <code>.nav-link</code> with <code>.active </code>class and set content using
+            flex property.
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2 pb-2 p-0">
+            <p> <em class="txt-danger">Riho Profiles For New Employees:</em></p>
+            <ul class="nav nav-pills nav-warning" id="j-pills-tab" role="tablist" ngbNav #nav="ngbNav"
+                [(activeId)]="active">
+                <li class="nav-item" [ngbNavItem]="1">
+                    <a class="nav-link" id="j-pills-web-designer-tab" ngbNavLink> Web designer</a>
+                    <ng-template ngbNavContent>
+                        <div class="tab-pane fade show" id="j-pills-web-designer" role="tabpanel"
+                            aria-labelledby="j-pills-web-designer-tab">
+                            <div class="designer-details">
+                                @for(designerdetails of webdesignerData; track designerdetails){
+                                <div class="designer-profile">
+                                    <div class="designer-wrap"><img class="designer-img" src="{{designerdetails.img}}"
+                                            alt="profile">
+                                        <div class="designer-content">
+                                            <h6>{{designerdetails.name}}</h6>
+                                            <p>{{designerdetails.contact}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" [ngbNavItem]="2"><a class="nav-link" id="j-pills-UX-designer-tab" ngbNavLink>UX
+                        designer</a>
+                    <ng-template ngbNavContent>
+                        <div class="tab-pane fade show" id="j-pills-UX-designer">
+                            <div class="designer-details">
+                                @for(Uxdesignerdetails of UXdesignerData; track Uxdesignerdetails){
+                                <div class="designer-profile">
+                                    <div class="designer-wrap"><img class="designer-img" src="{{Uxdesignerdetails.img}}"
+                                            alt="profile">
+                                        <div class="designer-content">
+                                            <h6>{{Uxdesignerdetails.name}}</h6>
+                                            <p>{{Uxdesignerdetails.contact}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" [ngbNavItem]="3"><a class="nav-link" id="j-pills-IOT-developer-tab" ngbNavLink>IOT
+                        developer</a>
+                    <ng-template ngbNavContent>
+                        <div class="tab-pane fade show" id="j-pills-IOT-developer">
+                            <div class="designer-details">
+                                @for(IOTdetails of iotDeveloperData; track IOTdetails){
+                                <div class="designer-profile">
+                                    <div class="designer-wrap"><img class="designer-img" src="{{IOTdetails.img}}"
+                                            alt="profile">
+                                        <div class="designer-content">
+                                            <h6>{{IOTdetails.name}}</h6>
+                                            <p>{{IOTdetails.contact}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body px-0 pb-0">
+            <div class="tab-content" id="j-pills-tabContent">
+                <div [ngbNavOutlet]="nav" class="ms-2"></div>
+            </div>
+        </div>
+    </div>
+</div>

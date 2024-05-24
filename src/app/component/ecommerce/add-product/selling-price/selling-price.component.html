@@ -1,0 +1,100 @@
+<form class="price-wrapper" novalidate [formGroup]="myForm" (ngSubmit)="next(myForm)">
+    <div class="row g-3 custom-input">
+        <div class="col-sm-6">
+            <label class="form-label" for="initialCost">Initial cost <span class="txt-danger">*</span></label>
+            <input class="form-control" id="initialCost" formControlName="initalcost" type="number"  [ngClass]="{ 'is-invalid' : (initalcost?.touched || validate) && initalcost?.errors, 'is-valid' : !initalcost?.errors}">
+            @if(!initalcost?.errors){
+                <div class="valid-feedback" >Looks good!</div>
+              }
+              @else{
+                 <div class="invalid-feedback">A Initial cost is required and recommended to be unique.</div>
+              }
+        </div>
+        <div class="col-sm-6">
+            <label class="form-label" for="sellingPrice">Selling price <span class="txt-danger">*</span></label>
+            <input class="form-control" id="sellingPrice" type="number" formControlName="sellingPrice"  [ngClass]="{ 'is-invalid' : (sellingPrice?.touched || validate) && sellingPrice?.errors, 'is-valid' : !sellingPrice?.errors}">
+            @if(!sellingPrice?.errors){
+                <div class="valid-feedback" >Looks good!</div>
+              }
+              @else{
+                 <div class="invalid-feedback">A sellingPrice is required and recommended to be unique.</div>
+              }
+        </div>
+        <div class="col-sm-6">
+            <label class="form-label">Choose your currency</label>
+            <select class="form-select" formControlName="currency" [ngClass]="{ 'is-invalid' : (currency?.touched || validate) && currency?.errors, 'is-valid' : !currency?.errors}" >
+                <option selected="">Dollar $</option>
+                <option value="1">Euro €</option>
+                <option value="2">Rupees ₹</option>
+                <option value="3">British pounds £</option>
+                <option value="4">Russian Ruble ₽</option>
+                <option value="5">Japanese Yen ¥</option>
+                <option value="6">Singapore Dollar S$</option>
+            </select>
+            @if(!currency?.errors){
+                <div class="valid-feedback" >Looks good!</div>
+              }
+              @else{
+                 <div class="invalid-feedback">A currency is required and recommended to be unique.</div>
+              }
+        </div>
+        <div class="col-sm-6">
+            <label class="form-label" for="productStock1">Product stocks<span class="txt-danger">*</span></label>
+            <input class="form-control" id="productStock1" type="number" formControlName="Productstocks" [ngClass]="{ 'is-invalid' : (Productstocks?.touched || validate) && Productstocks?.errors, 'is-valid' : !Productstocks?.errors}">
+            @if(!Productstocks?.errors){
+                <div class="valid-feedback" >Looks good!</div>
+              }
+              @else{
+                 <div class="invalid-feedback">A Product stocks is required and recommended to be unique.</div>
+              }
+        </div>
+        <div class="col-12">
+            <label class="form-label">Types of product discount
+                <i class="icon-help-alt ms-1"  data-bs-placement="top" data-bs-title="Choose the kind of discount that will be used on that particular item."></i>
+            </label>
+            <ul class="radio-wrapper">
+                <li>
+                    <input class="form-check-input" id="radio-icon" type="radio" name="radio5" value="option5">
+                    <label class="form-check-label" for="radio-icon"><span>Fixed Price</span></label>
+                </li>
+                <li>
+                    <input class="form-check-input" id="radio-icon4" type="radio" name="radio5" value="option5" checked="">
+                    <label class="form-check-label" for="radio-icon4"><span>BOGO(Buy one, Get one)</span></label>
+                </li>
+                <li>
+                    <input class="form-check-input" id="radio-icon5" type="radio" name="radio5" value="option5">
+                    <label class="form-check-label" for="radio-icon5">
+                        <span>Seasonal or holiday  discount</span></label>
+                </li>
+                <li>
+                    <input class="form-check-input" id="radio-icon6" type="radio" name="radio5"value="option5">
+                    <label class="form-check-label" for="radio-icon6">
+                        <span>Percentage-based discount(%)</span>
+                    </label>
+                </li>
+                <li>
+                    <input class="form-check-input" id="radio-icon7" type="radio" name="radio5"value="option5">
+                    <label class="form-check-label" for="radio-icon7">
+                        <span>Volume or bulk  discount</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="product-buttons">
+        <div class="btn" (click)="previous()">
+            <div class="d-flex align-items-center gap-sm-2 gap-1">
+                <svg>
+                    <use href="assets/svg/icon-sprite.svg#back-arrow"></use>
+                </svg>Previous
+            </div>
+        </div>
+        <div class="btn" type="submit"  (click)="next(myForm)">
+            <div class="d-flex align-items-center gap-sm-2 gap-1">Next
+                <svg>
+                    <use href="assets/svg/icon-sprite.svg#front-arrow"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</form>

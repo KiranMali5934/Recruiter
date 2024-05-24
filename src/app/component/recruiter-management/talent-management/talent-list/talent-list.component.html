@@ -1,0 +1,85 @@
+<div class="card">
+  <div class="table-responsive custom-scrollbar">
+    <!-- <div class="card-title">
+        <span class="text-dark  fw-bolder  text-hover-primary fs-3" style="padding:15px">Active Talent List</span>
+       </div>
+    -->
+    <div class="card-body">
+      <form>
+        <div class="d-flex justify-content-between">
+          <input type="text" style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px"
+            [(ngModel)]="usernameSearch" name="usernameSearch" placeholder="Search users .."
+            (input)="onUserSearchChange()" />
+          <button type="button" class="btn btn-primary mx-2 px-2 fs-7" routerLink="/recruiter/add-talent"> + Add
+            Talent</button>
+        </div>
+
+        <table class="table table-striped data-striped mt-4">
+          <thead>
+            <tr>
+              <!-- <th scope="col" sortable="name"> Id  </th> -->
+              <th scope="col" sortable="salary">Id
+              <th scope="col" sortable="salary">Name
+              </th>
+              <th scope="col" sortable="salary">Email
+              <th scope="col" sortable="salary">Contact
+
+              </th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="pagedData?.length; else noData">
+              <tr *ngFor="let item of pagedData; let i = index">
+                <td> {{item.SubUserIdentity}}</td>
+                <td> {{item.UserName}}</td>
+                <td> {{item.Email}}</td>
+                <td> {{item.PhoneNumber}}</td>
+
+               
+
+              </tr>
+            </ng-container>
+            <ng-template #noData>
+              <tr>
+                <td colspan="12" class="text-center">Oops! There are no results found.</td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+          <div>
+            <select class="form-select" (change)="changePageSize($event.target)">
+              <option value="5">5 items per page</option>
+              <option value="10">10 items per page</option>
+              <option value="20">20 items per page</option>
+            </select>
+          </div>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-primary pagin-border-primary">
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)" aria-label="Previous"
+                  (click)="pageChanged(currentPage - 1)" [ngClass]="{'disabled-link': currentPage === 1}">
+                  <span aria-hidden="true">«</span><span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of getPageNumbers()">
+                <a class="page-link" href="javascript:void(0)" (click)="pageChanged(page)"
+                  [class.active]="currentPage === page">{{ page }}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)" aria-label="Next" (click)="pageChanged(currentPage + 1)"
+                  [ngClass]="{'disabled-link': currentPage === getTotalPages()}">
+                  <span aria-hidden="true">»</span><span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

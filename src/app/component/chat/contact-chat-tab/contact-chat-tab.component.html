@@ -1,0 +1,98 @@
+<div class="left-sidebar-wrapper card" (clickOutside)="clickOutside()">
+    <app-contact-search></app-contact-search>
+    <div class="advance-options">
+        <ul class="nav border-tab" id="chat-options-tab" ngbNav #nav="ngbNav" [(activeId)]="active">
+            <li class="nav-item" [ngbNavItem]="1"><a class="nav-link f-w-600" id="chats-tab" ngbNavLink>Chats</a>
+                <ng-template ngbNavContent>
+                    <div class="tab-pane fade show" id="chats">
+                        <div class="common-space">
+                            <p>Recent chats</p>
+                            <div class="header-top">
+                                <a class="btn badge-light-primary f-w-500" href="javascript:void(0);">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="chats-user">
+                         @for( item of privateData; track item){
+                            <li class="common-space">
+                                <div class="chat-time">
+                                    <div class="active-profile">
+                                        @if(item.img){
+                                          <img class="img-fluid rounded-circle" src="{{item.img}}"  alt="user">
+                                          }
+                                        <div class="status {{item.class}}"></div>
+                                    </div>
+                                    <div> <span>{{item.name}}</span><p>{{item.chats}}</p></div>
+                                </div>
+                                <div>
+                                    <p>{{item.time}}</p>
+                                     @if(item.padding){
+                                       <div class="badge badge-light-success">{{item.padding}}</div>
+                                     }
+                                </div>
+                            </li>
+                        }
+                        </ul>
+                    </div>
+                </ng-template>
+            </li>
+            <li class="nav-item" [ngbNavItem]="2"><a class="nav-link f-w-600" id="contacts-tab" ngbNavLink>Contacts</a>
+                <ng-template ngbNavContent>
+                    <div class="tab-pane fade show" id="contacts">
+                        <div class="common-space">
+                            <p>Contacts</p>
+                            <div class="header-top">
+                                <a class="btn badge-light-primary f-w-500" href="javascript:void(0)"> 
+                                    <i  class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="search-contacts">
+                            <input class="form-control" type="text" placeholder="Name and phone number">
+                            <svg>
+                                <use href="assets/svg/icon-sprite.svg#stroke-search"></use>
+                            </svg>
+                            <i class="mic-search" data-feather="mic"></i>
+                        </div>
+                        <div class="contact-wrapper">
+                            @for( Data of contactsData; track Data){
+                                <p>{{Data.title}}</p>
+                                @for( items of Data.item; track items){
+                                <ul class="border-0">
+                                    <li class="common-space">
+                                        <div class="chat-time">
+                                            @if(items.img){
+                                            <img class="img-fluid rounded-circle" src="{{items.img}}" alt="user">
+                                            }
+                                            @if(items.text){
+                                            <div class="custom-name bg-light-{{items.class}}">    
+                                                <p class="txt-{{items.class}} f-w-500">{{items.text}}</p>
+                                            </div>
+                                             }
+                                            <div><span>{{items.name}}</span><p>{{items.number}}</p></div>
+                                        </div>
+                                        <div class="contact-edit">
+                                            <svg class="dropdown-toggle" (click)="openMenu(items.id)">
+                                                <use href="assets/svg/icon-sprite.svg#menubar"></use>
+                                            </svg>
+                                            <div class="dropdown-menu dropdown-menu-end" [class.show]="openid == items.id">
+                                                <a class="dropdown-item" href="javascript:void(0)">View details</a>
+                                                <a class="dropdown-item" href="javascript:void(0)">Send messages</a>
+                                                <a class="dropdown-item" href="javascript:void(0)">Add to favorites</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                        </div>
+                    </div>
+                </ng-template>
+            </li>
+        </ul>
+        <div class="tab-content" id="chat-options-tabContent">
+            <div [ngbNavOutlet]="nav"></div>
+        </div>
+    </div>
+</div>

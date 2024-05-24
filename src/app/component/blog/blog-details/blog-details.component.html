@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xxl-6 box-col-12 xl-40">
+            <div class="card">
+                <div class="blog-box blog-shadow"><img class="img-fluid" src="assets/images/blog/blog.jpg" alt="">
+                    <div class="blog-details">
+                        <p>25 July 2024</p>
+                        <h4>Experience lightning-fast load times and keep your visitors engaged.</h4>
+                        <ul class="blog-social">
+                            <li><i class="icofont icofont-user"></i>Mark Jecno</li>
+                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
+                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-6 box-col-12 xl-60">
+            @for(data of blog | slice:0:2 ; track data){
+            <div class="card">
+                <div class="blog-box blog-list row">
+                    <div class="col-sm-5">
+                        <img class="img-fluid sm-100-w" src="{{ data.img }}" alt="">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="blog-details">
+                            <div class="blog-date">
+                                <span>{{ data.date }}</span> {{ data.year }}
+                            </div>
+                            <h6>{{ data.details }}</h6>
+                            <div class="blog-bottom-content">
+                                <ul class="blog-social">
+                                    <li>{{ data.admin }}</li>
+                                    <li>{{ data.hits }} Hits</li>
+                                </ul>
+                                <hr>
+                                <p class="mt-0">{{ data.details1 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+        @for(data of blog | slice:2:6 ; track data){
+        <div class="col-md-6 col-xl-3 box-col-6">
+            <div class="card">
+                <div class="blog-box blog-grid text-center">
+                    <img class="img-fluid top-radius-blog" src="{{data.img }}" alt="">
+                    <div class="blog-details-main">
+                        <ul class="blog-social">
+                            <li>{{data.date }} {{data.year }}</li>
+                            <li>{{data.admin }}</li>
+                            <li>{{data.hits }} Hits</li>
+                        </ul>
+                        <hr>
+                        <h6 class="blog-bottom-details">{{ data.details1 }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+</div>

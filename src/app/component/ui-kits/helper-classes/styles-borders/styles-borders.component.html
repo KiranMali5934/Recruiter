@@ -1,0 +1,26 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <h4>Styles in borders</h4>
+      <p class="f-m-light mt-1">
+        Use the different styles of borders like: <code>border radius/border-color/border-width</code>. Use of any
+        components.</p>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-xxl-3 col-sm-6">
+          <app-common-border-style [data]="customborder"></app-common-border-style>
+        </div>
+        <div class="col-xxl-3 col-sm-6">
+          <app-common-border-style [data]="borderColor"></app-common-border-style>
+        </div>
+        <div class="col-xxl-3 col-sm-6">
+          <app-common-border-style [data]="borderWiths"></app-common-border-style>
+        </div>
+        <div class="col-xxl-3 col-sm-6">
+          <app-common-border-style [data]="textColors"></app-common-border-style>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

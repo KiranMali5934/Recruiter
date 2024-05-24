@@ -1,0 +1,21 @@
+<div class="card o-hidden">
+    <div class="chart-widget-top">
+        <div class="row card-body pb-0 m-0">
+            <div class="col-xl-9 col-lg-8 col-9 p-0">
+                <h6 class="mb-2">{{ data.title }}</h6>
+                <h4>{{ data.data}}</h4><span>Compare to last month</span>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-3 text-end p-0">
+                <h6 class="txt-success">+65%</h6>
+            </div>
+        </div>
+        <div>
+            <div id="chart-widget1">
+                <apx-chart [series]="data.series" [chart]="data.chart" [dataLabels]="data.dataLabels" [grid]="data.grid"
+                    [stroke]="data.stroke" [xaxis]="data.xaxis" [yaxis]="data.yaxis" [responsive]="data.responsive"
+                    [tooltip]="data.tooltip" [colors]="data.colors">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

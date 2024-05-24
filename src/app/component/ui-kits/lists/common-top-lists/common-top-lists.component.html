@@ -1,0 +1,21 @@
+<div class="row">
+    @for(data of commonLists; track data){
+    <div class="col-xl-4 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ data.title}} </h4>
+                <p class="f-m-light mt-1" [innerHTML]=" data.des"></p>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @for(list of data.item; track list){
+                    <li class="{{list.class}}">
+                        <i class="icofont icofont-arrow-right"></i>{{list.text}}
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    }
+</div>

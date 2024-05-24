@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-sm-12 box-col-12">
+        <div class="card hovercard text-center">
+            <div class="cardheader socialheader"></div>
+            <div class="user-image">
+                <div class="avatar"><img alt="" src="assets/images/user/1.jpg"></div>
+                <div class="icon-wrapper"><i class="icofont icofont-pencil-alt-5"></i></div>
+                <ul class="share-icons">
+                    <li>
+                        <a class="social-icon bg-primary" href="javascript:void(0)"><i class="fa fa-smile-o"></i></a>
+                    </li>
+                    <li>
+                        <a class="social-icon bg-secondary" href="javascript:void(0)"><i class="fa fa-wechat"></i></a>
+                    </li>
+                    <li>
+                        <a class="social-icon bg-warning" href="javascript:void(0)"><i class="fa fa-share-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="info market-tabs p-0">
+                <ul class="nav nav-tabs border-tab tabs-scoial" id="top-tab" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" id="top-timeline" href="javascript:void(0)"
+                            [ngClass]="{'active show': openTab == 'timeline'}" (click)="tabbed('timeline')"
+                            style="cursor: pointer;">Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="top-about" href="javascript:void(0)"
+                            [ngClass]="{'active show': openTab == 'about'}" (click)="tabbed('about')"
+                            style="cursor: pointer;">About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="user-designation"></div>
+                        <div class="title">
+                        <a target="_blank" href="javascript:void(0)">ElANA</a></div>
+                        <div class="desc mt-2">general manager</div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="top-friends" data-bs-toggle="tab"
+                            href="javascript:void(0)" [ngClass]="{'active show': openTab == 'friends'}"
+                            (click)="tabbed('friends')" style="cursor: pointer;">Friends
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="top-photos" data-bs-toggle="tab"
+                            href="javascript:void(0)" role="tab" aria-controls="photos" aria-selected="false"
+                            [ngClass]="{'active show': openTab == 'photos'}" (click)="tabbed('photos')">Photos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-content" id="top-tabContent">
+    <div class="tab-pane fade show active" [ngClass]="{'show active': openTab == 'timeline'}">
+        <app-timeline></app-timeline>
+    </div>
+    <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'about'}">
+        <app-about></app-about>
+    </div>
+    <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'friends'}">
+        <app-friends></app-friends>
+    </div>
+    <div class="tab-pane fade" [ngClass]="{'show active': openTab == 'photos'}">
+        <app-photos></app-photos>
+    </div>
+</div>

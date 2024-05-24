@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xl-3 box-col-6">
+    <div class="md-sidebar" (clickOutside)="clickOutside()">
+      <a class="btn btn-primary md-sidebar-toggle" (click)="openMenu()">bookmark filter</a>
+      <div class="md-sidebar-aside job-left-aside custom-scrollbar" [class.open]="open">
+        <div class="email-left-aside">
+          <div class="card">
+            <div class="card-body">
+              <div class="email-app-sidebar left-bookmark">
+                <div class="media">
+                  <div class="media-size-email"><img class="me-3 rounded-circle" src="assets/images/user/user.png"
+                      alt=""></div>
+                  <div class="media-body">
+                    <h6 class="f-w-600">MARK JENCO</h6>
+                    <p>Markjecno&#64;gmail.com</p>
+                  </div>
+                </div>
+                <ul class="nav main-menu" role="tablist">
+                  <li class="nav-item">
+                    <button class="btn-primary btn-block btn-mail w-100" type="button" (click)="openAddBookmark()">
+                      <app-feathericon [icon]="'bookmark'" class="me-2"></app-feathericon> New
+                      Bookmark
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <span class="main-title f-w-500"> Views </span>
+                  </li>
+                  @for(views of BookmarkData; track views){
+                  <li >
+                    <a id="pills-created-tab" (click)="getData(views.title_id)">
+                      <span class="title">{{views.title}}</span>
+                    </a>
+                  </li>
+                }
+                  <li>
+                    <hr>
+                  </li>
+                  <li>
+                    <span class="main-title f-w-700"> Tags<span class="pull-right">
+                        <a href="javascript:void(0)" (click)="openAddTag()">
+                          <app-feathericon [icon]="'plus-circle'"></app-feathericon>
+                        </a>
+                      </span>
+                    </span>
+                  </li>
+                  @for(tags of tag; track tags){
+                  <li>
+                    <a class="show" id="pills-notification-tab" (click)="getTagData(tags.title_id)">
+                      <span class="title"> {{ tags.title }}</span>
+                    </a>
+                  </li>
+                }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-9 col-md-12 box-col-12">
+    <div class="email-right-aside bookmark-tabcontent">
+      <app-bookmark-data [selectedheading_id]="selectedheading_id" [selectegTagId]="selectegTagId"></app-bookmark-data>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="card p-10">
+    <!-- <div class="d-flex flex-wrap" style="margin-left:10px;margin-top:10px"> -->
+    <div class="d-flex flex-wrap" style="margin-top:20px;">
+      <div class="d-flex flex-wrap gap-5 mx-5">
+        <div class="fv-row flex-md-root" style="width: 230px;">
+          <!-- <label class="required form-label">Select Job</label> -->
+          <select class="form-select form-select-solid" name="Select_Status" data-control="select2"
+            data-hide-search="true" data-placeholder="Select an option" [(ngModel)]="selectedJob"
+            (ngModelChange)="onProjectChange($event, 'Job')">
+            <option value="0" disabled>Select Job</option>
+            <option [value]="f.JobsId" *ngFor="let f of agencyalltalentlist">{{ f.JobTitle }} - {{ f.ProjectName }}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-wrap gap-5 mx-4">
+        <div class="fv-row w-100 flex-md-root">
+          <!-- <label class="required form-label">Select Talent</label> -->
+          <select class="form-select form-select-solid" name="Select_Status" data-control="select2"
+            data-hide-search="true" data-placeholder="Select an option" [(ngModel)]="selectedTalent"
+            (ngModelChange)="onProjectChange($event, 'Talent')" style="width: 233px;">
+            <option value="0" disabled>Select Talent</option>
+            <option [value]="f.TalentId" *ngFor="let f of agencyalltalentlist">{{ f.UserName }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <!-- Talent Dropdown -->
+    </div>
+  
+  
+    <div class="table-responsive custom-scrollbar" *ngIf="selectedJob && selectedTalent">
+      <div class="card-body">
+        <form>
+          <table class="table table-striped data-striped">
+            <thead>
+              <tr>
+                <th scope="col" sortable="name"> User <br/><input type="text"
+                    style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px" [(ngModel)]="usernameSearch"
+                    name="usernameSearch" (input)="onUserSearchChange()" placeholder="Search users.."> </th>
+                <th scope="col" sortable="name"> Job <br/><input type="text"
+                    style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px" [(ngModel)]="jobnameSearch" name="jobnameSearch"
+                    (input)="onJobSearchChange()" placeholder="Search jobs.."> </th>
+                <th scope="col" sortable="salary"> Project <br/> <input type="text"
+                    style="border: 2px solid #c3c3c3;border-radius: 5px;padding:7px" [(ngModel)]="projectnameSearch"
+                    name="projectnameSearch" (input)="onProjectSearchChange()"  placeholder="Search projects.."> </th>
+                <th scope="col"  class="tRow" sortable="office">Interview Round </th>
+                <th scope="col"  class="tRow" sortable="extn">Talent Approved</th>
+                <th scope="col"  class="tRow" sortable="extn">HR Approved</th>
+                <th scope="col"  class="tRow" sortable="extn">Client Approved</th>
+                <th scope="col"  class="tRow" sortable="extn">Selected </th>
+                <th scope="col"  class="tRow" sortable="extn">Rejected</th>
+  
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="pagedData?.length; else noData">
+                <tr *ngFor="let item of pagedData; let i = index">
+                  <td>{{ item.UserName }}</td>
+  
+                  <td>
+                    <div class="d-flex justify-content-start flex-column cursor-pointer">
+                      <a (click)="PassValue(item.JobsId,item.ProjectId)"
+                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6" style="cursor: pointer;">{{
+                        item.JobTitle}} </a>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-start flex-column cursor-pointer">
+                      <a (click)="PassValueProject(item.ProjectId)"
+                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6 " style="cursor: pointer;">{{
+                        item.ProjectName}} </a>
+                    </div>
+                  </td>
+                  <td>{{ item.Interview_Dropdown_Name }}</td>
+                  <td>
+                    <div style="margin-left:45px">
+                      <input type="checkbox" [disabled]="true" [checked]="item.IsTalentApproved">
+                    </div>
+                  </td>
+                  <td>
+                    <div style="margin-left:45px">
+                      <input type="checkbox" [disabled]="true" [checked]="item.IsHRApproved">
+                    </div>
+                  </td>
+                  <td>
+                    <div style="margin-left:45px">
+                      <input type="checkbox" [disabled]="true" [checked]="item.IsClientApproved">
+                    </div>
+                  </td>
+                  <td>
+                    <div style="margin-left:25px">
+                      <input type="checkbox" [disabled]="true" [checked]="item.IsSelected">
+                    </div>
+                  </td>
+                  <td>
+                    <div style="margin-left:25px">
+                      <input type="checkbox" [disabled]="true" [checked]="item.IsRejected">
+                    </div>
+                  </td>
+                </tr>
+  
+              </ng-container>
+              <ng-template #noData>
+                <tr>
+                  <td colspan="12" class="text-center">Oops! There are no results found.</td>
+                </tr>
+              </ng-template>
+            </tbody>
+          </table>
+  
+          <div class="d-flex justify-content-between p-2">
+            <div>
+              <select class="form-select" (change)="changePageSize($event.target)">
+                <option value="5">5 items per page</option>
+                <option value="10">10 items per page</option>
+                <option value="20">20 items per page</option>
+              </select>
+            </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-primary pagin-border-primary">
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)" aria-label="Previous"
+                    (click)="pageChanged(currentPage - 1)" [ngClass]="{'disabled-link': currentPage === 1}">
+                    <span aria-hidden="true">«</span><span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item" *ngFor="let page of getPageNumbers()">
+                  <a class="page-link" href="javascript:void(0)" (click)="pageChanged(page)"
+                    [class.active]="currentPage === page">{{ page }}</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)" aria-label="Next" (click)="pageChanged(currentPage + 1)"
+                    [ngClass]="{'disabled-link': currentPage === getTotalPages()}">
+                    <span aria-hidden="true">»</span><span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+  
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  
+  
+    <div class="d-flex flex-wrap" style="margin-top:50px; margin-bottom: 20px;">
+      <div class="d-flex flex-wrap gap-5 mx-3">
+        <div class="fv-row w-80 flex-md-root" style="margin-left: 30px;">
+          <button type="button" class="btn btn-secondary" (click)="TalentFinalReJection()">Reject Talent</button>
+  
+        </div>
+      </div>
+  
+      <div class="d-flex flex-wrap gap-5">
+        <div class="fv-row w-80 flex-md-root">
+          <button type="button" class="btn btn-primary" (click)="TalentFinalSelection()" [disabled]="">Select
+            Talent</button>
+  
+        </div>
+      </div>
+  
+      <!-- Talent Dropdown -->
+    </div>
+    <!-- 
+    <div class="d-flex align-items-right p-6" style="justify-content: start; margin-left: 30px;">
+  </div>   -->
+  </div>

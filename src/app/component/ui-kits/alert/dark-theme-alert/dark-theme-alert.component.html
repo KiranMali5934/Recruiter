@@ -1,0 +1,34 @@
+
+@for( themedata of darkThemeData; track themedata){
+<div class="card">
+    <div class="card-header">
+        <h4>{{themedata.mainTitle}}</h4>
+        <p class="f-m-light mt-1">Use the <code>.alert-link</code> utility class to quickly provide matching colored
+            links within any alert.</p>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-6">
+                @for( themeItem of themedata.item; track themeItem){
+                    <p class="mb-0">{{themeItem.title}}</p>
+                    <div class="alert alert-{{themeItem.class}}" role="alert">
+                        <p>This is a <a class="alert-link {{themeItem.color}}"
+                         href="javascript:void(0)">{{themeItem.text}}</a>  with 
+                         an example link.Check it out.</p>
+                    </div>
+              }
+            </div>
+            <div class="col-xl-6">
+                @for( themeItems of themedata.item2; track themeItems){
+                    <p class="mb-0">{{themeItems.title}}</p>
+                    <div class="alert alert-{{themeItems.class}}" role="alert">
+                        <p>This is a <a class="alert-link {{themeItems.color}}"
+                            href="javascript:void(0)">{{themeItems.text}}</a>
+                            with an example link.Check it out.</p>
+                    </div>
+            }
+            </div>
+        </div>
+    </div>
+</div>
+}

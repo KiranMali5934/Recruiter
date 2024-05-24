@@ -1,0 +1,23 @@
+<div class="card height-equal">
+    <div class="card-header">
+      <h4>Only one side margin</h4>
+      <p class="f-m-light mt-1">
+         Use the margin classes like: <code>.m-l-*/.m-r-*/.m-t-*/.m-b-*</code></p>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">   
+        @for(data of marginCommonData; track data){
+        <div class="col-xxl-3 col-sm-6">
+          <div class="border-wrapper h-100 alert-light-light dark-helper">
+            <h6 class="mb-3">{{ data.mainTitle }}</h6>
+            <div class="common-p-box">
+              @for(margin of data.item; track margin){
+                    <span>.{{margin.text}}</span>
+                }
+            </div>
+          </div>
+        </div>
+      }
+      </div>
+    </div>
+  </div>

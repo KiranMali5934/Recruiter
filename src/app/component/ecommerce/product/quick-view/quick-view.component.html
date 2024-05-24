@@ -1,0 +1,52 @@
+<ng-template #productModal let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="product-box row">
+                <div class="product-img col-lg-6"><img class="img-fluid" src="{{productDetail.img}}" alt=""></div>
+                <div class="product-details col-lg-6 text-start"><a [routerLink]="['/ecommerce/product-page']">
+                        <h4>{{productDetail.name}}</h4>
+                    </a>
+                    <div class="product-price">${{productDetail.price}}
+                        <del>${{productDetail.discountPrice}}</del>
+                    </div>
+                    <div class="product-view">
+                        <h6 class="f-w-600">Product Details</h6>
+                        <p class="mb-0">{{ productDetail.discription}}</p>
+                    </div>
+                    <div class="product-size">
+                        <ul>
+                            <li>
+                                <button class="btn btn-outline-light" type="button">M</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-outline-light" type="button">L</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-outline-light" type="button">Xl</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="product-qnty">
+                        <h6 class="f-w-600">Quantity</h6>
+                        <div class="input-group bootstrap-touchspin" style="margin-bottom: 4px;">
+                            <button class="btn btn-primary btn-square bootstrap-touchspin-down" (click)="decrement()"><i class="fa fa-minus"> </i></button>
+                            <input class="touchspin text-center form-control" type="number" value="{{ counter }}" style="display: block;">
+                        <button class="btn btn-primary btn-square bootstrap-touchspin-up" (click)="increment()"><i class="fa fa-plus"> </i></button>
+                        </div>
+                    </div>
+                    <div class="addcart-btn">
+                        <a class="btn btn-primary" [routerLink]="['/ecommerce/cart']"
+                            (click)="modal.dismiss('Cross click')">
+                            Add to Cart
+                        </a>
+                        <a class="btn btn-primary ms-2" [routerLink]="['/ecommerce/product-page']"
+                            (click)="modal.dismiss('Cross click')">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-close" type="button" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+    </div>
+</ng-template>

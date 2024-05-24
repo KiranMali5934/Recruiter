@@ -1,0 +1,30 @@
+<div class="sidebar-body">
+    <form class="row g-2" novalidate [formGroup]="myForm" (ngSubmit)="next(myForm)">
+        <label class="form-label col-12 m-0" for="productTitle1">Product Title <span class="txt-danger"> *</span></label>
+        <div class="col-12 custom-input">
+            <input class="form-control" id="validationServer01" type="text" formControlName="productTitle" autocomplete="off"
+             [ngClass]="{ 'is-invalid' : (productTitle?.touched || validate) && productTitle?.errors, 'is-valid' : !productTitle?.errors}">
+             @if(!productTitle?.errors){
+                <div class="valid-feedback" >Looks good!</div>
+              }
+              @else{
+                 <div class="invalid-feedback">A product name is required and recommended to be unique.</div>
+              }
+        </div>
+        <div class="col-12">
+            <div class="toolbar-box">
+                <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor>
+            </div>
+            <p class="f-light">Improve product visibility by adding a compelling description.</p>
+        </div>
+    </form>
+    <div class="product-buttons">
+        <div class="btn" type="submit" (click)="next(myForm)">
+            <div class="d-flex align-items-center gap-sm-2 gap-1">Next
+                <svg>
+                    <use href="assets/svg/icon-sprite.svg#front-arrow"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

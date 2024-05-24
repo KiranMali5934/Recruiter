@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header card-no-border total-revenue">
+    <h4>Latest Transaction</h4><a [routerLink]="['/ecommerce/products']">View All</a>
+  </div>
+  <div class="card-body pt-0">
+    <div class="table-order table-responsive custom-scrollbar">
+      <table class=" w-100 tranaction-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(data of LatestTransctionData; track data){
+          <tr>
+            <td>
+              <div class="product-name">
+                <a class=" f-14 f-w-500" [routerLink]="['/ecommerce/products']">{{ data.name }}</a>
+              </div>
+            </td>
+            <td class="f-14 f-w-500">{{ data.date }}</td>
+            <td class="f-14 f-w-500">{{ data.amount }}</td>
+            <td>
+              <div class="txt-{{ data.class }}">
+                <span class="f-w-500 f-13">{{ data.status }}</span>
+              </div>
+            </td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

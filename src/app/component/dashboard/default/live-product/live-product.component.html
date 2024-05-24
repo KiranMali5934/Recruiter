@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header total-revenue card-no-border">
+    <h4>Live Product</h4><a [routerLink]="['/ecommerce/products']">View All</a>
+  </div>
+  <div class="card-body pt-0">
+    <div class="table-order table-responsive custom-scrollbar">
+      <table class="order-table w-100">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Type</th>
+            <th>Stock</th>
+            <th>Variants</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for( data of liveproductData; track data){
+           <tr>
+            <td>
+              <div class="product-name"><img class="order-table-images img-fluid" src="{{data.img}}" alt="user">
+                <div class="product-sub"> <a class="f-14 f-w-600"
+                    [routerLink]="['/ecommerce/products']">{{data.productName}}</a></div>
+              </div>
+            </td>
+            <td>
+              <div class="product-sub"><a class="f-14 f-w-500" [routerLink]="['/ecommerce/products']">{{data.type}}</a>
+              </div>
+            </td>
+            <td>
+              <div class="media">
+                <div class="media-body text-end switch-sm">
+                  <label class="switch">
+                    <input type="checkbox" [checked]="data.checked" [disabled]="data.disable">
+                    <span class="switch-state"> </span>
+                  </label>
+                </div>
+              </div>
+            </td>
+            <td>
+              <h6>{{data.variants}}</h6>
+            </td>
+            <td>
+              <div class="dropdown">
+                <div id="dropdownMenuButtonicon6" data-bs-toggle="dropdown" aria-expanded="false" role="menu">
+                  <svg class="invoice-icon" (click)="openMenu(data.id)">
+                    <use href="assets/svg/icon-sprite.svg#more-horizontal"></use>
+                  </svg>
+                </div>
+                <div class="dropdown-menu dropdown-menu-end" [class.show]="openid == data.id">
+                  <span class="dropdown-item">Last Month</span><span class="dropdown-item">Last Week</span>
+                  <span class="dropdown-item">Last Day </span>
+                </div>
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

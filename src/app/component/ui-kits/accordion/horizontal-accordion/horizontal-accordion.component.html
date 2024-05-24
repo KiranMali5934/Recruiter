@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Horizontal accordion</h4>
+        <p class="f-m-light mt-1">Add the <code>.collapse-horizontal</code> modifier class to transition the width
+            instead of height and set a width on the immediate child element.</p>
+    </div>
+    <div class="card-body">
+        <div class="common-flex">
+            <button class="btn btn-secondary" type="button" (click)="onClick()">Toggle width collapse</button>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="collapse collapse-horizontal mt-3" id="collapseWidthExample" [class.show]="togglecollpese">
+                    <div class="card card-body bg-secondary-light accordion-h-space mb-0">The collapse plugin also
+                        supports horizontal collapsing. Add the .collapse-horizontal modifier class to transition the width
+                        instead of height and set a width on the immediate child element. Feel free to write your own custom Sass, use
+                        inline styles, or use our width utilities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

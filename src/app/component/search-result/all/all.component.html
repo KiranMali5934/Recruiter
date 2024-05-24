@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-xxl-8 col-xl-6 box-col-7" style="text-align: start;">
+        <h6 class="mb-2">Search result for "Pixelstrap"</h6>
+        @for( item of allData; track item){
+            @if(item.contentSide == 'left'){
+            <div class="info-block">
+                <a href="javascript:void(0);">{{ item.url }}</a>
+                <h6>{{ item.title }}</h6>
+                <p>{{ item.desc }} </p>
+                <div class="star-ratings">
+                    <ul class="search-info">
+                        @if(item.showRating){
+                            <ul class="rating">
+                                <li><i class="icofont icofont-ui-rating"></i></li>
+                                <li><i class="icofont icofont-ui-rating"></i></li>
+                                <li><i class="icofont icofont-ui-rating"></i></li>
+                                <li><i class="icofont icofont-ui-rate-blank"></i></li>
+                                <li><i class="icofont icofont-ui-rate-blank"></i></li>
+                            </ul>
+                        }
+                        <li>{{ item.rating }} stars</li>
+                        <li>{{ item.votes }} votes</li>
+                        <li>{{ item.type }}</li>
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+    </div>
+    <div class="col-xxl-4 col-xl-6 box-col-5 mt-4" style="text-align: start;">
+        <div class="card o-hidden">
+            <div class="blog-box blog-shadow"><img class="img-fluid" src="assets/images/blog/blog.jpg" alt="">
+                <div class="blog-details">
+                    <p>25 July 2024</p>
+                    <h4>Accusamus et iusto odio dignissimos ducimus qui blanditiis.</h4>
+                    <ul class="blog-social">
+                        <li><i class="icofont icofont-user"></i>Mark Jecno</li>
+                        <li style="margin-left: 4px;"><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @for( items of allData; track items){
+            @if(items.contentSide == 'right'){
+            <div class="info-block">
+                <a href="javascript:void(0);">{{ items.url }}</a>
+                <h6>{{ items.title }}</h6>
+                <p>{{ items.desc }}</p>
+                <div class="star-ratings">
+                    <ul class="search-info">
+                        <li><i class="icofont icofont-ui-rating"></i><i class="icofont icofont-ui-rating"></i><i
+                                class="icofont icofont-ui-rating"></i><i class="icofont icofont-ui-rate-blank"></i><i
+                                class="icofont icofont-ui-rate-blank"></i></li>
+                        <li>{{ items.rating }} stars</li>
+                        <li>{{ items.votes }} votes</li>
+                        <li>{{ items.type }}</li>
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+        <div class="col-12 m-t-30">
+            <nav aria-label="...">
+                <ul class="pagination pagination-primary justify-content-end">
+                    <li class="page-item disabled"><a class="page-link" href="javascript:void(0)"
+                            tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="javascript:void(0)">2<span
+                                class="sr-only">(current)</span></a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

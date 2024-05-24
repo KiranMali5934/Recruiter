@@ -1,0 +1,13 @@
+<div class="card height-equal">
+    <div class="card-header">
+      <h4>Shapes</h4>
+      <p class="mb-0 mt-1">Using the<code>.b-r-* (8/30/35/25)</code> class you can set the shapes of avatar.</p>
+    </div>
+    <div class="card-body avatar-showcase">
+      <div class="avatars">
+        @for( shapesitem of shapesData; track shapesitem){
+            <div class="avatar"><img class="{{shapesitem.class}}" src="{{shapesitem.Image}}" alt="shapesimg"></div>
+         }
+    </div>
+  </div>
+</div>

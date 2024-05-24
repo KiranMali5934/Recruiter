@@ -1,0 +1,21 @@
+<div class="row">
+  @for( cardData of Data; track cardData){
+  <div class="col-12 col-md-6">
+    <div class="card">
+      <div class="card-header border-{{ cardData.borderClass }} border-3">
+        <h4>{{ cardData.heading }}</h4>
+        <p class="mt-1 f-m-light" [innerHTML]="cardData.desc"></p>
+      </div>
+      <div class="card-body">
+        <p class="{{ cardData.bodyTextClass }}" [innerHTML]="cardData.bodyText"></p>
+        @if(cardData.id === 2){
+        <form>
+          <label class="form-label" for="exampleFormControlInput1">Email address</label>
+          <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="youremail@gmail.com">
+        </form>
+      }
+      </div>
+    </div>
+  </div>
+  }
+</div>

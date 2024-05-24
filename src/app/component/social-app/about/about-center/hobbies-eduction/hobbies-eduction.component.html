@@ -1,0 +1,14 @@
+<div class="card-body">
+    <div class="row details-about">
+        @for(data of data.data; track data){
+            <div class="col-sm-6" [style.margin-top]="data.id == 1 ? '' : '30px' && data.id == 2 ? '' : '30px'">
+                <div class="your-details"><span class="f-w-700 mb-2 d-block">{{ data.title }}</span>
+                    @if(data.year){
+                    <p style="margin-top: -8px;">{{ data.year }}</p>
+                    }
+                    <p>{{ data.desc }}</p>
+                </div>
+            </div>
+    }
+    </div>
+</div>

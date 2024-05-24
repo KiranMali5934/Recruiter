@@ -1,0 +1,29 @@
+<div class="card" (clickOutside)="clickOutside()">
+    <div class="card-header card-no-border total-revenue">
+        <h4>Project Statistics</h4>
+        <div class="sales-chart-dropdown-select">
+            <div class="card-header-right-icon">
+                <div class="dropdown"> 
+                    <div class="dropdown"> 
+                        <button class="btn dropdown-toggle" id="dropdownMenuButton1" (click)="open()">Last Year  </button>
+                        <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                          <span class="dropdown-item">Last Month</span>
+                          <span class="dropdown-item">Last Week </span>
+                          <span class="dropdown-item">Today</span>
+                     </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-0">
+        <div class="statistics">
+            <div id="statisticschart">
+                <apx-chart [series]="projectStatisticsData.series" [chart]="projectStatisticsData.chart" 
+                 [plotOptions]="projectStatisticsData.plotOptions"[dataLabels]="projectStatisticsData.dataLabels" 
+                 [colors]="projectStatisticsData.colors" [legend]="projectStatisticsData.legend"[fill]="projectStatisticsData.fill" 
+                 [xaxis]="projectStatisticsData.xaxis" [responsive]="projectStatisticsData.responsive"></apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

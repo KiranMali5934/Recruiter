@@ -1,0 +1,93 @@
+<div class="card-body">
+    <div class="list-product table-responsive custom-scrollbar">
+        <div class="d-flex justify-content-between mt-2">
+            <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+                <option [ngValue]="10">10</option>
+                <option [ngValue]="25">25</option>
+                <option [ngValue]="50">50</option>
+                <option [ngValue]="10">100</option>
+            </select>
+            <div class="mb-3 row">
+                <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Search:</label>
+                <div class="col-xs-3 col-sm-auto">
+                    <input id="table-complete-search" type="text" class="form-control" name="searchTerm"
+                        [(ngModel)]="service.searchTerm" autocomplete="off">
+                </div>
+            </div>
+        </div>
+        <table class="table" id="project-status">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-primary" type="checkbox">
+                        </div>
+                    </th>
+                    <th sortable="name" (sort)="onSort($event)"> <span class="f-light f-w-600">Product Name</span></th>
+                    <th sortable="sku" (sort)="onSort($event)"> <span class="f-light f-w-600">SKU</span></th>
+                    <th sortable="category" (sort)="onSort($event)"> <span class="f-light f-w-600">Category</span></th>
+                    <th sortable="price" (sort)="onSort($event)"> <span class="f-light f-w-600">Price</span></th>
+                    <th sortable="qty" (sort)="onSort($event)"> <span class="f-light f-w-600">Qty</span></th>
+                    <th sortable="status" (sort)="onSort($event)"> <span class="f-light f-w-600">Status</span></th>
+                    <th sortable="rating" (sort)="onSort($event)"> <span class="f-light f-w-600">Rating</span></th>
+                    <th> <span class="f-light f-w-600">Action</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of (products$ | async) ? (products$ | async) : []; track item){
+                <tr class="product-removes">
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-primary" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-names">
+                            <div class="light-product-box"><img class="img-fluid" src="{{item.img}}" alt="laptop"></div>
+                            <p>{{item.name}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="f-light">{{item.sku}}</p>
+                    </td>
+                    <td>
+                        <p class="f-light">{{item.category}}</p>
+                    </td>
+                    <td>
+                        <p class="f-light">{{item.price}}</p>
+                    </td>
+                    <td>
+                        <p class="f-light">{{item.qty}}</p>
+                    </td>
+                    <td> 
+                        <span class="badge" [ngClass]="item.status === 'Sold Out' ? 'badge-light-secondary':'badge-light-primary'">{{item.status}}</span>
+                    </td>
+                    <td>
+                        <ngb-rating [rate]="item.rating" class="font-warning"></ngb-rating>
+                    </td>
+                    <td>
+                        <div class="product-action">
+                            <a [routerLink]="['/ecommerce/add-products']">
+                                <svg>
+                                    <use href="assets/svg/icon-sprite.svg#edit-content"></use>
+                                </svg>
+                            </a>
+                            <svg>
+                                <use href="assets/svg/icon-sprite.svg#trash1" (click)=" removeItem(item.id)"></use>
+                            </svg>
+                        </div>
+                    </td>
+                </tr>
+            }
+            @if(!Data.length){
+                <tr class="odd">
+                    <td colspan="8" class="dataTables_empty" style="text-align: center;">Opps! There are no result found.</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <ngb-pagination class="ms-3" [collectionSize]="(total$ | async)!" [(page)]="service.page"
+            [pageSize]="service.pageSize">
+        </ngb-pagination>
+    </div>
+</div>

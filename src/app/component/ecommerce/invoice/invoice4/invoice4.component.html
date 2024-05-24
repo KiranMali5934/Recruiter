@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div id="print-section">
+    <table style="width:1160px;margin:0 auto;">
+      <tbody>
+        <tr>
+          <td>
+            <app-invoice4-top></app-invoice4-top>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table style="width: 100%; border-spacing: 4px; margin-bottom: 20px;">
+              <tbody>
+                <tr>
+                  <td style="padding: 15px 25px;">
+                    <p style="font-size:16px; font-weight:500; opacity:0.8; margin:0;line-height: 2;">Date :</p><span
+                      style="font-size: 18px; font-weight: 600;">10 Mar, 2024</span>
+                  </td>
+                  <td style="padding: 15px 25px;">
+                    <p style="font-size:16px; font-weight:500; opacity:0.8; margin:0;line-height: 2;">Invoice No :</p>
+                    <span style="font-size: 18px; font-weight: 600;">#VL25000365</span>
+                  </td>
+                  <td style="padding: 15px 25px;">
+                    <p style="font-size:16px; font-weight:500; opacity:0.8; margin:0;line-height: 2;">Account No :</p>
+                    <span style="font-size: 18px; font-weight: 600;">0981234098765</span>
+                  </td>
+                  <td style="padding: 15px 25px;">
+                    <p style="font-size:16px; font-weight:500; opacity:0.8; margin:0;line-height: 2;">Due Amount :</p>
+                    <span style="font-size: 18px; font-weight: 600;">$7860.00 </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <app-invoice4-table></app-invoice4-table>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="height:3px; width: 100%; background: linear-gradient(90deg, #006666 20.61%, #54BA4A 103.6%); display:block;">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <app-invoice4-total></app-invoice4-total>
+          </td>
+        </tr>
+        <tr style="width: 100%; display: flex; justify-content: space-between;">
+          <td> <img src="assets/images/email-template/invoice-3/sign.png" alt="sign"><span
+              style="color: #000248;display: block;font-size: 18px;font-weight: 600;">Laurine T. Ebbert</span><span
+              style=" display: block; font-size: 14px; padding-top: 5px;">( Designer )</span></td>
+          <td>
+            <span style="display: flex; justify-content: end; gap: 15px;">
+              <button type="button"
+                style="background: #006666 ; color:rgba(255, 255, 255, 1); border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;"
+                printSectionId="print-section" ngxPrint>Print Invoice
+                <i class="icon-arrow-right" style="font-size:13px;font-weight:bold; margin-left: 10px;"></i>
+              </button>
+              <a style="background: rgba(0, 102, 102, 0.2);color: #006666 ; border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;"
+                href="javascript:void(0);" download="">Download<i class="icon-arrow-right"
+                  style="font-size:13px;font-weight:bold; margin-left: 10px;"></i></a></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

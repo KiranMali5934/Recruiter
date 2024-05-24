@@ -1,0 +1,33 @@
+<div class="card height-equal">
+  <div class="card-header card-no-border total-revenue">
+    <h4>Top Product </h4><a [routerLink]="['/ecommerce/products']">View All </a>
+  </div>
+  <div class="card-body pt-0">
+    <div class="top-product-card">
+      <ul>
+        @for(data of TopProductData ; track data){
+        <li class="d-flex top-product gap-2">
+          <div><img class="img-fluid product-img" src="{{ data.img }}" alt="product" /></div>
+          <div class="w-100 d-flex justify-content-between align-items-center">
+            <div class="product-details">
+              <div>
+                <span class="badge rounded-pill badge-light text-dark">{{ data.productid }}</span>
+              </div>
+              <a class="f-10 f-w-500  line-clamp" [routerLink]="['/ecommerce/products']">{{ data.productname }}</a>
+              <span class="f-10 f-w-500 txt-primary">{{ data.price }}</span>
+            </div>
+            <div class="product-items">
+              <div class="common-space gap-1"><span class="f-10 f-w-500 f-light">QTY :</span><span
+                  class="f-10 f-w-500">{{ data.qty }}</span></div>
+              <div class="common-space gap-1"><span class="f-10 f-w-500 f-light">Revenue : </span><span
+                  class="f-10 f-w-500 ">{{ data.revenue}}</span></div>
+              <div class="common-space gap-1"><span class="f-10 f-w-500 f-light">Profit :</span><span
+                  class="f-10 f-w-500">{{ data.profit}}</span></div>
+            </div>
+          </div>
+        </li>
+      }
+      </ul>
+    </div>
+  </div>
+</div>

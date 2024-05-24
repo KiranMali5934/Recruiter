@@ -1,0 +1,35 @@
+<div class="row">
+    @for(allData of videosData; track allData){
+    <div class="col-xxl-6">
+        <h6 class="mb-2" style="text-align: start;">{{allData.heading }}</h6>
+        @for(videos of allData.data; track videos){
+        <div class="d-flex info-block" style="text-align: start;">
+            <iframe class="me-3" width="200" height="100" [src]="safe(videos.youtubeUrl)"></iframe>
+            <div class="flex-grow-1"><a href="javascript:void(0);">{{ videos.url }}</a>
+                <h6>{{ videos.title }}</h6>
+                <div class="star-ratings">
+                    <ul class="search-info">
+                        <li>{{ videos.rating }} stars</li>
+                        <li>{{ videos.votes }} votes</li>
+                        <li>{{ videos.type }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    }
+    <div class="col-12 m-t-30" style="align-items: start;">
+        <nav aria-label="...">
+            <ul class="pagination pagination-primary justify-content-start">
+                <li class="page-item disabled"><a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                <li class="page-item active"><a class="page-link" href="javascript:void(0)">2<span
+                            class="sr-only">(current)</span></a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+    @for(cardData of basicData; track cardData){
+    <div class="col-xl-4 col-sm-6">
+        <div class="card height-equal">
+            <div class="card-header {{ cardData.headerClass }}">
+                <h4 class="{{ cardData.headingClass }}">{{ cardData.heading }}</h4>
+            </div>
+            <div class="card-body {{ cardData.bodyClass }}">
+                <h5 class="pb-2"> {{ cardData.title }} </h5>
+                <p class="mb-0">{{ cardData.desc }}</p>
+            </div>
+            <div class="card-footer {{ cardData.footerClass }}">
+                <h6 class="mb-0 text-end">Riho Theme</h6>
+            </div>
+        </div>
+    </div>
+}
+</div>
+
+

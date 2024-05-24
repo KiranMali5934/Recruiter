@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Timeline</h4>
+    <p class="f-m-light mt-1">
+      This is a Riho timeline chart.</p>
+  </div>
+  <div class="card-body">
+    <section class="cd-container" id="cd-timeline">
+      <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-picture bg-primary"><i class="icon-pencil-alt"></i></div>
+        <div class="cd-timeline-content">
+          <div class="timeline-wrapper">
+            <div class="badge bg-warning">App-ideas</div>
+          </div>
+          <h5 class="f-w-500 m-0">Established new the app-ideas repository.</h5>
+          <p class="mb-0">
+            developers who are just beginning their learning process. those who often concentrate on developing
+            programmes with a user interface.</p>
+          <div class="time-content pt-2"><i class="icon-github"></i>
+            <h6>View it on Github </h6>
+          </div><span class="cd-date">February 02 2022</span>
+        </div>
+      </div>
+      <div class="cd-timeline-block">
+        <div class="cd-timeline-img bg-danger"> <i class="icon-youtube"></i></div>
+        <div class="cd-timeline-content">
+          <div class="timeline-wrapper">
+            <div class="badge bg-danger">Blog</div>
+          </div>
+          <h5 class="f-w-500 m-0">Implemented the program for weekly code challenges.</h5>
+          <p class="mb-0">
+            Challenges <em class="txt-danger">help you build problem-solving skills, better understand the programming.
+            </em>If you want to improve your skills in programming. </p>
+          <div class="ratio ratio-21x9 m-t-20">
+            <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen=""></iframe>
+          </div><span class="cd-date">March 12 2022</span>
+        </div>
+      </div>
+      <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-picture bg-success"><i class="icon-image"></i></div>
+        <div class="cd-timeline-content">
+          <div class="timeline-wrapper">
+            <div class="badge bg-info">Designer</div>
+          </div>
+          <h5 class="f-w-500 m-0">Research about most recent design trends.</h5>
+          <p class="mb-0">Spend some time looking up current design trend. </p>
+          <div class="carousel slide">
+            <owl-carousel-o [options]="customOptions ">
+              <ng-template carouselSlide class="carousel-item">
+                <img class="d-block w-100" src="assets/images/banner/2.jpg" alt="office-work">
+              </ng-template>
+              <ng-template carouselSlide class="carousel-item">
+                <img class="d-block w-100" src="assets/images/banner/1.jpg" alt="office-work">
+              </ng-template>
+              <ng-template carouselSlide class="carousel-item">
+                <img class="d-block w-100" src="assets/images/banner/3.jpg" alt="office-work">
+              </ng-template>
+            </owl-carousel-o>
+          </div><span class="cd-date">April 23 2022</span>
+        </div>
+      </div>
+      <div class="cd-timeline-block">
+        <app-audio-testing></app-audio-testing>
+      </div>
+      <div class="cd-timeline-block">
+        <app-meet-up></app-meet-up>
+      </div>
+      <div class="cd-timeline-block">
+        <app-resolutions></app-resolutions>
+      </div>
+    </section>
+  </div>
+</div>

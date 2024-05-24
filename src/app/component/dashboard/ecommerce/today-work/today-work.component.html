@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header card-no-border total-revenue">
+        <h4>Today Work</h4><a [routerLink]="['/ecommerce/products']">View All </a>
+    </div>
+    <div class="card-body pt-0">
+        <div class="today-work-table table-responsive custom-scrollbar">
+            <table class="today-working-table w-100">
+                <tbody>
+                    @for(data of todayWorkData; track data){
+                    <tr>
+                        <td>
+                            <span class="f-w-500 f-light d-block f-12 mb-1">{{ data.title }}</span>
+                             <a class="f-w-500 f-14" [routerLink]="['/ecommerce/products']">{{ data.data }}</a>
+                        </td>
+                        <td> 
+                            <span class="f-w-500 f-light d-block f-12 mb-1">{{ data.title2 }}</span>
+                            <a class="f-w-500 f-14" [routerLink]="['/ecommerce/products']">{{ data.data2 }}</a>
+                        </td>
+                        <td>
+                            <span class="f-w-500 f-light d-block f-12 mb-1">Days Left</span>
+                            <a class="f-w-500 f-14"  [routerLink]="['/ecommerce/products']">{{ data.time}}</a>
+                        </td>
+                        <td class="text-end">
+                            <div class="badge-light-{{ data.class}} product-sub badge rounded-pill ">
+                                <span>{{ data.status}}</span>
+                            </div>
+                        </td>
+                    </tr>
+                  }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

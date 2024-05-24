@@ -1,0 +1,61 @@
+<div class="sidebar-body" [formGroup]="myForm" (ngSubmit)="next(myForm)">
+    <div class="product-upload">
+        <p>Product Image </p>
+        <form class="dropzone dropzone-light" id="multiFileUploadA">
+          <div class="card-body">
+              <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                  <ngx-dropzone-label>
+                      <svg>
+                          <use href="assets/svg/icon-sprite.svg#file-upload"></use>
+                      </svg>
+                      <ngx-dropzone-label> <h6>Drag your image here, or <a class="txt-primary" href="#!">browser</a></h6><span
+                          class="note needsclick">SVG,PNG,JPG or GIF</span>e</ngx-dropzone-label>
+                  </ngx-dropzone-label>
+                  @for( f of files; track f){
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="f"
+                      [removable]="true" (removed)="onRemove(f)">
+                      <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                  </ngx-dropzone-image-preview>
+                }
+              </div>
+          </div>
+        </form>
+    </div>
+    <div class="product-upload">
+        <p>Product Gallery</p>
+        <form class="dropzone dropzone-light" id="multiFileUploadB">
+            <div class="card-body">
+               <ngx-dropzone [multiple]="false" (change)="ongallary($event)">
+                 <ngx-dropzone-label>
+                    <svg>
+                        <use href="assets/svg/icon-sprite.svg#file-upload1"></use>
+                    </svg>
+                    <ngx-dropzone-label> <h6>Drag files here</h6><span class="note needsclick">Add Product Gallery Images</span></ngx-dropzone-label>
+                </ngx-dropzone-label>
+                @for( f2 of files2 ; track f2){
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="f2"
+                    [removable]="true" (removed)="ongallaryremove(f2)">
+                    <ngx-dropzone-label>{{ f2.name }}</ngx-dropzone-label>
+                </ngx-dropzone-image-preview>
+            }
+            </ngx-dropzone>
+                </div>
+        </form>
+    </div>
+    <div class="product-buttons">
+        <div class="btn" (click)="previous()">
+            <div class="d-flex align-items-center gap-sm-2 gap-1">
+                <svg>
+                    <use href="assets/svg/icon-sprite.svg#back-arrow"></use>
+                </svg>Previous
+            </div>
+        </div>
+        <div class="btn" type="submit" (click)="next(myForm)">
+            <div class="d-flex align-items-center gap-sm-2 gap-1">Next
+                <svg>
+                    <use href="assets/svg/icon-sprite.svg#front-arrow"> </use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>    

@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <h3>Center Example</h3>
+    </div>
+    <div class="card-body">
+        <div class="card-body">
+            <owl-carousel-o [options]="centeroptions" class="carousel slide" id="carouselExampleSlidesOnly">
+                @for(img of centerData; track img){
+                <ng-template carouselSlide class="carousel-inner" >
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" [src]="[img.img]">
+                    </div>
+                </ng-template>
+            }
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+

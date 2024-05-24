@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    @for(data of hoverData; track data){
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Hover Effect <span>{{ data.hoverDigits }}</span></h4>
+                </div>
+                <div class="card-body">
+                    <div class="row my-gallery gallery" id="aniimated-thumbnials" itemscope="">
+                        @for(img of imgData; track img){
+                        <figure class="col-md-3 col-6 img-hover my-custom-gallery {{ data.hoverClass }} m-0" >
+                            <a href="javascript:void(0)" itemprop="contentUrl">
+                                <div style="overflow: hidden;">
+                                    <img [src]="img.srcUrl" style="width: 100%;">
+                                </div>
+                            </a>
+                        </figure>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

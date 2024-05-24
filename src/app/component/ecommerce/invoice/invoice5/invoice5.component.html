@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div id="print-section">
+    <table style="width:1160px;margin:0 auto;">
+      <tbody>
+        <tr>
+          <td>
+            <app-invoice5-top></app-invoice5-top>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <app-invoice5-table></app-invoice5-table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <app-invoice5-total></app-invoice5-total>
+          </td>
+        </tr>
+        <tr style="width: 100%; display: flex; justify-content: space-between; margin-top: 36px;">
+          <td> <img src="assets/images/email-template/invoice-3/sign.png" alt="sign"><span
+              style="color: #000248;display: block;font-size: 18px;font-weight: 600;">Laurine T. Ebbert</span><span
+              style=" display: block; font-size: 14px; padding-top: 5px;">( Designer )</span></td>
+          <td>
+            <span style="display: flex; justify-content: end; gap: 15px;">
+              <button type="button"
+                style="background: #006666 ; color:rgba(255, 255, 255, 1); border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;"
+                printSectionId="print-section" ngxPrint>Print Invoice
+                <i class="icon-arrow-right" style="font-size:13px;font-weight:bold; margin-left: 10px;"></i>
+              </button>
+              <a style="background: rgba(0, 102, 102, 0.2);color: #006666 ; border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;"
+                href="javascript:void(0);" download="">Download<i class="icon-arrow-right"
+                  style="font-size:13px;font-weight:bold; margin-left: 10px;"></i></a></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

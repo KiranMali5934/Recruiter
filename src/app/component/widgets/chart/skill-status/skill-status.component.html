@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Skill Status</h4>
+    </div>
+    <div class="card-body">
+      <div class="chart-container skill-chart">
+        <div id="circlechart">
+            <apx-chart [series]="skillstauschart.series" [chart]="skillstauschart.chart"
+            [plotOptions]="skillstauschart.PlotOptions" [stroke]="skillstauschart.stroke"
+            [labels]="skillstauschart.labels" [markers]="skillstauschart.markers" [legend]="skillstauschart.legend"
+            [responsive]="skillstauschart.responsive" [colors]="skillstauschart.colors">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>

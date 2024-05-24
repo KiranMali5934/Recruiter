@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header card-no-border total-revenue pb-0">
+        <h4>User Visits by Day </h4>
+        <div class="sales-chart-dropdown">
+            @if(uservisist == true){
+            <ul class="balance-data" >
+                <li> <span class="circle bg-primary"></span><span class="f-light ms-1">Chrome </span></li>
+                <li><span class="circle bg-primary-1"> </span><span class="f-light ms-1">Firefox </span></li>
+                <li> <span class="circle bg-primary-2"> </span><span class="f-light ms-1">Safari</span></li>
+            </ul>
+        }
+        </div>
+    </div>
+    <div class="card-body pt-0 pb-0">
+        <div class="user-visitsCharts">
+            <div id="visitsCharts">
+                <apx-chart [series]="UserVisitsData.series" [colors]="UserVisitsData.colors"
+                    [chart]="UserVisitsData.chart" [plotOptions]="UserVisitsData.plotOptions"
+                    [dataLabels]="UserVisitsData.dataLabels" [legend]="UserVisitsData.legend"
+                    [fill]="UserVisitsData.fill" [grid]="UserVisitsData.grid" [xaxis]="UserVisitsData.xaxis"
+                    [responsive]="UserVisitsData.responsive">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="common-space">
+            <div><a class="f-w-600 f-14"[routerLink]="['/dashboard/default']">Most Visited Day</a><span
+                    class="f-light f-w-500 f-14 d-block">Total 59.6k visits on Sunday </span></div>
+            <div class="visited-dropdown">
+                <svg class="mb-0">
+                    <use href="assets/svg/icon-sprite.svg#arrow-down"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

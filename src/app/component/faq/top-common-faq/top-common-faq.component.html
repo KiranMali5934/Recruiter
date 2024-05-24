@@ -1,0 +1,17 @@
+<div class="row">
+    @for( data of data; track data){
+    <div class="col-xl-4 box-col-4 {{ data.colClass }}">
+        <div class="card bg-primary">
+            <div class="card-body">
+                <div class="media faq-widgets">
+                    <div class="media-body">
+                        <h5>{{ data.title }}</h5>
+                        <p>{{ data.desc }}</p>
+                    </div>
+                    <app-feathericon [icon]="data.icon"></app-feathericon>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

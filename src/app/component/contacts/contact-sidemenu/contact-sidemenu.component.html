@@ -1,0 +1,66 @@
+<div class="row" (clickOutside)="clickOutside()">
+    <div class="col-xl-3 box-col-3">
+        <div class="md-sidebar">
+            <a class="btn btn-primary md-sidebar-toggle" (click)="openMenu()">contact  filter</a>
+              <div class="md-sidebar-aside job-left-aside custom-scrollbar" [class.open]="open">
+                 <div class="email-left-aside">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="email-app-sidebar left-bookmark">
+                                <div class="d-flex">
+                                    <div class="media-size-email"><img class="me-3 rounded-circle"
+                                            src="assets/images/user/user.png" alt=""></div>
+                                    <div class="flex-grow-1">
+                                        <h3>MARK JENCO</h3>
+                                        <p>Markjecno&#64;gmail.com</p>
+                                    </div>
+                                </div>
+                                <ul class="nav main-menu contact-options" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="btn-primary btn-block btn-mail w-100"
+                                            type="button" (click)=" newContacts()">
+                                            <app-feathericon [class]="'me-2'" [icon]="'users'"></app-feathericon>
+                                            New Contacts
+                                        </button>
+                                    </li>
+                                    <li class="nav-item"><span class="main-title">Views</span></li>
+                                    @for( item of Personal; track item){
+                                    <li>
+                                        <a id="pills-personal-tab" (click)="changeData(item.title_id ,item.title)">
+                                            <span class="title">{{item.title}}</span>
+                                        </a>
+                                    </li>
+                                   }
+                                    <li>
+                                        <button class="btn btn-category" type="button" (click)="addCategory()">
+                                            <span class="title txt-primary f-w-600"> + Add Category</span></button>
+                                    </li>
+                                    @for( item of organization; track item){
+                                    <li>
+                                        <a class="show" id="pills-organization-tab" (click)="changeData1(item.title_id ,item.title)"
+                                            role="tab">
+                                            <span class="title">{{item.title}}</span>
+                                        </a>
+                                    </li>
+                                   }
+                                    @for( item of viewList; track item){
+                                    <li>
+                                        <a class="show">
+                                            <span class="title">
+                                                {{item.title}}
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9 col-md-12 box-col-80">
+        <app-personal [selectedId]="selectedId" [statusData]="statusData" [getTitleData]="getTitleData"></app-personal>
+    </div>
+</div>

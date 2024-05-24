@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- <div class="col-xxl-3 col-xl-4 box-col-12">
+            <app-job-filter></app-job-filter>
+        </div> -->
+      <div class="col-xxl-12 col-xl-12 box-col-12">
+            <div class="card">
+                <div class="job-search">
+                    <div class="card-body">
+                        <div class="d-flex"><img class="img-40 img-fluid m-r-20" src="assets/images/logo/faviconcc.png"
+                                alt="">
+                            <div class="flex-grow-1" *ngIf="projectsJobsmodel.IsApplied==false">
+                                <h6 class="f-w-600"><a href="javascript:void(0)">{{projectsJobsmodel.JobTitle}}</a><span
+                                        class="pull-right">
+                                        <button class="btn btn-primary cursor-pointer" (click)="ApplyJob(projectsJobsmodel.ProjectId,projectsJobsmodel.JobsId,projectsJobsmodel.UserId)" type="button">Apply</button></span></h6>
+                                <p>Location - {{projectsJobsmodel.LocationName!==null ?projectsJobsmodel.LocationName :'Remote' }}<span>
+                                      
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="job-description">
+                          
+                        </div>
+                        <div class="job-description">
+                            <p> <span  style="font-weight: bold;">Job Description : </span> {{projectsJobsmodel.ProjectDescription}}</p>
+                             <p> <span  style="font-weight: bold;">Duration:  </span> {{projectsJobsmodel.ProjectDurationType}}</p>
+                             <p> <span  style="font-weight: bold;"> Job Type:  </span> {{projectsJobsmodel.JobType}}</p>
+
+                             <p> <span  style="font-weight: bold;">Contract Type : </span>{{projectsJobsmodel.ContractTypeTitle}}</p>
+                             <p > <span style="font-weight: bold;" >Industry Type: </span>   {{projectsJobsmodel.IndustryTypeTitle}}</p>
+                             <p> <span  style="font-weight: bold;">Secondary Skills :  </span>  {{projectsJobsmodel.SecondarySkillName}}</p>
+                             <p> <span  style="font-weight: bold;"> Communication  Skill : </span>  {{projectsJobsmodel.CommunicationSkill}}</p>
+
+                        <div class="table-responsive">
+                            <!--begin::Table-->
+                            <table class="table table-flush align-middle table-row-bordered table-row-solid">
+                              <!--begin::Thead-->
+                              <thead class="border-gray-200 fs-7 fw-bold bg-lighten">
+                                <tr>
+                                  <th class="min-w-50px"> Role</th>
+                                  <th class="min-w-50px">Skill Set</th>
+                                  <th class="min-w-50px">Experience</th>
+                                  <th class="min-w-50px">Team Size</th>
+                                  <th class="min-w-50px">Rate </th>
+                                  <th class="min-w-50px">Total Rate</th>
+                                </tr>
+                              </thead>
+                              <!--end::Thead-->
+                              <!--begin::Tbody-->
+                              <tbody class="fw-6 fw-bold text-gray-600">
+                                <tr *ngFor="let clone of projectsJobsmodel.cloanings">
+                                  <td class="min-w-50px">{{ clone.PrimaryRoleTitle }}</td>
+                                  <td class="min-w-50px"> {{ clone.PrimarySkillName}}</td>
+                                  <td class="min-w-50px">{{ clone.ExperienceName }}</td>
+                                  <td class="min-w-50px">{{ clone.TeamSizeType }}</td>
+                                  <td class="min-w-50px"> {{ clone.Permanent_BaseSalary}}/Annual</td>
+                                  <td class="min-w-50px">{{ clone.Total_Rate }}/Annual</td>
+                                </tr>
+                              </tbody>
+                              <!--end::Tbody-->
+                            </table>
+                            <!--end::Table-->
+                          </div>
+
+                       
+                        <div class="job-description">
+                          <span  style="font-weight: bold;"> Posted Date : </span>  {{projectsJobsmodel.CreatedDate | date:"dd MMM, yyyy"  }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="card height-equal">
+    <div class="card-header">
+        <h4>Vertical Tabs</h4>
+        <p class="mt-1 f-m-light">Use the <code>#var-pills-tab</code> id thorough change vertical tabs.</p>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="nav flex-column nav-pills nav-success" id="ver-pills-tab" ngbNav #nav="ngbNav"
+                    [(activeId)]="active">
+                    <ng-container [ngbNavItem]="1">
+                        <a class="f-w-600 nav-link" id="ver-pills-home-tab" ngbNavLink>Home</a>
+                        <ng-template ngbNavContent>
+                            <div class="tab-pane fade show" id="ver-pills-home">
+                                <p>It was an easy decision.an affordable expense! Absolutely! we got peace of mind. Now,
+                                    my time is spent on the<em class="txt-danger">“Sale”</em> and not on technology.
+                                    Create product Builder tool is also pre-bundled in this template so that you can let
+                                    the audience configure the productby themselves before placing the order.We are a
+                                    small yet highly-skilled group of creative brains with a vast experience.Our team of
+                                    web designers, online marketing experts, content writers, graphic
+                                    professionals have completed numerous projects.</p>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container [ngbNavItem]="2">
+                        <a class="f-w-600 nav-link" id="ver-pills-components-tab" ngbNavLink>Components</a>
+                        <ng-template ngbNavContent>
+                            <div class="tab-pane fade show" id="ver-pills-components">
+                                <ul class="d-flex flex-column gap-1">
+                                    <li>
+                                        If you are a business owner, your website is absolutely one of the most
+                                        important tools you have in your arsenal to get more - and better - clients
+                                        and customers or a good one from a great one? Here are 10 qualities that a great
+                                        website will need. Whether or not you end up retaining makespace based web
+                                        designers, you should find them helpful:</li>
+                                    <li> --> Navigation</li>
+                                    <li>--> Visual Design</li>
+                                    <li>--> Web Friendly</li>
+                                    <li>--> Conversion</li>
+                                </ul>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container [ngbNavItem]="3">
+                        <a class="f-w-600 nav-link" id="ver-pills-pages-tab" ngbNavLink>Pages</a>
+                        <ng-template ngbNavContent>
+                            <div class="tab-pane fade show" id="ver-pills-pages">
+                                <ul class="d-flex flex-column gap-1">
+                                    <li>Available pages in Theme: </li>
+                                    <li>
+                                        <strong> Typography: </strong> Typography is the art of arranging letters and
+                                        text in a way that
+                                        makes the copy legible, clear, and visually appealing to the reader.
+                                    </li>
+                                    <li>
+                                        <strong> Tooltip: </strong> A tooltip is a brief, informative message that
+                                        appears when a user
+                                        interacts with an element in a graphical user interface (GUI).
+                                    </li>
+                                </ul>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container [ngbNavItem]="4">
+                        <a class="f-w-600 nav-link" id="ver-pills-settings-tab" ngbNavLink>Settings</a>
+                        <ng-template ngbNavContent>
+                            <div class="tab-pane fade show" id="ver-pills-settings">
+                                <ul class="d-flex flex-column gap-1 p-sm-0 pt-2">
+                                    <li>
+                                        <strong> Site purpose</strong> Like a mission statement, a website's purpose
+                                        gives the primaryreasonfor the site's existence in the world. Whether for
+                                        education, advocacy, serviceprovision, communityorganizing, etc.
+                                    </li>
+                                    <li>
+                                        <strong> Features</strong> It's important to figure out as many of these in
+                                        advance as you can for the sake of a more coherent design.
+                                    </li>
+                                </ul>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12">
+                <div class="tab-content" id="ver-pills-tabContent">
+                    <div [ngbNavOutlet]="nav" class="ms-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

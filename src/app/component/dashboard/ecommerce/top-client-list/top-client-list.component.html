@@ -1,0 +1,42 @@
+<div class="card recent-order">
+    <div class="card-header card-no-border total-revenue">
+        <h4 class="m-0">Top Client List</h4>
+        <div class="header-top"></div><a [routerLink]="['/ecommerce/products']">View All </a>
+    </div>
+    <div class="card-body pt-0">
+        <div class="client-list-table table-responsive custom-scrollbar">
+            <table class="order-table w-100">
+                <tbody>
+                    @for(data of TopClientData; track data){
+                    <tr >
+                        <td class="client-list">
+                            <div class="user-id">
+                                <div class="avatars me-2">
+                                    <div class="avatar"><img class="img-50 rounded-circle" src="{{ data.img }}" alt="#">
+                                        <div class="status status-dnd bg-warning"> </div>
+                                    </div>
+                                </div>
+                                <div class="product-sub">
+                                    <a class="f-14 f-w-500 " [routerLink]="['/user/users-profile']">{{ data.name }}</a>
+                                    <span class="d-block f-light f-w-500">{{ data.country }}</span>
+                                </div>
+                               </div>
+                               <div class="user-comment w-100">
+                                   <div class="product-sub"> 
+                                      <a class="f-14 f-w-500 " [routerLink]="['/user/users-profile']">{{ data.email }}</a>
+                                      <span class="d-block f-light f-w-500">{{ data. phoneNo }} </span>
+                                   </div>
+                                <div class="product-sub">
+                                    <svg class="invoice-icon">
+                                        <use href="assets/svg/icon-sprite.svg#messages-3"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

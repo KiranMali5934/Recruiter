@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Activity Log</h4>
+    </div>
+    <div class="card-body">
+        <div class="activity-log">
+            @for(data of activityLogData; track data){
+            <div class="my-activity">
+                <h6 class="f-w-600 mb-3">{{ data.title }}</h6>
+                @for(alldata of data.data; track alldata){
+                <p>
+                    <span>
+                        <app-feathericon [icon]="alldata.icon" class="m-r-20"></app-feathericon>
+                    </span>
+                    {{ alldata.data }}
+                </p>
+                }
+            </div>
+        }
+        </div>
+    </div>
+</div>
